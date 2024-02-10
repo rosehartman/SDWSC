@@ -3,6 +3,8 @@
 library(tidyverse)
 library(lubridate)
 library(readxl)
+library(sf)
+library(deltamapr)
 
 
 load("data/shipchannelzoops.RData")
@@ -10,25 +12,33 @@ crosswalk = read_csv("data/zoopstaxa.csv") %>%
   select(Taxlifestage, IBMR, CarbonWeight_ug) %>%
   distinct()
 
+scregions = filter(R_EDSM_Subregions_19P3, SubRegion %in% c("Upper Sacramento River Ship Channel",
+                                                            "Lower Sacramento River Ship Channel"))
+ggplot()+
+  geom_sf(data = R_EDSM_Subregions_19P3) 
+zoopssfx = st_as_sf(shipchannel, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+  st_transform(crs = st_crs(scregions)) %>%
+  st_join(scregions) %>%
+  st_drop_geometry() %>%
+  filter(!is.na(SubRegion))
 
-
-zoops = left_join(shipchannel, crosswalk, relationship = "many-to-one") %>%
+zoops = left_join(zoopssfx, crosswalk, relationship = "many-to-one") %>%
   mutate(BPUE = CPUE * CarbonWeight_ug)
 
-ggplot(shipchannel, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))
+ggplot(zoops, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))
 
 
 ggplot(zoops, aes(x = Latitude, y = BPUE)) +geom_point(aes(color = TowType))
 
 #sum by IBMR group
-zoopI = group_by(zoops, SampleID, IBMR, TowType, Date, Latitude, Longitude, Source, Station, DOY) %>%
+zoopI = group_by(zoops, SampleID, SubRegion, IBMR, TowType, Date, Latitude, Longitude, Source, Station, DOY) %>%
   summarize(CPUE = sum(CPUE), BPUE = sum(BPUE))
 
 #i'm not sure what the appropriate bins are for regions, but let's try this for now
 
-zoopI = mutate(zoopI, Region = case_when(Latitude > 38.5 ~ "Top",
-                                         Latitude > 38.3 & Latitude <= 38.5 ~ "Middle",
-                                         Latitude <= 38.3 ~ "Lower"),
+zoopI = mutate(zoopI, Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
+                                         SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
+                                         Latitude <= 38.36 ~ "Lower"),
                Month = month(Date), 
                Year = year(Date),
                MonthYear = Year + (1-Month)/12)
@@ -36,6 +46,11 @@ zoopI = mutate(zoopI, Region = case_when(Latitude > 38.5 ~ "Top",
 ggplot(zoopI, aes(x = Region, y = BPUE, fill = IBMR)) +geom_col(position = "fill")+
   facet_wrap(~TowType)
 
+zoopsf = st_as_sf(zoopI, coords = c("Longitude", "Latitude"), crs = 4326)
+ggplot()+
+  geom_sf(data = WW_Delta)+
+  geom_sf(data = zoopsf, aes(color = Region))+
+  coord_sf(ylim = c(38.2, 38.6), xlim = c(-121.5, -121.7))
 
 zoopIwzeros = zoopI %>%
   pivot_wider(id_cols = c(SampleID, TowType, Date, Latitude, Longitude, Source, Station, DOY, Month, Year, MonthYear, Region),
@@ -73,3 +88,37 @@ ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col(position = "fil
 #BPUE
 ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col()+
   facet_wrap(~TowType, ncol =1)
+
+#################################
+#combine with water quality
+library(discretewq)
+wq1x = wq(Sources = c("EMP", "STN", "NCRO", "FMWT", "EDSM", "DJFMP", "SKT", "SLS", "20mm","USBR", "USGS_SFBS", "YBFMP", "USGS_CAWSC"),
+         Start_year = 2011, End_year = 2021) %>%
+  filter(!is.na(Latitude), Latitude > min(zoops$Latitude), Latitude < max(zoops$Latitude),
+         Longitude > min(zoops$Longitude),Longitude < max(zoops$Longitude))
+
+wq2x = mutate(wq1x,  Region = case_when(Latitude > 38.5 ~ "Top",
+                                      Latitude > 38.3 & Latitude <= 38.5 ~ "Middle",
+                                      Latritude <= 38.3 ~ "Lower"),
+             Month = month(Date), Year = year(Date))
+
+wqavex = group_by(wq2x, Region, Month, Year) %>%
+  summarize(Secchi = mean(Secchi, na.rm =T), TurbidityNTU = mean(TurbidityNTU, na.rm =T),
+            Conductivity = mean(Conductivity, na.rm =T), Chlorophyll = mean(Chlorophyll, na.rm =T),
+            Temperature = mean(Temperature, na.rm =T))
+
+zoopwq = left_join(zoopIave, wqave)
+
+ggplot(zoopwq, aes(x = TurbidityNTU, y = log(BPUE+1)))+
+  geom_point(aes(color = TowType))+ geom_smooth()+facet_wrap(~IBMR, scales = "free")+
+  coord_cartesian(xlim = c(0,100))
+
+ggplot(zoopwq, aes(x = TurbidityNTU, y = log(BPUE+1)))+
+  geom_point(aes(color = Region))+ geom_smooth()+facet_wrap(~IBMR, scales = "free")+
+  coord_cartesian(xlim = c(0,100))
+
+ggplot(zoopwq, aes(x = log(TurbidityNTU), y = log(BPUE+1)))+
+  geom_point(aes(color = TowType))+ geom_smooth()+facet_grid(Region~IBMR, scales = "free")+
+  coord_cartesian(xlim = c(0,6), ylim = c(0,12))
+
+
