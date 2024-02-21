@@ -5,7 +5,7 @@ library(lubridate)
 library(readxl)
 library(sf)
 library(deltamapr)
-
+library(RColorBrewer)
 
 load("data/shipchannelzoops.RData")
 crosswalk = read_csv("data/zoopstaxa.csv") %>%
@@ -25,7 +25,30 @@ zoopssfx = st_as_sf(shipchannel, coords = c("Longitude", "Latitude"), crs = 4326
 zoops = left_join(zoopssfx, crosswalk, relationship = "many-to-one") %>%
   mutate(BPUE = CPUE * CarbonWeight_ug)
 
-ggplot(zoops, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))
+ggplot(zoops, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))+
+  facet_wrap(~IBMR, scales = "free")
+
+
+zoopmonths = mutate(zoops, Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
+                                              SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
+                                              Latitude <= 38.36 ~ "Lower"),
+                    Month = month(Date)) %>%
+  group_by(Region, Taxlifestage, Month) %>%
+  summarize(CPUE = mean(CPUE, na.rm =T), BPUE = mean(BPUE, na.rm =T))
+
+mypal = c(brewer.pal(8, "Dark2"), brewer.pal(8, "Set3"), brewer.pal(8, "Set2"), "black", "purple")
+ggplot(zoopmonths, aes(x = Month, y = CPUE, fill= Taxlifestage)) + geom_col(position = "fill")+
+  facet_wrap(~Region, nrow =3)+
+  scale_fill_manual(values = mypal)
+
+
+ggplot(zoopmonths, aes(x = Month, y = BPUE, fill= Taxlifestage)) + geom_col(position = "fill")+
+  facet_wrap(~Region, nrow =3)+
+  scale_fill_manual(values = mypal)
+
+
+ggplot(zoops, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))+
+  facet_wrap(~IBMR, scales = "free")
 
 
 ggplot(zoops, aes(x = Latitude, y = BPUE)) +geom_point(aes(color = TowType))
@@ -33,6 +56,9 @@ ggplot(zoops, aes(x = Latitude, y = BPUE)) +geom_point(aes(color = TowType))
 #sum by IBMR group
 zoopI = group_by(zoops, SampleID, SubRegion, IBMR, TowType, Date, Latitude, Longitude, Source, Station, DOY) %>%
   summarize(CPUE = sum(CPUE), BPUE = sum(BPUE))
+
+write.csv(zoopI, "data/DWSC_zoops_wIBMR.csv")
+save(zoopI, file = "data/DWSC_zoops_wIBMR.RData")
 
 #i'm not sure what the appropriate bins are for regions, but let's try this for now
 
@@ -45,6 +71,11 @@ zoopI = mutate(zoopI, Region = case_when(SubRegion == "Upper Sacramento River Sh
 
 ggplot(zoopI, aes(x = Region, y = BPUE, fill = IBMR)) +geom_col(position = "fill")+
   facet_wrap(~TowType)
+
+
+ggplot(zoopI, aes(x = Region, y = CPUE, fill = IBMR)) +geom_col(position = "fill")+
+  facet_wrap(~Month)
+
 
 zoopsf = st_as_sf(zoopI, coords = c("Longitude", "Latitude"), crs = 4326)
 ggplot()+
@@ -67,10 +98,11 @@ ggplot(zoopIave, aes(x = Month, y = BPUE, fill = IBMR))+
 
 #Average BPUE by tow type, and region
 ggplot(zoopIave, aes(x =TowType, y = BPUE, fill = IBMR))+
-  facet_grid(Region~Month)+ geom_col()
+  facet_grid(Region~Month)+ geom_col()+ theme(axis.text.x = element_text(angle = 90))
 
 ggplot(zoopIave, aes(x =Region, y = BPUE, fill = IBMR))+
-  facet_grid(TowType~Month)+ geom_col()
+  facet_grid(TowType~Month)+ geom_col(position = "fill")+
+  scale_fill_brewer(palette = "Set3")
   
 # I guess we said we'd focus on summer-fall, so let's look at average biomass by 
 #region and depth
@@ -87,6 +119,9 @@ ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col(position = "fil
 
 #BPUE
 ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col()+
+  facet_wrap(~TowType, ncol =1)
+
+ggplot(regave, aes(x = IBMR, y = log(BPUE+1), fill = Region))+ geom_col(position = "dodge")+
   facet_wrap(~TowType, ncol =1)
 
 #################################
