@@ -16,14 +16,14 @@ scregions = filter(R_EDSM_Subregions_19P3, SubRegion %in% c("Upper Sacramento Ri
                                                             "Lower Sacramento River Ship Channel"))
 ggplot()+
   geom_sf(data = R_EDSM_Subregions_19P3) 
-zoopssfx = st_as_sf(shipchannel, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+zoopssfx = st_as_sf(shipchannelall, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
   st_transform(crs = st_crs(scregions)) %>%
   st_join(scregions) %>%
   st_drop_geometry() %>%
   filter(!is.na(SubRegion))
 
 zoops = left_join(zoopssfx, crosswalk, relationship = "many-to-one") %>%
-  mutate(BPUE = CPUE * CarbonWeight_ug)
+  mutate(BPUE = CPUE * CarbonWeight_ug, DOY = yday(Date))
 
 ggplot(zoops, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))+
   facet_wrap(~IBMR, scales = "free")
@@ -36,7 +36,7 @@ zoopmonths = mutate(zoops, Region = case_when(SubRegion == "Upper Sacramento Riv
   group_by(Region, Taxlifestage, Month) %>%
   summarize(CPUE = mean(CPUE, na.rm =T), BPUE = mean(BPUE, na.rm =T))
 
-mypal = c(brewer.pal(8, "Dark2"), brewer.pal(8, "Set3"), brewer.pal(8, "Set2"), "black", "purple")
+mypal = c(brewer.pal(8, "Dark2"), brewer.pal(8, "Set3"), brewer.pal(8, "Set2"), "black", "purple", "tomato")
 ggplot(zoopmonths, aes(x = Month, y = CPUE, fill= Taxlifestage)) + geom_col(position = "fill")+
   facet_wrap(~Region, nrow =3)+
   scale_fill_manual(values = mypal)
@@ -57,9 +57,6 @@ ggplot(zoops, aes(x = Latitude, y = BPUE)) +geom_point(aes(color = TowType))
 zoopI = group_by(zoops, SampleID, SubRegion, IBMR, TowType, Date, Latitude, Longitude, Source, Station, DOY) %>%
   summarize(CPUE = sum(CPUE), BPUE = sum(BPUE))
 
-write.csv(zoopI, "data/DWSC_zoops_wIBMR.csv")
-save(zoopI, file = "data/DWSC_zoops_wIBMR.RData")
-
 #i'm not sure what the appropriate bins are for regions, but let's try this for now
 
 zoopI = mutate(zoopI, Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
@@ -75,6 +72,9 @@ ggplot(zoopI, aes(x = Region, y = BPUE, fill = IBMR)) +geom_col(position = "fill
 
 ggplot(zoopI, aes(x = Region, y = CPUE, fill = IBMR)) +geom_col(position = "fill")+
   facet_wrap(~Month)
+
+write.csv(zoopI, "data/DWSC_zoops_wIBMR.csv")
+save(zoopI, file = "data/DWSC_zoops_wIBMR.RData")
 
 
 zoopsf = st_as_sf(zoopI, coords = c("Longitude", "Latitude"), crs = 4326)
@@ -155,5 +155,45 @@ ggplot(zoopwq, aes(x = TurbidityNTU, y = log(BPUE+1)))+
 ggplot(zoopwq, aes(x = log(TurbidityNTU), y = log(BPUE+1)))+
   geom_point(aes(color = TowType))+ geom_smooth()+facet_grid(Region~IBMR, scales = "free")+
   coord_cartesian(xlim = c(0,6), ylim = c(0,12))
+
+
+#################################################################
+#now add mysid data
+library(zooper)
+mysids = Zoopsynther(Data_type = "Community", Sources = c("FMWT", "DOP"), Size_class = "Macro",
+                     Years = c(2011:2022)) %>%
+  filter(!is.na(Latitude))
+
+
+mysidssfx = st_as_sf(mysids, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+  st_transform(crs = st_crs(scregions)) %>%
+  st_join(scregions) %>%
+  st_drop_geometry() %>%
+  filter(!is.na(SubRegion)) %>%
+  mutate( Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
+                                   SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
+                                   Latitude <= 38.36 ~ "Lower"))
+
+
+
+ggplot(mysidssfx, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))+
+  facet_wrap(~Taxname, scales = "free")
+
+
+mysidmonths = mutate(mysidssfx, 
+                    Month = month(Date)) %>%
+  group_by(Region, Taxlifestage, Order, Month) %>%
+  summarize(CPUE = mean(CPUE, na.rm =T), BPUE = mean(BPUE, na.rm =T))
+
+mysids2 = group_by(mysidssfx, Order, SampleID, Date, Latitude, Longitude, Station, Year, Region) %>%
+  summarize(CPUE = sum(CPUE))
+
+ggplot(mysids2, aes(x = Date, y = CPUE, fill = Order))+ geom_area()
+ggplot(mysids2, aes(x = Latitude, y = CPUE, fill = Order))+ geom_area()
+ggplot(mysids2, aes(x = Region, y = log(CPUE+1), fill = Order))+ geom_boxplot()+
+  facet_wrap(~Year)
+
+#######################################################
+#DOp mysid biomass?
 
 
