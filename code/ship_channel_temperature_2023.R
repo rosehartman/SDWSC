@@ -9,7 +9,6 @@ library(caTools)
 library(TTR)
 
 #########################################################
-
 # Load datasets
 # Station 66
 
@@ -103,6 +102,7 @@ Temp_CM84 <- rbind(Temp_CM84_1,Temp_CM84_2,Temp_CM84_3,Temp_CM84_4,Temp_CM84_5,T
   mutate(DateTime=as.POSIXct(DateTime,format="%m/%d/%y %I:%M:%S %p", tz="America/Los_Angeles")) %>%
   mutate(Date=as.Date(DateTime))
 
+
 #########################################################
 
 # Get DWS/CM51 data from USGS website
@@ -122,6 +122,18 @@ Temp_CM51_edit <- Temp_CM51 %>% rename(DateTime=dateTime,Temp=X_00010_00000) %>%
 
 # Combine datasets into one
 Temp_all<-rbind(Temp_CM51_edit,Temp_CM66,Temp_CM74,Temp_CM84)
+
+#########################################################
+#Message from Adrianne Smits [2/13 9:47 AM] 
+#Sensors were removed from water on June 7
+#Assume that this means that the spring data that ends on June 13 should have
+#all data from 6/7 to 6/13 removed
+Temp_all_anti <- Temp_all %>% filter(Station %in% c("CM66","CM74","CM84")&
+                                  as.Date(Date)>=as.Date("2023-06-07")&
+                                  as.Date(Date)<=as.Date("2023-06-13"))
+
+Temp_all <- Temp_all %>% anti_join(Temp_all_anti)
+remove(Temp_all_anti)
 
 ### Follow the 6 QC steps from Catarina Pien
 ## See original script here: https://github.com/catarfish/climatechange/blob/master/CDEC_QA_4.Rmd
@@ -349,7 +361,7 @@ temp_final <- temp_flags %>%
 temp_day <- temp_final %>% group_by(Station, Depth, Date) %>%
   summarise(Temp=mean(Temp)) %>% ungroup()
 
-ggplot(data=temp_day_plot) + 
+ggplot(data=temp_day) + 
   geom_point(aes(x=Date,y=Temp)) +
   facet_grid(Depth~Station)
   
@@ -382,7 +394,8 @@ temp_day_edit <- temp_day_edit %>% filter(!(StationCode %in% c("CM51_2.5","CM51_
   filter(!(Station=="CM66"&Depth==5&Date<min(temp_day_isolate_CM66_5$Date)))
 
 # Add data into template
-temp_day_edit_fill <- temp_day_edit %>% left_join(temp_day)
+temp_day_edit_fill <- temp_day_edit %>% left_join(temp_day) %>%
+  mutate(Imputed=ifelse(is.na(Temp),"Yes","No"))
 
 # Split data into list
 temp_day_split <- temp_day_edit_fill %>% 
@@ -400,7 +413,7 @@ temp_day_imputed<-bind_rows(temp_day_split, .id = "StationCode")
 
 # Visualize imputed data
 ggplot(data=temp_day_imputed) + 
-  geom_point(aes(x=Date,y=Temp)) +
+  geom_point(aes(x=Date,y=Temp,color=Imputed)) +
   facet_grid(Depth~Station)
 
 ######
