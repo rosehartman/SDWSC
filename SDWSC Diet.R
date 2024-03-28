@@ -219,7 +219,6 @@ dietbiomass = left_join(sdwscdiet_long, biomass, by = "DietCategory" ) %>%
 
 allbiomass = bind_rows(dietbiomass, macrobm) %>%
   mutate(IBMR = case_when(DietCategory == "Sinocalanus spp" ~ "sino",
-                          DietCategory == "Sinocalanus copepodid" ~ "sinojuv",
                           TRUE ~ IBMR))
 
 
@@ -242,12 +241,13 @@ diet_mon = diet_ibmr %>%
   group_by(Year, Month, Region, IBMR) %>% 
   summarize(mean_mon = mean(tot_samp))
   
+save(diet_mon, file = "data/dietbymonth.RData")
 #Plots--------
 
 #make stacked plots of the diet categories by year, month, region
 #eventually want to filter for months wanted but just curious about this now
 library(RColorBrewer)
-mypal = c(brewer.pal(12, "Set3"), "blue", "olivedrab1", "violetred")
+mypal = c(brewer.pal(12, "Set3"), "tan", "olivedrab2", "violetred")
 db1 = ggplot(diet_mon, aes(x = Year, y = mean_mon))
 db2 = db1+ geom_bar(stat = "identity", aes(fill = IBMR), position = "fill") + 
   facet_wrap(~Region) + 
