@@ -9,7 +9,7 @@ library(RColorBrewer)
 
 load("data/shipchannelzoops.RData")
 crosswalk = read_csv("data/zoopstaxa.csv") %>%
-  select(Taxlifestage, IBMR, CarbonWeight_ug) %>%
+  select(Taxlifestage, IBMR, IBMR2, CarbonWeight_ug) %>%
   distinct()
 
 scregions = filter(R_EDSM_Subregions_19P3, SubRegion %in% c("Upper Sacramento River Ship Channel",
@@ -55,16 +55,26 @@ ggplot(zoops, aes(x = Latitude, y = BPUE)) +geom_point(aes(color = TowType))
 
 #sum by IBMR group
 zoopI = group_by(zoops, SampleID, SubRegion, IBMR, TowType, Date, Latitude, Longitude, Source, Station, DOY) %>%
-  summarize(CPUE = sum(CPUE), BPUE = sum(BPUE))
+  summarize(CPUE = sum(CPUE), BPUE = sum(BPUE)) %>%
+  mutate(Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
+                            SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
+                            Latitude <= 38.36 ~ "Lower"),
+         Month = month(Date), 
+         Year = year(Date),
+         MonthYear = Year + (1-Month)/12)
+
+#sum by IBMR group - with sino
+zoopI2 = group_by(zoops, SampleID, SubRegion, IBMR2, TowType, Date, Latitude, Longitude, Source, Station, DOY) %>%
+  summarize(CPUE = sum(CPUE), BPUE = sum(BPUE)) %>%
+  mutate(Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
+                                   SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
+                                   Latitude <= 38.36 ~ "Lower"),
+         Month = month(Date), 
+         Year = year(Date),
+         MonthYear = Year + (1-Month)/12)
+
 
 #i'm not sure what the appropriate bins are for regions, but let's try this for now
-
-zoopI = mutate(zoopI, Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
-                                         SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
-                                         Latitude <= 38.36 ~ "Lower"),
-               Month = month(Date), 
-               Year = year(Date),
-               MonthYear = Year + (1-Month)/12)
 
 ggplot(zoopI, aes(x = Region, y = BPUE, fill = IBMR)) +geom_col(position = "fill")+
   facet_wrap(~TowType)
@@ -96,6 +106,16 @@ ggplot(zoopIave, aes(x = Month, y = BPUE, fill = IBMR))+
   facet_grid(Region~Year)+ geom_col()
 
 
+
+zoopI2wzeros2 = zoopI2 %>%
+  pivot_wider(id_cols = c(SampleID, TowType, Date, Latitude, Longitude, Source, Station, DOY, Month, Year, MonthYear, Region),
+              names_from = IBMR2, values_from = BPUE, values_fill = 0) %>%
+  pivot_longer(cols = c(allcopnaup:last_col()), names_to = "IBMR", values_to = "BPUE")
+
+zoopIave2 = group_by(zoopIwzeros2, Region, TowType, Month, Year, MonthYear, IBMR2) %>%
+  summarize(BPUE = mean(BPUE))
+
+
 #Average BPUE by tow type, and region
 ggplot(zoopIave, aes(x =TowType, y = BPUE, fill = IBMR))+
   facet_grid(Region~Month)+ geom_col()+ theme(axis.text.x = element_text(angle = 90))
@@ -123,6 +143,15 @@ ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col()+
 
 ggplot(regave, aes(x = IBMR, y = log(BPUE+1), fill = Region))+ geom_col(position = "dodge")+
   facet_wrap(~TowType, ncol =1)
+
+##############################################################################
+#if we're lining things up with diet studies, get rid of tow type
+
+zoopIave3 = group_by(zoopI2wzeros2, Region,  Month, Year, MonthYear, IBMR) %>%
+  summarize(BPUE = mean(BPUE))
+#oh, they don't seperate sinocal juv, i shouldn't do that with the diets either.
+
+
 
 #################################
 #combine with water quality
@@ -159,41 +188,38 @@ ggplot(zoopwq, aes(x = log(TurbidityNTU), y = log(BPUE+1)))+
 
 #################################################################
 #now add mysid data
-library(zooper)
-mysids = Zoopsynther(Data_type = "Community", Sources = c("FMWT", "DOP"), Size_class = "Macro",
-                     Years = c(2011:2022)) %>%
-  filter(!is.na(Latitude))
 
 
-mysidssfx = st_as_sf(mysids, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
-  st_transform(crs = st_crs(scregions)) %>%
-  st_join(scregions) %>%
-  st_drop_geometry() %>%
-  filter(!is.na(SubRegion)) %>%
-  mutate( Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
-                                   SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
-                                   Latitude <= 38.36 ~ "Lower"))
+load("data/mysidsmonth.Rdata")
+load("data/dietbymonth.RData")
+
+totIBMR = rename(mysidsmonth, BPUE = bpue) %>%
+  bind_rows( zoopIave3) %>%
+  dplyr::select(-MonthYear) %>%
+  rename(ZooplanktonBPUE = BPUE)
+
+table(totIBMR$IBMR, totIBMR$Year)
+
+table(totIBMR$IBMR, totIBMR$Month)
 
 
+#bind diet and zooplankton data together
+IBMRdietzoops = left_join(totIBMR, diet_mon) %>%
+  rename(DietBiomass = mean_mon)
 
-ggplot(mysidssfx, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))+
-  facet_wrap(~Taxname, scales = "free")
+write.csv(IBMRdietzoops, "outputs/IBMRdietmatrix.csv", row.names = FALSE)
 
+IBMR2 = pivot_longer(IBMRdietzoops, cols = c(ZooplanktonBPUE, DietBiomass), 
+                     names_to = "Metric", values_to = "Biomass")
 
-mysidmonths = mutate(mysidssfx, 
-                    Month = month(Date)) %>%
-  group_by(Region, Taxlifestage, Order, Month) %>%
-  summarize(CPUE = mean(CPUE, na.rm =T), BPUE = mean(BPUE, na.rm =T))
+ggplot(filter(IBMR2, Month %in% c(9,10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
+  facet_grid(Region~Year)
 
-mysids2 = group_by(mysidssfx, Order, SampleID, Date, Latitude, Longitude, Station, Year, Region) %>%
-  summarize(CPUE = sum(CPUE))
+ggplot(filter(IBMR2, Month %in% c(9,10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
+  facet_wrap(~Region)
 
-ggplot(mysids2, aes(x = Date, y = CPUE, fill = Order))+ geom_area()
-ggplot(mysids2, aes(x = Latitude, y = CPUE, fill = Order))+ geom_area()
-ggplot(mysids2, aes(x = Region, y = log(CPUE+1), fill = Order))+ geom_boxplot()+
-  facet_wrap(~Year)
-
-#######################################################
-#DOp mysid biomass?
-
+ggplot(IBMR2, aes(x = Month, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
+  facet_grid(Metric~Region)+
+  scale_fill_manual(values = mypal)+
+  theme_bw()
 

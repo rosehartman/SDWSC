@@ -145,6 +145,15 @@ ggplot(eat.gg.df, aes(DOY, percentage, fill=as.factor(Species))) +
 d2long = pivot_longer(d2, cols = c(allcopnaup.K:pdiapjuv.K), names_to = "IBMR", values_to = "DietProportion") %>%
   mutate(Diet = DietProportion/Ksum, Month = month(Date))
 
+#match the colors to Christina's diet graph
+library(RColorBrewer)
+mypal = c("acartela.K" = "#8DD3C7", "allcopnaup.K" = "#FFFFB3",
+          "daphnia.K" = "#BEBADA", "eurytem.K" = "pink",
+          "limno.K" = "#FB8072", "othcalad.K" = "#80B1D3",
+          "othcaladjuv.K" = "#FDB462", "othclad.K" = "#B3DE69",
+          "othcyc.K" = "#FCCDE5", "other.K" = "#D9D9D9",
+          "pdiapfor.K" = "#BC80BD", "pdiapjuv.K" = "#CCEBC5")
+
 #summaryize by month and region
 
 d2longave = group_by(d2long, Month, Region, IBMR) %>%
@@ -152,7 +161,19 @@ d2longave = group_by(d2long, Month, Region, IBMR) %>%
 
 ggplot(d2longave, aes(x = Month, y = Diet, fill = IBMR))+
   geom_col()+
-  facet_wrap(~Region)
+  facet_wrap(~Region)+
+  scale_fill_manual(values = mypal)
+
+#now by year and region, summer fall only
+d2longave2 = filter(d2long, Month %in% c(6:10)) %>%
+  mutate(Year = year(Date)) %>%
+  group_by(Year, Region, IBMR) %>%
+  summarize(Diet = mean(Diet))
+
+ggplot(d2longave2, aes(x = Year, y = Diet, fill = IBMR))+
+  geom_col()+
+  facet_wrap(~Region)+
+  scale_fill_manual(values = mypal)
 
 ##############################################################
 #load the diet data
