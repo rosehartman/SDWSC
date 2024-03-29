@@ -236,8 +236,28 @@ diet_ibmr= allbiomass %>%
   group_by(Year, Month, Region, SampleID, IBMR) %>% 
   summarize(tot_samp = sum(DietBiomass))
 
+#ugh, i didn't put in the zeros for mysids right
+
+diet_ibmr0s = pivot_wider(diet_ibmr, names_from = IBMR, 
+                          id_cols = c(SampleID, Month, Year, Region),
+                             values_from = tot_samp, values_fill = 0) %>%
+  pivot_longer(cols = c(acartela:mysid), names_to = "IBMR", values_to = "tot_samp") %>%
+  group_by(SampleID) %>%
+  mutate(propdiet = tot_samp/(sum(tot_samp))) %>%
+  ungroup()
+
+
+write.csv(diet_ibmr0s, "outputs/diet_ibmr.csv")
+
+#it sounds like Will need it in wide format, rather than long
+
+diet_ibmr_wide = pivot_wider(diet_ibmr0s, id_cols = c(SampleID, Month, Year, Region),
+                             names_from = IBMR, values_from = propdiet)
+
+write.csv(diet_ibmr_wide, "outputs/diet_ibmr_wide.csv")
+
 #now month and year
-diet_mon = diet_ibmr %>% 
+diet_mon = diet_ibmr0s %>% 
   group_by(Year, Month, Region, IBMR) %>% 
   summarize(mean_mon = mean(tot_samp))
   
@@ -279,6 +299,9 @@ dbsf2
 
 ggsave(dbsf2, filename = "sdwscdietbiomass_sumfall.tiff", device = "tiff", width = 6, height = 4.5, units = "in", dpi = 300)
 
+
+ggplot(sumfall, aes(x = Month, y = mean_mon, fill = IBMR))+ geom_col(position = "fill")+
+  facet_wrap(~Region)
 
 ##################################################################################
 #now break out sinocalanus seperately

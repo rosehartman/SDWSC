@@ -223,3 +223,10 @@ ggplot(IBMR2, aes(x = Month, y = Biomass, fill = IBMR))+ geom_col(position = "fi
   scale_fill_manual(values = mypal)+
   theme_bw()
 
+#zooplankton data in wide format for will
+
+zoops_ibmr_wide = pivot_wider(IBMRdietzoops, id_cols = c(Month, Year, Region),
+                              values_from = ZooplanktonBPUE, names_from = IBMR)
+
+write.csv(zoops_ibmr_wide, "outputs/IBMRzoopswide.csv", row.names = FALSE)
+
