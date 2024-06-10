@@ -1,3 +1,6 @@
+# Code to compile and clean temperature data at the Ship Channel
+# Brian Mahardja, March 2024
+
 setwd("~/GitHub/SDWSC")
 
 library(tidyverse)
