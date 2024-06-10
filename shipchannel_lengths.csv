@@ -1,0 +1,675 @@
+"Year","Month","Date","latitude","longitude","Region","SampleID","PreyType","PreyConversion","MacroCategory","PreyLengthSpecies","PreyLength","Estimate"
+2017,8,2017-08-15,38.38728046,-121.6234417,"Middle","DOP 2 EDSM 2017-08-15 18-03-SSC02 0002","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,"ED"
+2018,7,2018-07-05,38.39557012,-121.6192754,"Middle","DOP 98 EDSM 2018-07-05 18-49-LSSC03 0065","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.8,NA
+2018,7,2018-07-05,38.39557012,-121.6192754,"Middle","DOP 99 EDSM 2018-07-05 18-49-LSSC03 0066","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.3,NA
+2018,7,2018-07-05,38.39557012,-121.6192754,"Middle","DOP 97 EDSM 2018-07-05 18-49-LSSC03 0064","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,7,2018-07-09,38.42452113,-121.6063894,"Middle","DOP 133 EDSM 2018-07-09 18-50-LSSC01 0150","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2018,7,2018-07-18,38.44597435,-121.5961647,"Middle","DOP 102 EDSM 2018-07-18 18-51-LSSC01 0069","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,7,2018-07-19,38.42158445,-121.6075834,"Middle","DOP 103 EDSM 2018-07-19 18-51-LSSC04 0070","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,"U"
+2018,7,2018-07-23,38.42289066,-121.6071625,"Middle","DOP 104 EDSM 2018-07-23 18-52-LSSC02 0071","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,7,2018-07-24,38.30247498,-121.6544037,"Lower","DOP 107 EDSM 2018-07-24 18-52-LSSC03 0074","Unid amphipod","Amphipoda","amphipod","Unid amphipod",1.8,"Y"
+2018,7,2018-07-24,38.30247498,-121.6544037,"Lower","DOP 107 EDSM 2018-07-24 18-52-LSSC03 0074","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2018,8,2018-08-08,38.38444265,-121.6250788,"Middle","DOP 114 EDSM 2018-08-08 19-02-LSSC02 0081","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,"ED"
+2018,8,2018-08-08,38.38444265,-121.6250788,"Middle","DOP 115 EDSM 2018-08-08 19-02-LSSC02 0082","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.7,NA
+2018,8,2018-08-14,38.37018585,-121.6310501,"Middle","DOP 120 EDSM 2018-08-14 19-03-LSSC01 0087","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.7,"M"
+2018,8,2018-08-27,38.3326149,-121.6471252,"Lower","DOP 130 EDSM 2018-08-27 19-05-LSSC05 0097","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,8,2018-08-27,38.3326149,-121.6471252,"Lower","DOP 129 EDSM 2018-08-27 19-05-LSSC05 0096","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,NA
+2018,8,2018-08-27,38.3326149,-121.6471252,"Lower","DOP 129 EDSM 2018-08-27 19-05-LSSC05 0096","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2,NA
+2018,8,2018-08-27,38.3326149,-121.6471252,"Lower","DOP 129 EDSM 2018-08-27 19-05-LSSC05 0096","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,"U"
+2018,8,2018-08-27,38.3326149,-121.6471252,"Lower","DOP 129 EDSM 2018-08-27 19-05-LSSC05 0096","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,"G"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 243 EDSM 2018-09-10 19-07-LSSC02 0116","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,"S"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 241 EDSM 2018-09-10 19-07-LSSC02 0114","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,"G"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 162 EDSM 2018-09-10 19-07-LSSC02 0111","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 155 EDSM 2018-09-10 19-07-LSSC02 0104","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 159 EDSM 2018-09-10 19-07-LSSC02 0108","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 151 EDSM 2018-09-10 19-07-LSSC02 0100","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.7,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 152 EDSM 2018-09-10 19-07-LSSC02 0101","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 151 EDSM 2018-09-10 19-07-LSSC02 0100","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 159 EDSM 2018-09-10 19-07-LSSC02 0108","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.9,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 161 EDSM 2018-09-10 19-07-LSSC02 0110","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 240 EDSM 2018-09-10 19-07-LSSC02 0113","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 151 EDSM 2018-09-10 19-07-LSSC02 0100","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.9,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 155 EDSM 2018-09-10 19-07-LSSC02 0104","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 158 EDSM 2018-09-10 19-07-LSSC02 0107","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.2,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 151 EDSM 2018-09-10 19-07-LSSC02 0100","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.2,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 156 EDSM 2018-09-10 19-07-LSSC02 0105","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.6,"S"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 241 EDSM 2018-09-10 19-07-LSSC02 0114","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 155 EDSM 2018-09-10 19-07-LSSC02 0104","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 154 EDSM 2018-09-10 19-07-LSSC02 0103","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.3,"S"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 154 EDSM 2018-09-10 19-07-LSSC02 0103","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.3,"S"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 158 EDSM 2018-09-10 19-07-LSSC02 0107","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 158 EDSM 2018-09-10 19-07-LSSC02 0107","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 153 EDSM 2018-09-10 19-07-LSSC02 0102","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.3,NA
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 151 EDSM 2018-09-10 19-07-LSSC02 0100","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.7,"ED"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 157 EDSM 2018-09-10 19-07-LSSC02 0106","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2018,9,2018-09-10,38.35631943,-121.6380539,"Lower","DOP 157 EDSM 2018-09-10 19-07-LSSC02 0106","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",2.7,"AL"
+2018,9,2018-09-11,38.374101,-121.6290512,"Middle","DOP 166 EDSM 2018-09-11 19-07-LSSC06 0120","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.3,NA
+2018,9,2018-09-27,38.39395523,-121.6206055,"Middle","DOP 178 EDSM 2018-09-27 19-09-LSSC02 0132","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.4,"ED"
+2018,10,2018-10-04,38.39021492,-121.6225395,"Middle","DOP 184 EDSM 2018-10-04 19-10-LSSC01 0138","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2018,10,2018-10-04,38.39021492,-121.6225395,"Middle","DOP 182 EDSM 2018-10-04 19-10-LSSC01 0136","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,10,2018-10-04,38.39021492,-121.6225395,"Middle","DOP 183 EDSM 2018-10-04 19-10-LSSC01 0137","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.9,"ED"
+2018,10,2018-10-09,38.40896988,-121.6134822,"Middle","DOP 187 EDSM 2018-10-09 19-11-LSSC03 0141","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3,"AL"
+2018,10,2018-10-09,38.40896988,-121.6134822,"Middle","DOP 187 EDSM 2018-10-09 19-11-LSSC03 0141","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.6,"M"
+2018,10,2018-10-09,38.42774709,-121.6046702,"Middle","DOP 186 EDSM 2018-10-09 19-11-LSSC06 0140","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.9,"M"
+2018,10,2018-10-17,38.45693016,-121.5909119,"Middle","DOP 189 EDSM 2018-10-17 19-12-LSSC03 0143","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",1.2,NA
+2018,10,2018-10-17,38.45693016,-121.5909119,"Middle","DOP 189 EDSM 2018-10-17 19-12-LSSC03 0143","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.1,"M"
+2018,10,2018-10-17,38.3857193,-121.6245193,"Middle","DOP 215 EDSM 2018-10-17 19-12-LSSC04 0405","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2018,10,2018-10-17,38.3857193,-121.6245193,"Middle","DOP 209 EDSM 2018-10-17 19-12-LSSC04 0399","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2018,10,2018-10-17,38.3857193,-121.6245193,"Middle","DOP 213 EDSM 2018-10-17 19-12-LSSC04 0403","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2018,10,2018-10-17,38.3857193,-121.6245193,"Middle","DOP 209 EDSM 2018-10-17 19-12-LSSC04 0399","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2018,11,2018-11-01,38.41587448,-121.6106377,"Middle","DOP 221 EDSM 2018-11-01 19-14-LSSC06 0411","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.8,"M"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,4.6,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 288 EDSM 2019-07-03 19-49-LSSC01 0429","Unid fish","NA","fish",NA,13,"G"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2,"S"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.3,"ED"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,"S"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,4.2,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.2,"S"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.2,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3,"S"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,7.1,"ED"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,4.9,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3.2,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.5,NA
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.5,"G"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 287 EDSM 2019-07-03 19-49-LSSC01 0428","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.4,"ED"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.5,"S"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 281 EDSM 2019-07-03 19-49-LSSC01 0422","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.2,"S"
+2019,7,2019-07-03,38.35747528,-121.6371002,"Lower","DOP 295 EDSM 2019-07-03 19-49-LSSC01 0436","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.7,"ED"
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 312 EDSM 2019-07-03 19-49-LSSC02 0455","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1,"S"
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 312 EDSM 2019-07-03 19-49-LSSC02 0455","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,"ED"
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 305 EDSM 2019-07-03 19-49-LSSC02 0448","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.4,NA
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 305 EDSM 2019-07-03 19-49-LSSC02 0448","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 310 EDSM 2019-07-03 19-49-LSSC02 0453","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.8,NA
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 305 EDSM 2019-07-03 19-49-LSSC02 0448","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 310 EDSM 2019-07-03 19-49-LSSC02 0453","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 314 EDSM 2019-07-03 19-49-LSSC02 0459","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.4,"ED"
+2019,7,2019-07-03,38.33049965,-121.6484985,"Lower","DOP 305 EDSM 2019-07-03 19-49-LSSC02 0448","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.8,NA
+2019,7,2019-07-08,38.37425041,-121.6297417,"Middle","DOP 334 EDSM 2019-07-08 19-50-LSSC02 0561","Corophium type","Corophiidae","amphipod","juvenile Corophium",4,"S"
+2019,7,2019-07-08,38.37425041,-121.6297417,"Middle","DOP 349 EDSM 2019-07-08 19-50-LSSC02 0340","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,"U"
+2019,7,2019-07-09,38.36758041,-121.632618,"Middle","DOP 350 EDSM 2019-07-09 19-50-LSSC05 0341","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2,"U"
+2019,7,2019-07-09,38.36758041,-121.632618,"Middle","DOP 327 EDSM 2019-07-09 19-50-LSSC05 0554","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,NA
+2019,7,2019-07-09,38.36758041,-121.632618,"Middle","DOP 327 EDSM 2019-07-09 19-50-LSSC05 0554","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,"G"
+2019,7,2019-07-09,38.36758041,-121.632618,"Middle","DOP 327 EDSM 2019-07-09 19-50-LSSC05 0554","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2,"G"
+2019,7,2019-07-09,38.36758041,-121.632618,"Middle","DOP 327 EDSM 2019-07-09 19-50-LSSC05 0554","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2,NA
+2019,7,2019-07-09,38.36758041,-121.632618,"Middle","DOP 350 EDSM 2019-07-09 19-50-LSSC05 0341","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.4,"ED"
+2019,7,2019-07-09,38.36758041,-121.632618,"Middle","DOP 350 EDSM 2019-07-09 19-50-LSSC05 0341","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.6,"U"
+2019,7,2019-07-15,38.46887493,-121.5855713,"Middle","DOP 326 EDSM 2019-07-15 19-51-LSSC02 0553","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,"S"
+2019,7,2019-07-25,38.45663071,-121.5911522,"Middle","DOP 319 EDSM 2019-07-25 19-52-LSSC02 0465","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2019,7,2019-07-24,38.38259506,-121.625946,"Middle","DOP 316 EDSM 2019-07-24 19-52-LSSC03 0461","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,"M"
+2019,7,2019-07-24,38.38259506,-121.625946,"Middle","DOP 317 EDSM 2019-07-24 19-52-LSSC03 0462","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,"ED"
+2019,7,2019-07-24,38.38259506,-121.625946,"Middle","DOP 316 EDSM 2019-07-24 19-52-LSSC03 0461","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.5,"AL"
+2019,7,2019-07-24,38.38259506,-121.625946,"Middle","DOP 322 EDSM 2019-07-24 19-52-LSSC03 0549","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.8,"AL"
+2019,8,2019-08-16,38.41235542,-121.612011,"Middle","DOP 249 EDSM 2019-08-16 20-03-LSSC02 0473","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",4,NA
+2019,9,2019-09-10,38.35187022,-121.6399002,"Lower","DOP 353 EDSM 2019-09-10 20-07-LSSC03 0475","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2,NA
+2019,10,2019-10-15,38.35396004,-121.6386585,"Lower","DOP 355 EDSM 2019-10-15 20-12-LSSC01 0577","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.7,"ED"
+2019,10,2019-10-15,38.35396004,-121.6386585,"Lower","DOP 355 EDSM 2019-10-15 20-12-LSSC01 0577","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,"Y"
+2020,7,2020-07-06,38.28792572,-121.6580486,"Lower","DOP 426 EDSM 2020-07-06 20-50-LSSC01 0225","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.8,NA
+2020,7,2020-07-06,38.36380005,-121.6342087,"Middle","DOP 427 EDSM 2020-07-06 20-50-LSSC02 0226","Corophium type","Corophiidae","amphipod","juvenile Corophium",2,NA
+2020,7,2020-07-06,38.36380005,-121.6342087,"Middle","DOP 439 EDSM 2020-07-06 20-50-LSSC02 0481","Unid amphipod","Amphipoda","amphipod","Unid amphipod",1,"S"
+2020,7,2020-07-06,38.36380005,-121.6342087,"Middle","DOP 427 EDSM 2020-07-06 20-50-LSSC02 0226","Unid amphipod","Amphipoda","amphipod","Unid amphipod",1,NA
+2020,7,2020-07-07,38.35089493,-121.6401024,"Lower","DOP 428 EDSM 2020-07-07 20-50-LSSC05 0227","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.5,NA
+2021,5,2021-05-04,38.45063,-121.59487,"Middle","DOP 447 EDSM 2021-05-04 21-41-LSSC07 L0372","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.5,"Y"
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 464 EDSM 2022-01-12 22-24-LSSC03 S114","Gammarus type","Hyalella","amphipod","Hyalella sp.",2.7,NA
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 464 EDSM 2022-01-12 22-24-LSSC03 S114","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.3,NA
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 464 EDSM 2022-01-12 22-24-LSSC03 S114","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.2,NA
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 464 EDSM 2022-01-12 22-24-LSSC03 S114","Gammarus type","Hyalella","amphipod","Hyalella sp.",2.2,NA
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 464 EDSM 2022-01-12 22-24-LSSC03 S114","Gammarus type","Hyalella","amphipod","Hyalella sp.",1.8,NA
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 464 EDSM 2022-01-12 22-24-LSSC03 S114","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.3,NA
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 464 EDSM 2022-01-12 22-24-LSSC03 S114","Gammarus type","Hyalella","amphipod","Hyalella sp.",1.9,NA
+2022,1,2022-01-12,38.27463,-121.66211,"Lower","DOP 469 EDSM 2022-01-12 22-24-LSSC03 S119","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",5,NA
+2022,2,2022-02-24,38.34321,-121.6443,"Lower","DOP 489 EDSM 2022-02-24 22-30-LSSC01 S121","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.7,NA
+2022,3,2022-03-02,38.38802,-121.62252,"Middle","DOP 494 EDSM 2022-03-02 22-31-LSSC01 S126","Unid fish","fish","fish",NA,3.1,"S"
+2022,3,2022-03-08,38.36031,-121.63593,"Middle","DOP 496 EDSM 2022-03-08 22-32-LSSC01 S128","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",3.5,"M"
+2022,8,2022-08-16,38.40618,-121.61519,"Middle","DOP 531 EDSM 2022-08-16 23-03-SSC01 S205","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,"ED"
+2019,5,2019-05-21,38.36527,-121.63342,"Middle","DOP 395 ELS 2019-05-21 19-43-SC05 L1236","Tridentiger spp.","Tridentiger spp.","fish",NA,2.6,NA
+2019,6,2019-06-05,38.32172012,-121.6508064,"Lower","DOP 403 ELS 2019-06-05 19-45-LSSC05 L2256","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1,"ED"
+2019,6,2019-06-05,38.32172012,-121.6508064,"Lower","DOP 403 ELS 2019-06-05 19-45-LSSC05 L2256","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,"ED"
+2011,9,2011-09-14,38.22295,-121.67362,"Lower","FLaSH 107 FMWT 2011-09-14 715 1577","Corophium type","Corophiidae","amphipod",NA,1.3,"G"
+2011,9,2011-09-14,38.22295,-121.67362,"Lower","FLaSH 107 FMWT 2011-09-14 715 1577","Corophium type","Corophiidae","amphipod",NA,1.3,"G"
+2011,9,2011-09-14,38.22295,-121.67362,"Lower","FLaSH 107 FMWT 2011-09-14 715 1577","Corophium type","Corophiidae","amphipod",NA,1.3,"G"
+2011,9,2011-09-14,38.22295,-121.67362,"Lower","FLaSH 107 FMWT 2011-09-14 715 1577","Corophium type","Corophiidae","amphipod",NA,1.2,NA
+2011,9,2011-09-14,38.22295,-121.67362,"Lower","FLaSH 107 FMWT 2011-09-14 715 1577","Corophium type","Corophiidae","amphipod",NA,1.3,"G"
+2011,9,2011-09-14,38.22295,-121.67362,"Lower","FLaSH 107 FMWT 2011-09-14 715 1577","Corophium type","Corophiidae","amphipod",NA,1.4,NA
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 218 FMWT 2011-12-16 719 2064","Corophium type","Corophiidae","amphipod",NA,1.1,"G"
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 211 FMWT 2011-12-16 719 2061","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 178 FMWT 2011-11-21 719 2979","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"G"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 175 FMWT 2011-11-21 719 2982","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 175 FMWT 2011-11-21 719 2982","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 211 FMWT 2011-12-16 719 2061","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 175 FMWT 2011-11-21 719 2982","Corophium type","Corophiidae","amphipod",NA,1.1,"M"
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 218 FMWT 2011-12-16 719 2064","Corophium type","Corophiidae","amphipod",NA,1.2,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 178 FMWT 2011-11-21 719 2979","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 215 FMWT 2011-12-16 719 2060","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,7.7,"E"
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 211 FMWT 2011-12-16 719 2061","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 199 FMWT 2011-11-21 719 2978","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,8,NA
+2012,10,2012-10-18,38.33428,-121.64733,"Lower","FLaSH 1018 FMWT 2012-10-18 719 5804","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2012,12,2012-12-11,38.33428,-121.64733,"Lower","FLaSH 1039 FMWT 2012-12-11 719 6132","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.8,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 180 FMWT 2011-11-21 719 2980","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 184 FMWT 2011-11-21 719 2975","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.1,"M"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"G"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 175 FMWT 2011-11-21 719 2982","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 180 FMWT 2011-11-21 719 2980","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2012,11,2012-11-15,38.33428,-121.64733,"Lower","FLaSH 1029 FMWT 2012-11-15 719 5987","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.8,NA
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 215 FMWT 2011-12-16 719 2060","Corophium type","Corophiidae","amphipod",NA,1.2,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 199 FMWT 2011-11-21 719 2978","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,7,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 174 FMWT 2011-11-21 719 2983","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 173 FMWT 2011-11-21 719 2976","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 180 FMWT 2011-11-21 719 2980","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 180 FMWT 2011-11-21 719 2980","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,NA
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 218 FMWT 2011-12-16 719 2064","Corophium type","Corophiidae","amphipod",NA,1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 181 FMWT 2011-11-21 719 2977","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 173 FMWT 2011-11-21 719 2976","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.1,"ED"
+2012,12,2012-12-11,38.33428,-121.64733,"Lower","FLaSH 1039 FMWT 2012-12-11 719 6132","Corophium type","Corophiidae","amphipod","juvenile Corophium",2.2,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 199 FMWT 2011-11-21 719 2978","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,"E"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 181 FMWT 2011-11-21 719 2977","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2012,12,2012-12-11,38.33428,-121.64733,"Lower","FLaSH 1039 FMWT 2012-12-11 719 6132","Gammarus type","Gammaridae","amphipod","Unid Gammarus",3.5,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 199 FMWT 2011-11-21 719 2978","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,7,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 173 FMWT 2011-11-21 719 2976","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.1,"G"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"G"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 178 FMWT 2011-11-21 719 2979","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 181 FMWT 2011-11-21 719 2977","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 218 FMWT 2011-12-16 719 2064","Corophium type","Corophiidae","amphipod",NA,1.2,NA
+2012,11,2012-11-15,38.33428,-121.64733,"Lower","FLaSH 1029 FMWT 2012-11-15 719 5987","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.9,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 181 FMWT 2011-11-21 719 2977","Corophium type","Corophiidae","amphipod",NA,1.1,"G"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Corophium type","Corophiidae","amphipod",NA,1.5,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 181 FMWT 2011-11-21 719 2977","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 181 FMWT 2011-11-21 719 2977","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 178 FMWT 2011-11-21 719 2979","Neomysis mercedis","Neomysis mercedis","mysids",NA,5.7,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 173 FMWT 2011-11-21 719 2976","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.1,"G"
+2012,12,2012-12-11,38.33428,-121.64733,"Lower","FLaSH 1039 FMWT 2012-12-11 719 6132","Corophium type","Corophiidae","amphipod","Unid Corophium",5.2,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"G"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 173 FMWT 2011-11-21 719 2976","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 181 FMWT 2011-11-21 719 2977","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 182 FMWT 2011-11-21 719 2981","Corophium type","Corophiidae","amphipod",NA,0.75,NA
+2011,12,2011-12-16,38.33428,-121.64733,"Lower","FLaSH 218 FMWT 2011-12-16 719 2064","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"G"
+2012,11,2012-11-15,38.33428,-121.64733,"Lower","FLaSH 1029 FMWT 2012-11-15 719 5987","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,11,2012-11-15,38.33428,-121.64733,"Lower","FLaSH 1029 FMWT 2012-11-15 719 5987","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,NA
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 172 FMWT 2011-11-21 719 2974","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 178 FMWT 2011-11-21 719 2979","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2011,11,2011-11-21,38.33428,-121.64733,"Lower","FLaSH 184 FMWT 2011-11-21 719 2975","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3.4,"M"
+2012,12,2012-12-11,38.47387,-121.5844,"Middle","FLaSH 1040 FMWT 2012-12-11 796 6148","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,8,NA
+2012,12,2012-12-11,38.40462,-121.6156,"Middle","FLaSH 1041 FMWT 2012-12-11 797 6141","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.7,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 198 FMWT 2011-11-21 797 3040","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,9.2,"E"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 179 FMWT 2011-11-21 797 3042","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 183 FMWT 2011-11-21 797 3044","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.5,NA
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,8.8,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 179 FMWT 2011-11-21 797 3042","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.7,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.1,"ED"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,8,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 200 FMWT 2011-11-21 797 3049","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.6,"E"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 177 FMWT 2011-11-21 797 3046","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,7.4,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 171 FMWT 2011-11-21 797 3045","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.1,"ED"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.2,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.1,"ED"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.9,"G"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"G"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.3,NA
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 183 FMWT 2011-11-21 797 3044","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,6,NA
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3.3,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 198 FMWT 2011-11-21 797 3040","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.5,NA
+2011,12,2011-12-16,38.40462,-121.6156,"Middle","FLaSH 219 FMWT 2011-12-16 797 2075","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.8,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3.2,NA
+2012,11,2012-11-15,38.40462,-121.6156,"Middle","FLaSH 1030 FMWT 2012-11-15 797 6017","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.6,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 183 FMWT 2011-11-21 797 3044","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"E"
+2013,11,2013-11-19,38.40462,-121.6156,"Middle","FLaSH 1455 FMWT 2013-11-19 797 0749","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 198 FMWT 2011-11-21 797 3040","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,2.8,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 183 FMWT 2011-11-21 797 3044","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"E"
+2012,11,2012-11-15,38.40462,-121.6156,"Middle","FLaSH 1030 FMWT 2012-11-15 797 6017","Unid mysids","Hyperacanthomysis longirostris","mysids","Unid juvenile",1.5,"G"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.6,"G"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,6.1,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 198 FMWT 2011-11-21 797 3040","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,8.1,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 183 FMWT 2011-11-21 797 3044","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"E"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 179 FMWT 2011-11-21 797 3042","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2012,11,2012-11-15,38.40462,-121.6156,"Middle","FLaSH 1030 FMWT 2012-11-15 797 6017","Unid mysids","Hyperacanthomysis longirostris","mysids","Unid juvenile",1.5,NA
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2015,10,2015-10-19,38.40462,-121.6156,"Middle","FLaSH 2217 FMWT 2015-10-19 797 7260","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 176 FMWT 2011-11-21 797 3043","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2012,11,2012-11-15,38.40462,-121.6156,"Middle","FLaSH 1030 FMWT 2012-11-15 797 6017","Unid mysids","Hyperacanthomysis longirostris","mysids","Unid juvenile",1.5,"G"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,7.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 183 FMWT 2011-11-21 797 3044","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"G"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 198 FMWT 2011-11-21 797 3040","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,5.7,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 179 FMWT 2011-11-21 797 3042","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,5.1,NA
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 200 FMWT 2011-11-21 797 3049","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.6,"G"
+2012,10,2012-10-18,38.40462,-121.6156,"Middle","FLaSH 1019 FMWT 2012-10-18 797 5835","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 177 FMWT 2011-11-21 797 3046","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3.1,"ED"
+2011,11,2011-11-21,38.40462,-121.6156,"Middle","FLaSH 185 FMWT 2011-11-21 797 3041","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"ED"
+2011,12,2011-12-16,38.40462,-121.6156,"Middle","FLaSH 219 FMWT 2011-12-16 797 2075","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,6.1,"E"
+2014,8,2014-08-21,38.404222,-121.615639,"Middle","FLaSH 1969 GES 2014-08-21 797 0153","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,NA
+2014,8,2014-08-21,38.404222,-121.615639,"Middle","FLaSH 1979 GES 2014-08-21 797 0189","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3.3,NA
+2014,12,2014-12-02,38.404222,-121.615639,"Middle","FLaSH 1907 GES 2014-12-02 797 0338","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2014,12,2014-12-02,38.404222,-121.615639,"Middle","FLaSH 1907 GES 2014-12-02 797 0338","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,"G"
+2014,8,2014-08-21,38.404222,-121.615639,"Middle","FLaSH 1981 GES 2014-08-21 797 0197","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.7,NA
+2014,12,2014-12-02,38.404222,-121.615639,"Middle","FLaSH 1907 GES 2014-12-02 797 0338","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,3,"ED"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Corophium type","Corophiidae","amphipod",NA,1.4,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 521 SKT 2012-03-08 713 4627","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,4,2012-04-04,38.20712,-121.66008,"Lower","FLaSH 646 SKT 2012-04-04 713 4920","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 513 SKT 2012-03-08 713 4632","Corophium type","Corophiidae","amphipod",NA,1.3,"S"
+2014,1,2014-01-15,38.20712,-121.66008,"Lower","FLaSH 1468 SKT 2014-01-15 713 0144","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",5,"S"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 518 SKT 2012-03-08 713 4635","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.8,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 519 SKT 2012-03-08 713 4633","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.1,"M"
+2012,4,2012-04-04,38.20712,-121.66008,"Lower","FLaSH 646 SKT 2012-04-04 713 4920","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 513 SKT 2012-03-08 713 4632","Corophium type","Corophiidae","amphipod",NA,1.3,"S"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 515 SKT 2012-03-08 713 4636","Corophium type","Corophiidae","amphipod","Unid Corophium",1.2,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 518 SKT 2012-03-08 713 4635","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2014,1,2014-01-15,38.20712,-121.66008,"Lower","FLaSH 1467 SKT 2014-01-15 713 0143","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",5,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 516 SKT 2012-03-08 713 4628","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 518 SKT 2012-03-08 713 4635","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 515 SKT 2012-03-08 713 4636","Corophium type","Corophiidae","amphipod","Unid Corophium",1.2,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 515 SKT 2012-03-08 713 4636","Corophium type","Corophiidae","amphipod","Unid Corophium",1.1,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2012,4,2012-04-04,38.20712,-121.66008,"Lower","FLaSH 646 SKT 2012-04-04 713 4920","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 519 SKT 2012-03-08 713 4633","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 516 SKT 2012-03-08 713 4628","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 511 SKT 2012-03-08 713 4625","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,"S"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2012,4,2012-04-04,38.20712,-121.66008,"Lower","FLaSH 646 SKT 2012-04-04 713 4920","Corophium type","Corophiidae","amphipod","Unid Corophium",1.1,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 521 SKT 2012-03-08 713 4627","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2014,1,2014-01-15,38.20712,-121.66008,"Lower","FLaSH 1467 SKT 2014-01-15 713 0143","Unid amphipod","Amphipoda","amphipod","Unid amphipod",5,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 515 SKT 2012-03-08 713 4636","Corophium type","Corophiidae","amphipod","Unid Corophium",0.9,NA
+2014,3,2014-03-12,38.20712,-121.66008,"Lower","FLaSH 1505 SKT 2014-03-12 713 0559","Gammarus type","Gammaridae","amphipod","Unid Gammarus",4.9,"G"
+2012,4,2012-04-04,38.20712,-121.66008,"Lower","FLaSH 646 SKT 2012-04-04 713 4920","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 509 SKT 2012-03-08 713 4621","Corophium type","Corophiidae","amphipod","Unid Corophium",1.3,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Corophium type","Corophiidae","amphipod",NA,1.2,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 510 SKT 2012-03-08 713 4619","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.7,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 521 SKT 2012-03-08 713 4627","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,4,2012-04-04,38.20712,-121.66008,"Lower","FLaSH 646 SKT 2012-04-04 713 4920","Corophium type","Corophiidae","amphipod","Unid Corophium",1,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 521 SKT 2012-03-08 713 4627","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2014,2,2014-02-12,38.20712,-121.66008,"Lower","FLaSH 1489 SKT 2014-02-12 713 0361","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",3.5,NA
+2014,1,2014-01-15,38.20712,-121.66008,"Lower","FLaSH 1468 SKT 2014-01-15 713 0144","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.7,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 507 SKT 2012-03-08 713 4613","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",3.2,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Corophium type","Corophiidae","amphipod",NA,1.2,NA
+2014,3,2014-03-12,38.20712,-121.66008,"Lower","FLaSH 1505 SKT 2014-03-12 713 0559","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",4.5,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Corophium type","Corophiidae","amphipod",NA,1.3,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 508 SKT 2012-03-08 713 4616","Corophium type","Corophiidae","amphipod","Unid Corophium",1.3,"S"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Corophium type","Corophiidae","amphipod",NA,1.3,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 521 SKT 2012-03-08 713 4627","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 510 SKT 2012-03-08 713 4619","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",5,NA
+2014,3,2014-03-12,38.20712,-121.66008,"Lower","FLaSH 1505 SKT 2014-03-12 713 0559","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",5.4,NA
+2013,2,2013-02-06,38.20712,-121.66008,"Lower","FLaSH 1174 SKT 2013-02-06 713 6309","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",3.1,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2012,1,2012-01-19,38.20712,-121.66008,"Lower","FLaSH 388 SKT 2012-01-19 713 4098","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.8,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 509 SKT 2012-03-08 713 4621","Corophium type","Corophiidae","amphipod","Unid Corophium",1.2,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 515 SKT 2012-03-08 713 4636","Corophium type","Corophiidae","amphipod","Unid Corophium",1.3,NA
+2014,3,2014-03-12,38.20712,-121.66008,"Lower","FLaSH 1505 SKT 2014-03-12 713 0559","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 512 SKT 2012-03-08 713 4626","Unid fish","fish","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 515 SKT 2012-03-08 713 4636","Corophium type","Corophiidae","amphipod","Unid Corophium",1.2,NA
+2014,2,2014-02-12,38.20712,-121.66008,"Lower","FLaSH 1489 SKT 2014-02-12 713 0361","Prickly sculpin","Prickly sculpin","fish",NA,6,"M"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 518 SKT 2012-03-08 713 4635","Unid amphipod","Amphipoda","amphipod","Unid amphipod",0.9,"G"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 516 SKT 2012-03-08 713 4628","Unid fish","fish","fish",NA,4.5,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 515 SKT 2012-03-08 713 4636","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",4.6,NA
+2014,2,2014-02-12,38.20712,-121.66008,"Lower","FLaSH 1488 SKT 2014-02-12 713 0360","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",3.2,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 507 SKT 2012-03-08 713 4613","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.2,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 507 SKT 2012-03-08 713 4613","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",4.2,"ED"
+2014,3,2014-03-12,38.20712,-121.66008,"Lower","FLaSH 1505 SKT 2014-03-12 713 0559","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 509 SKT 2012-03-08 713 4621","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",1.3,"S"
+2012,3,2012-03-08,38.20712,-121.66008,"Lower","FLaSH 508 SKT 2012-03-08 713 4616","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",5.9,"ED"
+2012,5,2012-05-02,38.20712,-121.66008,"Lower","FLaSH 1253 SKT 2012-05-02 713 5068","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.4,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.5,NA
+2012,1,2012-01-19,38.22295,-121.67362,"Lower","FLaSH 392 SKT 2012-01-19 715 4104","Gammarus type","Gammaridae","amphipod","A. abdita",3.2,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.3,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.5,"G"
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",1.9,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 527 SKT 2012-03-08 715 4653","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,"G"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 528 SKT 2012-03-08 715 4657","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 522 SKT 2012-03-08 715 4642","Prickly sculpin","Prickly sculpin","fish",NA,4,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 517 SKT 2012-03-08 715 4640","Prickly sculpin","Prickly sculpin","fish",NA,4,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.6,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 525 SKT 2012-03-08 715 4649","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",3,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.9,"M"
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.7,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.4,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,3.7,"G"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 528 SKT 2012-03-08 715 4657","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.1,"G"
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1080 SKT 2013-01-09 715 6259","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 651 SKT 2012-04-04 715 4924","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",5.9,"ED"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 522 SKT 2012-03-08 715 4642","Unid fish","fish","fish",NA,4,"S"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 517 SKT 2012-03-08 715 4640","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.2,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 520 SKT 2012-03-08 715 4641","Corophium type","Corophiidae","amphipod",NA,1.4,NA
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Corophium type","Corophiidae","amphipod","juvenile Corophium",2,NA
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.9,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.5,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 517 SKT 2012-03-08 715 4640","Unid fish","fish","fish",NA,6.8,"G"
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 647 SKT 2012-04-04 715 4925","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,1,2012-01-19,38.22295,-121.67362,"Lower","FLaSH 391 SKT 2012-01-19 715 4103","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.6,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Corophium type","Corophiidae","amphipod","juvenile Corophium",2.1,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.3,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1508 SKT 2014-03-12 715 0557","Gammarus type","Gammaridae","amphipod","Unid Gammarus",3.2,"ED"
+2012,5,2012-05-02,38.22295,-121.67362,"Lower","FLaSH 1254 SKT 2012-05-02 715 5070","Unid amphipod","Amphipoda","amphipod","Unid amphipod",1,"G"
+2015,2,2015-02-11,38.22295,-121.67362,"Lower","FLaSH 1861 SKT 2015-02-11 715 7139","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",2.6,"ED"
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 651 SKT 2012-04-04 715 4924","Corophium type","Corophiidae","amphipod","Unid Corophium",3.7,"G"
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1080 SKT 2013-01-09 715 6259","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.4,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.4,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 525 SKT 2012-03-08 715 4649","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 651 SKT 2012-04-04 715 4924","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",3.3,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 527 SKT 2012-03-08 715 4653","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 528 SKT 2012-03-08 715 4657","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1077 SKT 2013-01-09 715 6256","Corophium type","Corophiidae","amphipod","Unid Corophium",2,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",2.2,NA
+2012,5,2012-05-02,38.22295,-121.67362,"Lower","FLaSH 1254 SKT 2012-05-02 715 5070","Neomysis mercedis","Neomysis mercedis","mysids",NA,1.9,"Y"
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.9,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1595 SKT 2014-03-12 715 0558","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.6,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",5.6,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.5,NA
+2016,2,2016-02-10,38.22295,-121.67362,"Lower","FLaSH 2173 SKT 2016-02-10 715 7274","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.6,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 648 SKT 2012-04-04 715 4922","Corophium type","Corophiidae","amphipod","Unid Corophium",4.9,NA
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1078 SKT 2013-01-09 715 6257","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.4,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",2.3,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",4.3,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 527 SKT 2012-03-08 715 4653","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,"G"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 522 SKT 2012-03-08 715 4642","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,"G"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 522 SKT 2012-03-08 715 4642","Unid fish","fish","fish",NA,4,"S"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 517 SKT 2012-03-08 715 4640","Unid fish","fish","fish",NA,6.8,"G"
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1078 SKT 2013-01-09 715 6257","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.5,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Gammaridae","amphipod","Unid Gammarus",2.5,"G"
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 651 SKT 2012-04-04 715 4924","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",4,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1595 SKT 2014-03-12 715 0558","Unid amphipod","Amphipoda","amphipod","Unid amphipod",3.3,"Y"
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.8,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 647 SKT 2012-04-04 715 4925","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 647 SKT 2012-04-04 715 4925","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 524 SKT 2012-03-08 715 4646","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 522 SKT 2012-03-08 715 4642","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 524 SKT 2012-03-08 715 4646","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 517 SKT 2012-03-08 715 4640","Corophium type","Corophiidae","amphipod",NA,0.9,"S"
+2014,1,2014-01-15,38.22295,-121.67362,"Lower","FLaSH 1473 SKT 2014-01-15 715 0149","Corophium type","Corophiidae","amphipod","Unid Corophium",3,"G"
+2014,1,2014-01-15,38.22295,-121.67362,"Lower","FLaSH 1471 SKT 2014-01-15 715 0147","Gammarus type","Gammaridae","amphipod","Unid Gammarus",4,"G"
+2012,5,2012-05-02,38.22295,-121.67362,"Lower","FLaSH 1254 SKT 2012-05-02 715 5070","Corophium type","Corophiidae","amphipod","Unid Corophium",1.8,NA
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Corophium type","Corophiidae","amphipod","juvenile Corophium",2,NA
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Gammarus type","Hyalella","amphipod","Hyalella sp.",2.2,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 517 SKT 2012-03-08 715 4640","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 517 SKT 2012-03-08 715 4640","Prickly sculpin","Prickly sculpin","fish",NA,3.8,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 528 SKT 2012-03-08 715 4657","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,"G"
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.8,NA
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1077 SKT 2013-01-09 715 6256","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",2.3,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.5,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.1,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",4.6,NA
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1078 SKT 2013-01-09 715 6257","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.8,NA
+2014,4,2014-04-08,38.22295,-121.67362,"Lower","FLaSH 1601 SKT 2014-04-08 715 0582","Corophium type","Corophiidae","amphipod","juvenile Corophium",2.6,"S"
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 681 SKT 2012-04-04 715 4923","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,"S"
+2012,1,2012-01-19,38.22295,-121.67362,"Lower","FLaSH 391 SKT 2012-01-19 715 4103","Corophium type","Corophiidae","amphipod",NA,1,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.7,"G"
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1080 SKT 2013-01-09 715 6259","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.8,"ED"
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 683 SKT 2012-04-04 715 4929","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,"S"
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.9,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Gammaridae","amphipod","Unid Gammarus",3.4,"G"
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Gammaridae","amphipod","Unid Gammarus",3.1,"S"
+2014,1,2014-01-15,38.22295,-121.67362,"Lower","FLaSH 1469 SKT 2014-01-15 715 0145","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.8,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 527 SKT 2012-03-08 715 4653","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.7,NA
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1078 SKT 2013-01-09 715 6257","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.8,NA
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.6,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2157 SKT 2017-03-08 715 A32","Unid fish","fish","fish",NA,4.3,"S"
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 647 SKT 2012-04-04 715 4925","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 681 SKT 2012-04-04 715 4923","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,"S"
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",4.6,NA
+2016,1,2016-01-13,38.22295,-121.67362,"Lower","FLaSH 2170 SKT 2016-01-13 715 7271","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",4.3,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 681 SKT 2012-04-04 715 4923","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.1,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 528 SKT 2012-03-08 715 4657","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 527 SKT 2012-03-08 715 4653","Corophium type","Corophiidae","amphipod","juvenile Corophium",0.9,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 526 SKT 2012-03-08 715 4651","Corophium type","Corophiidae","amphipod","Unid Corophium",1,NA
+2014,2,2014-02-12,38.22295,-121.67362,"Lower","FLaSH 1490 SKT 2014-02-12 715 0362","Prickly sculpin","Prickly sculpin","fish",NA,6.2,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Corophium type","Corophiidae","amphipod","juvenile Corophium",2.1,"G"
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1508 SKT 2014-03-12 715 0557","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.5,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 528 SKT 2012-03-08 715 4657","Prickly sculpin","Prickly sculpin","fish",NA,6.8,"U"
+2014,4,2014-04-08,38.22295,-121.67362,"Lower","FLaSH 1601 SKT 2014-04-08 715 0582","Gammarus type","Gammaridae","amphipod","Unid Gammarus",2.6,"ED"
+2014,1,2014-01-15,38.22295,-121.67362,"Lower","FLaSH 1469 SKT 2014-01-15 715 0145","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",4,NA
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,4.5,NA
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1077 SKT 2013-01-09 715 6256","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",2,"AL"
+2017,3,2017-03-08,38.22295,-121.67362,"Lower","FLaSH 2158 SKT 2017-03-08 715 A33","Unid fish","fish","fish",NA,3.7,NA
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1506 SKT 2014-03-12 715 0555","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,NA
+2012,5,2012-05-02,38.22295,-121.67362,"Lower","FLaSH 1254 SKT 2012-05-02 715 5070","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",3.2,NA
+2014,1,2014-01-15,38.22295,-121.67362,"Lower","FLaSH 1470 SKT 2014-01-15 715 0146","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",3.8,"ED"
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1506 SKT 2014-03-12 715 0555","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.2,"G"
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1506 SKT 2014-03-12 715 0555","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 523 SKT 2012-03-08 715 4645","Gammarus type","Hyalella","amphipod","Hyalella sp.",5.8,NA
+2012,4,2012-04-04,38.22295,-121.67362,"Lower","FLaSH 683 SKT 2012-04-04 715 4929","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.1,"S"
+2014,3,2014-03-12,38.22295,-121.67362,"Lower","FLaSH 1507 SKT 2014-03-12 715 0556","Corophium type","Corophiidae","amphipod","juvenile Corophium",2.1,NA
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.9,NA
+2014,12,2014-12-17,38.22295,-121.67362,"Lower","FLaSH 1817 SKT 2014-12-17 715 7082","Corophium type","Corophiidae","amphipod","juvenile Corophium",2,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 526 SKT 2012-03-08 715 4651","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.2,NA
+2014,1,2014-01-15,38.22295,-121.67362,"Lower","FLaSH 1473 SKT 2014-01-15 715 0149","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3,NA
+2014,2,2014-02-12,38.22295,-121.67362,"Lower","FLaSH 1490 SKT 2014-02-12 715 0362","Prickly sculpin","Prickly sculpin","fish",NA,5.5,NA
+2014,1,2014-01-15,38.22295,-121.67362,"Lower","FLaSH 1470 SKT 2014-01-15 715 0146","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.2,NA
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1077 SKT 2013-01-09 715 6256","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",2.9,"AL"
+2013,1,2013-01-09,38.22295,-121.67362,"Lower","FLaSH 1078 SKT 2013-01-09 715 6257","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",3.9,NA
+2012,3,2012-03-08,38.22295,-121.67362,"Lower","FLaSH 526 SKT 2012-03-08 715 4651","Corophium type","Corophiidae","amphipod","Unid Corophium",1,"G"
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2133 SKT 2017-01-11 719 A3","Gammarus type","Hyalella","amphipod","Hyalella sp.",4.3,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1582 SKT 2014-03-12 719 0548","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.4,NA
+2013,3,2013-03-06,38.33428,-121.64733,"Lower","FLaSH 1184 SKT 2013-03-06 719 6421","Gammarus type","Gammaridae","amphipod","Unid Gammarus",1.8,"M"
+2015,1,2015-01-14,38.33428,-121.64733,"Lower","FLaSH 1831 SKT 2015-01-14 719 7096","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.5,NA
+2012,4,2012-04-04,38.33428,-121.64733,"Lower","FLaSH 693 SKT 2012-04-04 719 4954","Gammarus type","Gammaridae","amphipod","Unid Gammarus",2.6,"ED"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.7,NA
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1624 SKT 2014-05-07 719 0025","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1063 SKT 2013-01-09 719 6234","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.1,NA
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1065 SKT 2013-01-09 719 6236","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3,"AL"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1625 SKT 2014-05-07 719 0027","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,"G"
+2012,3,2012-03-08,38.33428,-121.64733,"Lower","FLaSH 540 SKT 2012-03-08 719 4706","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.2,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.5,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 400 SKT 2012-01-19 719 4143","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 401 SKT 2012-01-19 719 4160","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1573 SKT 2014-03-12 719 0507","Gammarus type","Gammaridae","amphipod","juvenile Corophium",1.4,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1574 SKT 2014-03-12 719 0514","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.5,"G"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1582 SKT 2014-03-12 719 0548","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",2,NA
+2012,2,2012-02-15,38.33428,-121.64733,"Lower","FLaSH 484 SKT 2012-02-15 719 4511","Unid amphipod","Amphipoda","amphipod","Unid amphipod",1,"S"
+2017,4,2017-04-05,38.33428,-121.64733,"Lower","FLaSH 2162 SKT 2017-04-05 719 A37","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.4,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 592 SKT 2012-01-19 719 4186","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,"G"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1573 SKT 2014-03-12 719 0507","Gammarus type","Gammaridae","amphipod","juvenile Corophium",1.4,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,"G"
+2017,4,2017-04-05,38.33428,-121.64733,"Lower","FLaSH 2164 SKT 2017-04-05 719 A39","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.7,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,5.8,"S"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1582 SKT 2014-03-12 719 0548","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,"S"
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1625 SKT 2014-05-07 719 0027","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.4,"S"
+2012,2,2012-02-15,38.33428,-121.64733,"Lower","FLaSH 478 SKT 2012-02-15 719 4472","Corophium type","Corophiidae","amphipod",NA,1,NA
+2016,2,2016-02-10,38.33428,-121.64733,"Lower","FLaSH 2174 SKT 2016-02-10 719 7275","Corophium type","Corophiidae","amphipod","Unid Corophium",1.9,"S"
+2016,2,2016-02-10,38.33428,-121.64733,"Lower","FLaSH 2174 SKT 2016-02-10 719 7275","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.9,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,6.2,"S"
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1046 SKT 2013-01-09 719 6213","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",4.4,NA
+2016,2,2016-02-10,38.33428,-121.64733,"Lower","FLaSH 2174 SKT 2016-02-10 719 7275","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.8,"S"
+2016,2,2016-02-10,38.33428,-121.64733,"Lower","FLaSH 2174 SKT 2016-02-10 719 7275","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.8,NA
+2013,4,2013-04-04,38.33428,-121.64733,"Lower","FLaSH 1155 SKT 2013-04-04 719 6476","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 400 SKT 2012-01-19 719 4143","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2014,4,2014-04-08,38.33428,-121.64733,"Lower","FLaSH 1604 SKT 2014-04-08 719 0003","Unid amphipod","Amphipoda","amphipod","Unid juvenile",3,"Y"
+2012,4,2012-04-04,38.33428,-121.64733,"Lower","FLaSH 686 SKT 2012-04-04 719 4938","Prickly sculpin","Prickly sculpin","fish",NA,6.9,"U"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,NA
+2016,4,2016-04-04,38.33428,-121.64733,"Lower","FLaSH 2190 SKT 2016-04-04 719 7291","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.4,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,6.3,"S"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.2,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,"G"
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1620 SKT 2014-05-07 719 0019","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.4,NA
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1051 SKT 2013-01-09 719 6219","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",2.7,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1581 SKT 2014-03-12 719 0547","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.5,NA
+2014,4,2014-04-08,38.33428,-121.64733,"Lower","FLaSH 1607 SKT 2014-04-08 719 0588","Corophium type","Corophiidae","amphipod","juvenile Corophium",2.6,"S"
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 699 SKT 2012-01-19 719 4121","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 589 SKT 2012-01-19 719 4226","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 403 SKT 2012-01-19 719 4190","Corophium type","Corophiidae","amphipod",NA,1.2,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1625 SKT 2014-05-07 719 0027","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,6.2,"S"
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 591 SKT 2012-01-19 719 4188","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1573 SKT 2014-03-12 719 0507","Gammarus type","Gammaridae","amphipod","juvenile Corophium",1.5,NA
+2017,4,2017-04-05,38.33428,-121.64733,"Lower","FLaSH 2162 SKT 2017-04-05 719 A37","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.3,NA
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1070 SKT 2013-01-09 719 6244","Gammarus type","Gammarus daiberi","amphipod","G. daiberi",5.1,"ED"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1582 SKT 2014-03-12 719 0548","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,"S"
+2016,4,2016-04-04,38.33428,-121.64733,"Lower","FLaSH 2204 SKT 2016-04-04 719 7297","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",2.7,NA
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2134 SKT 2017-01-11 719 A4","Gammarus type","Hyalella","amphipod","Hyalella sp.",4,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1574 SKT 2014-03-12 719 0514","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.4,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1574 SKT 2014-03-12 719 0514","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.5,NA
+2015,5,2015-05-06,38.33428,-121.64733,"Lower","FLaSH 1887 SKT 2015-05-06 719 7168","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1573 SKT 2014-03-12 719 0507","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.2,NA
+2012,4,2012-04-04,38.33428,-121.64733,"Lower","FLaSH 657 SKT 2012-04-04 719 4941","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.8,"M"
+2012,4,2012-04-04,38.33428,-121.64733,"Lower","FLaSH 686 SKT 2012-04-04 719 4938","Prickly sculpin","Prickly sculpin","fish",NA,6.9,"U"
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,6.4,"S"
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,6.4,"S"
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1059 SKT 2013-01-09 719 6227","Corophium type","Corophiidae","amphipod","Unid Corophium",3.1,"S"
+2014,4,2014-04-08,38.33428,-121.64733,"Lower","FLaSH 1609 SKT 2014-04-08 719 0592","Isopods","Isopods","isopods",NA,1.6,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1582 SKT 2014-03-12 719 0548","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,"S"
+2014,4,2014-04-08,38.33428,-121.64733,"Lower","FLaSH 1607 SKT 2014-04-08 719 0588","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.6,"S"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,"G"
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 704 SKT 2012-01-19 719 4223","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1,NA
+2014,4,2014-04-08,38.33428,-121.64733,"Lower","FLaSH 1604 SKT 2014-04-08 719 0003","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.6,NA
+2016,3,2016-03-09,38.33428,-121.64733,"Lower","FLaSH 2179 SKT 2016-03-09 719 7280","Gammarus type","Hyalella","amphipod","Hyalella sp.",2.6,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,NA
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1619 SKT 2014-05-07 719 0017","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.7,"S"
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 401 SKT 2012-01-19 719 4160","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.6,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 590 SKT 2012-01-19 719 4124","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,2,2012-02-15,38.33428,-121.64733,"Lower","FLaSH 602 SKT 2012-02-15 719 4490","Corophium type","Corophiidae","amphipod","juvenile Corophium",1,NA
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1066 SKT 2013-01-09 719 6237","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",3.2,NA
+2013,2,2013-02-06,38.33428,-121.64733,"Lower","FLaSH 1179 SKT 2013-02-06 719 6329","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.6,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 399 SKT 2012-01-19 719 4123","Corophium type","Corophiidae","amphipod",NA,1,"G"
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1626 SKT 2014-05-07 719 0030","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 589 SKT 2012-01-19 719 4226","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2014,4,2014-04-08,38.33428,-121.64733,"Lower","FLaSH 1609 SKT 2014-04-08 719 0592","Isopods","Isopods","isopods",NA,1.4,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1580 SKT 2014-03-12 719 0545","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 398 SKT 2012-01-19 719 4116","Corophium type","Corophiidae","amphipod",NA,1,NA
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1065 SKT 2013-01-09 719 6236","Gammarus type","Hyalella","amphipod","Hyalella sp.",3.5,NA
+2012,3,2012-03-08,38.33428,-121.64733,"Lower","FLaSH 550 SKT 2012-03-08 719 4734","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",5.9,"ED"
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,7.6,"S"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2015,3,2015-03-11,38.33428,-121.64733,"Lower","FLaSH 1882 SKT 2015-03-11 719 7163","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2135 SKT 2017-01-11 719 A5","Gammarus type","Hyalella","amphipod","Hyalella sp.",5.3,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Unid amphipod","Amphipoda","amphipod","Unid juvenile",1.5,NA
+2016,4,2016-04-04,38.33428,-121.64733,"Lower","FLaSH 2190 SKT 2016-04-04 719 7291","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",5.5,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1573 SKT 2014-03-12 719 0507","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 399 SKT 2012-01-19 719 4123","Corophium type","Corophiidae","amphipod",NA,1,NA
+2016,4,2016-04-04,38.33428,-121.64733,"Lower","FLaSH 2187 SKT 2016-04-04 719 7288","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.2,"ED"
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 399 SKT 2012-01-19 719 4123","Corophium type","Corophiidae","amphipod",NA,1,NA
+2015,5,2015-05-06,38.33428,-121.64733,"Lower","FLaSH 1885 SKT 2015-05-06 719 7166","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.5,NA
+2012,3,2012-03-08,38.33428,-121.64733,"Lower","FLaSH 550 SKT 2012-03-08 719 4734","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",5.9,"G"
+2012,3,2012-03-08,38.33428,-121.64733,"Lower","FLaSH 547 SKT 2012-03-08 719 4721","Prickly sculpin","Prickly sculpin","fish",NA,4.8,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,7.6,NA
+2015,3,2015-03-11,38.33428,-121.64733,"Lower","FLaSH 1882 SKT 2015-03-11 719 7163","Unid amphipod","Amphipoda","amphipod",NA,3.3,"Y"
+2012,3,2012-03-08,38.33428,-121.64733,"Lower","FLaSH 542 SKT 2012-03-08 719 4709","Pacific herring","Pacific herring","fish",NA,4.3,"G"
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1620 SKT 2014-05-07 719 0019","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,4.3,"Y"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1581 SKT 2014-03-12 719 0547","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 704 SKT 2012-01-19 719 4223","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 399 SKT 2012-01-19 719 4123","Corophium type","Corophiidae","amphipod",NA,1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Unid amphipod","Amphipoda","amphipod","Unid juvenile",3.3,"Y"
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,6.2,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 592 SKT 2012-01-19 719 4186","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2015,3,2015-03-11,38.33428,-121.64733,"Lower","FLaSH 1802 SKT 2015-03-11 719 7162","Gammarus type","Gammaridae","amphipod","Unid Gammarus",4.2,NA
+2012,2,2012-02-15,38.33428,-121.64733,"Lower","FLaSH 482 SKT 2012-02-15 719 4489","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1576 SKT 2014-03-12 719 0519","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,3,2012-03-08,38.33428,-121.64733,"Lower","FLaSH 542 SKT 2012-03-08 719 4709","Pacific herring","Pacific herring","fish",NA,4.3,NA
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2136 SKT 2017-01-11 719 A6","Gammarus type","Hyalella","amphipod","Hyalella sp.",2.1,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2147 SKT 2017-02-08 719 A22","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",4,"AL"
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1620 SKT 2014-05-07 719 0019","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.4,"S"
+2013,1,2013-01-09,38.33428,-121.64733,"Lower","FLaSH 1068 SKT 2013-01-09 719 6239","Corophium type","Sinocorophium alienense","amphipod","C. alienense",2.3,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,6.4,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 592 SKT 2012-01-19 719 4186","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2147 SKT 2017-02-08 719 A22","Unid fish","fish","fish",NA,5.8,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1580 SKT 2014-03-12 719 0545","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1575 SKT 2014-03-12 719 0515","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.6,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2148 SKT 2017-02-08 719 A23","Unid fish","fish","fish",NA,5.1,"S"
+2013,3,2013-03-06,38.33428,-121.64733,"Lower","FLaSH 1181 SKT 2013-03-06 719 6416","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.8,NA
+2014,12,2014-12-17,38.33428,-121.64733,"Lower","FLaSH 1818 SKT 2014-12-17 719 7083","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2014,12,2014-12-17,38.33428,-121.64733,"Lower","FLaSH 1818 SKT 2014-12-17 719 7083","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2136 SKT 2017-01-11 719 A6","Gammarus type","Hyalella","amphipod","Hyalella sp.",4.3,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1578 SKT 2014-03-12 719 0528","Unid amphipod","Amphipoda","amphipod","Unid amphipod",3.3,"Y"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1581 SKT 2014-03-12 719 0547","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.2,NA
+2014,5,2014-05-07,38.33428,-121.64733,"Lower","FLaSH 1619 SKT 2014-05-07 719 0017","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.8,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Gammarus type","Gammaridae","amphipod","juvenile Gammarus",1.5,NA
+2014,4,2014-04-08,38.33428,-121.64733,"Lower","FLaSH 1609 SKT 2014-04-08 719 0592","Isopods","Isopods","isopods",NA,1.4,NA
+2015,3,2015-03-11,38.33428,-121.64733,"Lower","FLaSH 1882 SKT 2015-03-11 719 7163","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2134 SKT 2017-01-11 719 A4","Gammarus type","Hyalella","amphipod","Hyalella sp.",4,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 591 SKT 2012-01-19 719 4188","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,1,2012-01-19,38.33428,-121.64733,"Lower","FLaSH 592 SKT 2012-01-19 719 4186","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,3,2012-03-08,38.33428,-121.64733,"Lower","FLaSH 542 SKT 2012-03-08 719 4709","Pacific herring","Pacific herring","fish",NA,4.3,"G"
+2016,3,2016-03-09,38.33428,-121.64733,"Lower","FLaSH 2180 SKT 2016-03-09 719 7281","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2135 SKT 2017-01-11 719 A5","Gammarus type","Hyalella","amphipod","Hyalella sp.",5.3,"G"
+2017,1,2017-01-11,38.33428,-121.64733,"Lower","FLaSH 2137 SKT 2017-01-11 719 A7","Gammarus type","Crangonyx","amphipod","Crangonyx sp.",3.3,"S"
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1578 SKT 2014-03-12 719 0528","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2013,2,2013-02-06,38.33428,-121.64733,"Lower","FLaSH 1179 SKT 2013-02-06 719 6329","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",3.6,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1578 SKT 2014-03-12 719 0528","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2012,2,2012-02-15,38.33428,-121.64733,"Lower","FLaSH 480 SKT 2012-02-15 719 4476","Corophium type","Corophiidae","amphipod",NA,0.9,NA
+2017,2,2017-02-08,38.33428,-121.64733,"Lower","FLaSH 2147 SKT 2017-02-08 719 A22","Unid fish","fish","fish",NA,5.1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1581 SKT 2014-03-12 719 0547","Corophium type","Corophiidae","amphipod","juvenile Corophium",2.3,NA
+2015,3,2015-03-11,38.33428,-121.64733,"Lower","FLaSH 1882 SKT 2015-03-11 719 7163","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2014,3,2014-03-12,38.33428,-121.64733,"Lower","FLaSH 1577 SKT 2014-03-12 719 0526","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2074 STN 2015-07-01 719 7180","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,"G"
+2013,7,2013-07-22,38.33428,-121.64733,"Lower","FLaSH 1371 STN 2013-07-22 719 0201","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1.5,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2074 STN 2015-07-01 719 7180","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2074 STN 2015-07-01 719 7180","Corophium type","Americorophium spinicorne","amphipod","A. spinicorne",2.4,NA
+2015,6,2015-06-18,38.33428,-121.64733,"Lower","FLaSH 2065 STN 2015-06-18 719 7171","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1.5,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1.6,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2074 STN 2015-07-01 719 7180","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2069 STN 2015-07-01 719 7175","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2014,6,2014-06-02,38.33428,-121.64733,"Lower","FLaSH 1655 STN 2014-06-02 719 0006","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,2.6,"Y"
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2074 STN 2015-07-01 719 7180","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2013,7,2013-07-22,38.33428,-121.64733,"Lower","FLaSH 1371 STN 2013-07-22 719 0201","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2013,7,2013-07-22,38.33428,-121.64733,"Lower","FLaSH 1344 STN 2013-07-22 719 0202","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2013,7,2013-07-22,38.33428,-121.64733,"Lower","FLaSH 1343 STN 2013-07-22 719 0200","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2013,7,2013-07-22,38.33428,-121.64733,"Lower","FLaSH 1371 STN 2013-07-22 719 0201","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2075 STN 2015-07-01 719 7181","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2014,7,2014-07-14,38.33428,-121.64733,"Lower","FLaSH 1687 STN 2014-07-14 719 0147","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.8,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1.3,"G"
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1.8,NA
+2014,6,2014-06-02,38.33428,-121.64733,"Lower","FLaSH 1651 STN 2014-06-02 719 0001","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3.3,"ED"
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2074 STN 2015-07-01 719 7180","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,"G"
+2013,7,2013-07-22,38.33428,-121.64733,"Lower","FLaSH 1341 STN 2013-07-22 719 0196","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2013,7,2013-07-22,38.33428,-121.64733,"Lower","FLaSH 1371 STN 2013-07-22 719 0201","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2074 STN 2015-07-01 719 7180","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,"G"
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2075 STN 2015-07-01 719 7181","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2013,8,2013-08-19,38.33428,-121.64733,"Lower","FLaSH 1350 STN 2013-08-19 719 0294","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.4,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2075 STN 2015-07-01 719 7181","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.2,NA
+2015,7,2015-07-01,38.33428,-121.64733,"Lower","FLaSH 2072 STN 2015-07-01 719 7178","Corophium type","Corophiidae","amphipod",NA,1,NA
+2012,8,2012-08-20,38.40462,-121.6156,"Middle","FLaSH 1399 STN 2012-08-20 797 5335","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2012,6,2012-06-25,38.40462,-121.6156,"Middle","FLaSH 1423 STN 2012-06-25 797 5219","Corophium type","Americorophium stimpsoni","amphipod","A. stimpsoni",2.2,NA
+2012,6,2012-06-11,38.40462,-121.6156,"Middle","FLaSH 1293 STN 2012-06-11 797 5163","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.6,NA
+2012,8,2012-08-20,38.40462,-121.6156,"Middle","FLaSH 1393 STN 2012-08-20 797 5339","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2012,6,2012-06-25,38.40462,-121.6156,"Middle","FLaSH 1421 STN 2012-06-25 797 5216","Tridentiger spp","Tridentiger spp.","fish",NA,2.4,NA
+2012,6,2012-06-11,38.40462,-121.6156,"Middle","FLaSH 1293 STN 2012-06-11 797 5163","Corophium type","Corophiidae","amphipod",NA,1.1,NA
+2012,8,2012-08-20,38.40462,-121.6156,"Middle","FLaSH 1387 STN 2012-08-20 797 5336","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.3,NA
+2012,6,2012-06-25,38.40462,-121.6156,"Middle","FLaSH 1376 STN 2012-06-25 797 5217","Corophium type","Corophiidae","amphipod","juvenile Corophium",1.1,NA
+2012,8,2012-08-20,38.40462,-121.6156,"Middle","FLaSH 1399 STN 2012-08-20 797 5335","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.9,"ED"
+2012,6,2012-06-11,38.40462,-121.6156,"Middle","FLaSH 1419 STN 2012-06-11 797 5158","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2012,6,2012-06-25,38.40462,-121.6156,"Middle","FLaSH 1423 STN 2012-06-25 797 5219","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,"S"
+2014,6,2014-06-02,38.40462,-121.6156,"Middle","FLaSH 1659 STN 2014-06-02 797 0015","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,3.1,"Y"
+2012,6,2012-06-11,38.40462,-121.6156,"Middle","FLaSH 1419 STN 2012-06-11 797 5158","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA
+2012,8,2012-08-20,38.40462,-121.6156,"Middle","FLaSH 1389 STN 2012-08-20 797 5338","Unid mysids","Hyperacanthomysis longirostris","mysids",NA,1.8,NA
+2012,8,2012-08-20,38.40462,-121.6156,"Middle","FLaSH 1399 STN 2012-08-20 797 5335","Hyperacanthomysis longirostris","Hyperacanthomysis longirostris","mysids",NA,1.5,NA

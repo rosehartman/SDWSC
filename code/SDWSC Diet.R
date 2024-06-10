@@ -6,7 +6,7 @@ library(deltamapr) #need the deltamapr package for the SDWSC regions
 library(sf)
 
 # install.packages("devtools")
-devtools::install_github("InteragencyEcologicalProgram/deltamapr")
+#devtools::install_github("InteragencyEcologicalProgram/deltamapr")
 
 
 #read in the dop and flash diet by number. 

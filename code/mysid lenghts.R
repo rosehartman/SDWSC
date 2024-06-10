@@ -77,9 +77,12 @@ mysids2 = mysidstot %>%
 #assume dry weight is 10% wet weight
 #assume carbon weight is 0.4 times dry weight
 #then covert to micro-grams to match the mesozoo[s]
-#AND DIVIDE BY VOLUME
+
 FMWTvols = filter(fmwtmys, Station %in% fmwtsats$Station) %>%
-  select(Station, Date, Volume)
+  select(Station, Date, Volume) %>%
+  mutate(Date = as.Date(Date)) %>%
+  distinct()
+
 
 Mysidsbc = mysids2 %>%
   left_join(FMWTvols) %>%
@@ -166,8 +169,142 @@ FMWTstas = mysidssfx %>%
 
 Mysidstots = left_join(mysidstot0, FMWTstas)  %>%
   filter(!is.na(SubRegion))
+##############################################################
+#DOP mysid data
+DOPmysenv = read_excel("data/MysidDataSSC_2018-2022.xlsx", sheet = "Water Quality", na = "NA") %>%
+  select(Date, Start_Time, Station_Code, Latitude, Longitude, Macrozooplankton_Volume, unique_id)
+DOPmys = read_excel("data/MysidDataSSC_2018-2022.xlsx", sheet = "Mysid", guess_max = 10000)
 
-mysidsmonth = group_by(Mysidstots, Month, Year, Region, IBMR) %>%
-  summarize(bpue = mean(bpue))
+
+lookup = read_csv("data/DOPspecies.csv")
+DOPmysx = left_join(DOPmys, lookup) %>%
+  left_join(DOPmysenv) %>%
+  ungroup() %>%
+  mutate(Station = str_replace_all(site_id, "-", ""))
+
+
+#Just use zooper CPUE since I seem to be getting it way wrong?
+DOP2 = Zoopsynther(Data_type = "Community", Sources = c("DOP"), Size_class = "Macro") %>%
+  filter(Year %in% c(2015:2022)) %>%
+  select(SampleID, Station, Date, Datetime, Latitude, Longitude, Taxname, Taxlifestage, CPUE) %>%
+  mutate(Station = str_replace_all(Station, "-", ""))
+
+
+DOPmysx$Station %in%DOP2$Station
+
+test = select(DOP2, Station, Taxlifestage)
+
+DOPmys3 = left_join(DOPmysx, DOP2, by = c("Station",  "Taxname", "Latitude", "Longitude"))
+
+DOPmyslong = pivot_longer(DOPmys3, cols = c(m_1:m_100), names_to = "number", values_to = "Length") %>%
+  filter(!is.na(Length))  %>%
+  
+  mutate(Taxname = case_when(Species %in% c("Gammarus_daiberi","Crangonyx_spp",
+                                            "Grandidierella_japonica",
+                                            "gammarus_daiberi", "Hyalella_spp", "Incisocalliope_derzhavini")~ "Gammaridae",
+                             Species == "Amphipod_UNID"  ~ "Amphipoda",
+                             Species %in% c("Neomysis_mercedes", "Neomysis_kadiakensis") ~ "Neomysis mercedis",
+                             Species %in% c("Corophiidae_UNID" , "Monocorophium_acherusicum","Americorophium_spp",
+                                            "Sinocorophium_alienense","Corophium_alienense") ~ "Corophiidae",
+                             Species %in% c("Deltamysis holmquistae", "Acanthomysis hwanhaiensis", 
+                                            "Unidentified Mysid", "Alienacanthomysis macropsis", "Mysid_UNID",
+                                            "Orientomysis_hwanhaiensis", "Orientomysis_aspera",
+                                            "Acanthomysis_aspera") ~ "Neomysis mercedis",
+                             TRUE ~ str_replace(Species, "_", " ")))
+
+DOPmys2 = group_by(DOPmyslong, Taxname, Species, Length, tow_date, CPUE, tow_time, unique_id, site_id, habitat_, Macrozooplankton_Volume,
+                   Latitude, Longitude, total_count) %>%
+  summarize(count = n()) %>%
+  mutate(CPUEx = count/Macrozooplankton_Volume, tot_cpue = total_count/Macrozooplankton_Volume) 
+
+
+#group by length, relative lenght abundance
+
+DOPtots = group_by(DOPmys, Species, tow_date, tow_time, site_id, unique_id, habitat_, total_count) %>%
+  summarise(all = sum(count)) %>%
+  left_join(DOPmysenv) 
+
+
+mysidstotd = DOPmys2 %>%
+  ungroup() %>%
+  left_join(DOPtots) %>%
+  mutate(FO = count/total_count, CPUE2 = FO*CPUE)%>%
+  left_join(conversions) %>%
+  mutate(BPUE = (a2*(Length^b))*CPUE2) %>%
+  #filter(Preservative == "Formalin", Weight_type == "Dry") %>%
+  mutate(BPUEdryC = case_when(Weight_type == "Wet" ~ BPUE* .1*.4,
+                              Weight_type == "Dry"~ BPUE*.4,
+                              TRUE ~ BPUE),
+         #multiply by 1000 to convert 
+         bpue = BPUEdryC*1000) %>%
+  select(-BPUE, -BPUEdryC) %>%
+  mutate(Month = month(tow_date),
+         include = case_when(Month ==6 & Length <=4 ~ "Yes",
+                             Month ==7 & Length <=4.5 ~ "Yes",
+                             Month ==8 & Length <=5 ~ "Yes",
+                             Month ==9 & Length <=5.5 ~ "Yes",
+                             Month ==10 & Length <=6 ~ "Yes",
+                             Month ==11 & Length <=6 ~ "Yes",
+                             Month ==12 &Length <=6.5 ~ "Yes",
+                             TRUE ~ "No")) %>%
+  filter(include == "Yes") 
+
+#now add up by taxname, i guess
+DOPmystot = mysidstotd%>%
+  mutate(MacroCode = case_when(Taxname %in% c("Neomysis mercedis", "Hyperacanthomysis longirostris") ~ "mysid",
+                               Taxname %in% c( "Americorophium spinicorne" , "Americorophium stimpsoni" ,
+                                               "Corophiidae",  "Gammaridae", "Amphipoda" )~ "amphipod" ))
+
+
+
+#add zeros and regions
+DOPmysall = left_join(DOPmysenv, DOPmystot) %>%
+  pivot_wider(id_cols = c(unique_id, Latitude, Longitude, tow_date, Date, Month),
+              names_from = MacroCode, values_from = bpue, values_fn = sum, values_fill = 0) %>%
+  pivot_longer(
+    cols = c(amphipod, mysid), names_to = "IBMR", values_to = "bpue") %>%
+  select(c(Date, Latitude, Longitude, unique_id, Month, IBMR, bpue)) %>%
+  filter(!is.na(Latitude)) %>%
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+  st_transform(crs = st_crs(scregions)) %>%
+  st_join(scregions) %>%
+  st_drop_geometry() %>%
+  filter(!is.na(SubRegion)) %>%
+  mutate( Region = case_when(SubRegion == "Upper Sacramento River Ship Channel" ~ "Top",
+                             SubRegion == "Lower Sacramento River Ship Channel" & Latitude > 38.36  ~ "Middle",
+                             Latitude <= 38.36 ~ "Lower")) %>%
+  mutate(Year = year(Date))
+
+DOPmysallc = left_join(DOPmysenv, DOPmystot) %>%
+  pivot_wider(id_cols = c(unique_id, Latitude, Longitude, tow_date, Date, Month), 
+              names_from = MacroCode, values_from = CPUE2, values_fn = sum, values_fill = 0) %>%
+  pivot_longer(
+    cols = c(amphipod, mysid), names_to = "IBMR", values_to = "CPUE") 
+
+DOPmysalld = left_join(DOPmysall, DOPmysallc) %>%
+  mutate(Year = year(Date), Month = month(Date), Source = "DOP")
+#add all mysids together and group by month and summarize
+
+mysidsall = bind_rows(mutate(Mysidstots, Source = "FMWT"), DOPmysalld)
+
+mysidsmonth = bind_rows(Mysidstots, DOPmysalld) %>%
+  group_by( Month, Year, Region, IBMR) %>%
+  summarize(bpue = mean(bpue), cpue = mean(CPUE, na.rm =T)) %>%
+  mutate(Biomass_C = bpue/cpue)
 
 save(mysidsmonth, file = "data/mysidsmonth.Rdata")
+
+ggplot(mysidsmonth, aes(x = Month, y = bpue, fill = IBMR))+ geom_col()
+
+ggplot(mysidsmonth, aes(x = Month, y = bpue, fill = IBMR))+ geom_col() +
+  facet_wrap(~Year)
+
+ggplot(mysidsall, aes(x = Month, y = CPUE, fill = IBMR))+ geom_col() +
+  facet_grid(Source~Year)
+
+ggplot(DOPmysalld, aes(x = Month, y = bpue, fill = IBMR))+ geom_col()
+
+ggplot(FMWTmys, aes(x = month(Date), y = CPUE))+ geom_point()
+
+ggplot(DOPmys2, aes(x = month(tow_date), y = tot_cpue))+ geom_point()
+

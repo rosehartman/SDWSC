@@ -112,7 +112,7 @@ zoopI2wzeros2 = zoopI2 %>%
               names_from = IBMR2, values_from = BPUE, values_fill = 0) %>%
   pivot_longer(cols = c(allcopnaup:last_col()), names_to = "IBMR", values_to = "BPUE")
 
-zoopIave2 = group_by(zoopIwzeros2, Region, TowType, Month, Year, MonthYear, IBMR2) %>%
+zoopIave2 = group_by(zoopI2wzeros2, Region, TowType, Month, Year, MonthYear, IBMR) %>%
   summarize(BPUE = mean(BPUE))
 
 
@@ -203,6 +203,8 @@ table(totIBMR$IBMR, totIBMR$Year)
 table(totIBMR$IBMR, totIBMR$Month)
 
 
+
+
 #bind diet and zooplankton data together
 IBMRdietzoops = left_join(totIBMR, diet_mon) %>%
   rename(DietBiomass = mean_mon)
@@ -212,11 +214,13 @@ write.csv(IBMRdietzoops, "outputs/IBMRdietmatrix.csv", row.names = FALSE)
 IBMR2 = pivot_longer(IBMRdietzoops, cols = c(ZooplanktonBPUE, DietBiomass), 
                      names_to = "Metric", values_to = "Biomass")
 
-ggplot(filter(IBMR2, Month %in% c(9,10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
-  facet_grid(Region~Year)
+ggplot(filter(IBMR2, Month %in% c(6:10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
+  facet_grid(Region~Year)+
+  scale_fill_manual(values = mypal, name = NULL)
 
-ggplot(filter(IBMR2, Month %in% c(9,10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
-  facet_wrap(~Region)
+ggplot(filter(IBMR2, Month %in% c(6:10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
+  facet_wrap(~Region)+
+  scale_fill_manual(values = mypal, name = NULL)
 
 ggplot(IBMR2, aes(x = Month, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
   facet_grid(Metric~Region)+
@@ -230,3 +234,13 @@ zoops_ibmr_wide = pivot_wider(IBMRdietzoops, id_cols = c(Month, Year, Region),
 
 write.csv(zoops_ibmr_wide, "outputs/IBMRzoopswide.csv", row.names = FALSE)
 
+zoops_ibmr_conversion = group_by(zoopI2, Month, IBMR2) %>%
+  summarize(totcatch = sum(CPUE), totmass = sum(BPUE)) %>%
+  mutate(Biomass_C = totmass/totcatch)
+mys_ibmr_convsersions = group_by(Mysidstots, Month, Year,  IBMR) %>%
+  summarize(bpue = sum(bpue), cpue = sum(CPUE)) %>%
+  mutate(Biomass_C = bpue/cpue)
+
+IBM_biomass = bind_rows(zoops_ibmr_conversion, mys_ibmr_convsersions)
+
+write.csv(IBM_biomass, "outputs/IBMR_ave_biomass.csv")
