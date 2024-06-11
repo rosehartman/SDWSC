@@ -1,0 +1,126 @@
+DOPLogNumber,Project,Year,Month,Date,Station,Region,Species,ForkLength,TotalBodyWeight,SerialNumber,PreyType,PreyConversion,MacroCategory,PreyLengthSpecies,PreyLength,Estimate,PreyWeight,GutContents
+2,EDSM,2017,8,8/15/2017 0:00,18-03-SSC02,Sac DW Ship Channel,Delta Smelt,52,0.75,2,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,ED,,Y
+97,EDSM,2018,7,7/5/2018 0:00,18-49-LSSC03,Sac DW Ship Channel,Delta Smelt,44,0.47,64,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+98,EDSM,2018,7,7/5/2018 0:00,18-49-LSSC03,Sac DW Ship Channel,Delta Smelt,35,0.35,65,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.8,,,y
+99,EDSM,2018,7,7/5/2018 0:00,18-49-LSSC03,Sac DW Ship Channel,Delta Smelt,42,0.42,66,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.3,,,y
+102,EDSM,2018,7,7/18/2018 0:00,18-51-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,69,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+103,EDSM,2018,7,7/19/2018 0:00,18-51-LSSC04,Sac DW Ship Channel,Delta Smelt,48,0.84,70,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,U,,y
+104,EDSM,2018,7,7/23/2018 0:00,18-52-LSSC02,Sac DW Ship Channel,Delta Smelt,48,0.87,71,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+107,EDSM,2018,7,7/24/2018 0:00,18-52-LSSC03,Sac DW Ship Channel,Delta Smelt,45,0.81,74,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,S,,y
+107,EDSM,2018,7,7/24/2018 0:00,18-52-LSSC03,Sac DW Ship Channel,Delta Smelt,45,0.81,74,Unid Amphipod,Amphipoda,amphipod,,1.8,Y,,y
+114,EDSM,2018,8,8/8/2018 0:00,19-02-LSSC02,Sac DW Ship Channel,Delta Smelt,46,0.75,81,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,ED,,y
+115,EDSM,2018,8,8/8/2018 0:00,19-02-LSSC02,Sac DW Ship Channel,Delta Smelt,45,0.63,82,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,5.7,,,y
+120,EDSM,2018,8,8/14/2018 0:00,19-03-LSSC01,Sac DW Ship Channel,Delta Smelt,44,0.52,87,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,5.7,M,,y
+129,EDSM,2018,8,8/27/2018 0:00,19-05-LSSC05,Sac DW Ship Channel,Delta Smelt,47,0.78,96,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,,,y
+129,EDSM,2018,8,8/27/2018 0:00,19-05-LSSC05,Sac DW Ship Channel,Delta Smelt,47,0.78,96,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,G,,y
+129,EDSM,2018,8,8/27/2018 0:00,19-05-LSSC05,Sac DW Ship Channel,Delta Smelt,47,0.78,96,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,U,,y
+129,EDSM,2018,8,8/27/2018 0:00,19-05-LSSC05,Sac DW Ship Channel,Delta Smelt,47,0.78,96,Unid Mysids,Hyperacanthomysis longirostris,mysids,,2,,,y
+130,EDSM,2018,8,8/27/2018 0:00,19-05-LSSC05,Sac DW Ship Channel,Delta Smelt,48,0.7,97,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+133,EDSM,2018,7,7/9/2018 0:00,18-50-LSSC01,Sac DW Ship Channel,Delta Smelt,49,1.13,150,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,S,,y
+151,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,50,0.88,100,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+151,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,50,0.88,100,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.7,,,y
+151,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,50,0.88,100,Unid Mysids,Hyperacanthomysis longirostris,mysids,,2.9,ED,,y
+151,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,50,0.88,100,Unid Mysids,Hyperacanthomysis longirostris,mysids,,5.7,ED,,y
+151,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,50,0.88,100,Unid Mysids,Hyperacanthomysis longirostris,mysids,,7.2,ED,,y
+152,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,55,0.91,101,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+153,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,55,1.25,102,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.3,,,y
+154,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,43,0.54,103,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.3,S,,y
+154,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,43,0.54,103,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.3,S,,y
+155,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,54,0.84,104,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+155,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,54,0.84,104,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.6,ED,,y
+155,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,54,0.84,104,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,S,,y
+156,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,47,0.66,105,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.6,S,,y
+157,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,52,0.94,106,Corophium type,Americorophium stimpsoni,amphipod,A. stimpsoni,2.7,AL,,y
+157,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,52,0.94,106,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,S,,y
+158,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.02,107,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,ED,,y
+158,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.02,107,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,4.1,ED,,y
+158,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.02,107,Unid Mysids,Hyperacanthomysis longirostris,mysids,,7.2,ED,,y
+159,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,47,0.72,108,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.6,,,y
+159,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,47,0.72,108,Unid Mysids,Hyperacanthomysis longirostris,mysids,,2.9,,,y
+161,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,47,0.75,110,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+162,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,49,0.76,111,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.6,ED,,y
+166,EDSM,2018,9,9/11/2018 0:00,19-07-LSSC06,Sac DW Ship Channel,Delta Smelt,51,0.83,120,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.3,,,y
+178,EDSM,2018,9,9/27/2018 0:00,19-09-LSSC02,Sac DW Ship Channel,Delta Smelt,44,0.61,132,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.4,ED,,y
+183,EDSM,2018,10,10/4/2018 0:00,19-10-LSSC01,Sac DW Ship Channel,Delta Smelt,49,0.86,137,Unid Mysids,Hyperacanthomysis longirostris,mysids,,2.9,ED,,y
+184,EDSM,2018,10,10/4/2018 0:00,19-10-LSSC01,Sac DW Ship Channel,Delta Smelt,52,0.92,138,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,4.1,ED,,y
+186,EDSM,2018,10,10/9/2018 0:00,19-11-LSSC06,Sac DW Ship Channel,Delta Smelt,53,0.87,140,Unid Mysids,Hyperacanthomysis longirostris,mysids,,2.9,M,,y
+187,EDSM,2018,10,10/9/2018 0:00,19-11-LSSC03,Sac DW Ship Channel,Delta Smelt,55,1,141,Corophium type,Americorophium spinicorne,amphipod,A. spinicorne,3,AL,,y
+187,EDSM,2018,10,10/9/2018 0:00,19-11-LSSC03,Sac DW Ship Channel,Delta Smelt,55,1,141,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.6,M,,y
+189,EDSM,2018,10,10/17/2018 0:00,19-12-LSSC03,Sac DW Ship Channel,Delta Smelt,53,1.09,143,Corophium type,Americorophium stimpsoni,amphipod,A. stimpsoni,1.2,,,y
+189,EDSM,2018,10,10/17/2018 0:00,19-12-LSSC03,Sac DW Ship Channel,Delta Smelt,53,1.09,143,Unid Mysids,Hyperacanthomysis longirostris,mysids,,4.1,M,,y
+209,EDSM,2018,10,10/17/2018 0:00,19-12-LSSC04,Sac DW Ship Channel,Delta Smelt,48,0.82,399,Corophium type,Corophiidae,amphipod,juvenile Corophium,1.1,,,y
+209,EDSM,2018,10,10/17/2018 0:00,19-12-LSSC04,Sac DW Ship Channel,Delta Smelt,48,0.82,399,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+213,EDSM,2018,10,10/17/2018 0:00,19-12-LSSC04,Sac DW Ship Channel,Delta Smelt,48,0.76,403,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,S,,y
+215,EDSM,2018,10,10/17/2018 0:00,19-12-LSSC04,Sac DW Ship Channel,Delta Smelt,55,1.17,405,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,S,,y
+221,EDSM,2018,11,11/1/2018 0:00,19-14-LSSC06,Sac DW Ship Channel,Delta Smelt,54,1.08,411,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.8,M,,y
+240,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,48,0.74,113,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.6,,,y
+241,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,45,0.61,114,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.6,,,y
+241,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,45,0.61,114,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.6,G,,y
+243,EDSM,2018,9,9/10/2018 0:00,19-07-LSSC02,Sac DW Ship Channel,Delta Smelt,51,0.44,116,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.6,S,,y
+249,EDSM,2019,8,8/16/2019 0:00,20-03-LSSC02,Sac DW Ship Channel,Delta Smelt,47,0.59,473,Corophium type,Americorophium stimpsoni,amphipod,A. stimpsoni,4,,1.20E-03,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2,S,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.6,S,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,4.1,ED,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,4.2,,6.60E-04,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,4.6,,1.10E-03,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,4.9,,1.09E-03,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,7.1,ED,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Unid Mysids,Hyperacanthomysis longirostris,mysids,,2.2,S,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Unid Mysids,Hyperacanthomysis longirostris,mysids,,2.5,S,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Unid Mysids,Hyperacanthomysis longirostris,mysids,,3,S,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Unid Mysids,Hyperacanthomysis longirostris,mysids,,3.2,S,,y
+281,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,48,0.88,422,Unid Mysids,Hyperacanthomysis longirostris,mysids,,4.3,ED,,y
+287,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,49,0.86,428,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.4,ED,,y
+288,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,50,0.96,429,Unid fish,fish,fish,,13,G,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2,,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.2,,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.5,,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.5,G,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,3,,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,3.2,,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,4.1,ED,,y
+295,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC01,Sac DW Ship Channel,Delta Smelt,46,0.71,436,Unid Mysids,Hyperacanthomysis longirostris,mysids,,5.7,ED,,y
+305,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.08,448,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.4,,,y
+305,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.08,448,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+305,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.08,448,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.8,,,y
+305,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.08,448,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+310,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,48,0.9,453,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.5,,,y
+310,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,48,0.9,453,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.8,,,y
+312,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,44,0.68,455,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,ED,,y
+312,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,44,0.68,455,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1,S,,y
+314,EDSM,2019,7,7/3/2019 0:00,19-49-LSSC02,Sac DW Ship Channel,Delta Smelt,53,1.14,459,Unid Mysids,Hyperacanthomysis longirostris,mysids,,1.4,ED,,y
+316,EDSM,2019,7,7/24/2019 0:00,19-52-LSSC03,Sac DW Ship Channel,Delta Smelt,52,0.83,461,Corophium type,Americorophium spinicorne,amphipod,A. spinicorne,2.5,AL,,y
+316,EDSM,2019,7,7/24/2019 0:00,19-52-LSSC03,Sac DW Ship Channel,Delta Smelt,52,0.83,461,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.9,M,,y
+317,EDSM,2019,7,7/24/2019 0:00,19-52-LSSC03,Sac DW Ship Channel,Delta Smelt,44,0.7,462,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.6,ED,,y
+319,EDSM,2019,7,7/25/2019 0:00,19-52-LSSC02,Sac DW Ship Channel,Delta Smelt,41,0.48,465,Corophium type,Corophiidae,amphipod,juvenile Corophium,1.1,,,y
+322,EDSM,2019,7,7/24/2019 0:00,19-52-LSSC03,Sac DW Ship Channel,Delta Smelt,46,0.68,549,Corophium type,Americorophium spinicorne,amphipod,A. spinicorne,2.8,AL,,y
+326,EDSM,2019,7,7/15/2019 0:00,19-51-LSSC02,Sac DW Ship Channel,Delta Smelt,45,0.45,553,Corophium type,Corophiidae,amphipod,juvenile Corophium,1.1,S,,y
+327,EDSM,2019,7,7/9/2019 0:00,19-50-LSSC05,Sac DW Ship Channel,Delta Smelt,50,0.83,554,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.6,,,y
+327,EDSM,2019,7,7/9/2019 0:00,19-50-LSSC05,Sac DW Ship Channel,Delta Smelt,50,0.83,554,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.6,G,,y
+327,EDSM,2019,7,7/9/2019 0:00,19-50-LSSC05,Sac DW Ship Channel,Delta Smelt,50,0.83,554,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2,,,y
+327,EDSM,2019,7,7/9/2019 0:00,19-50-LSSC05,Sac DW Ship Channel,Delta Smelt,50,0.83,554,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2,G,,y
+334,EDSM,2019,7,7/8/2019 0:00,19-50-LSSC02,Sac DW Ship Channel,Delta Smelt,48,0.83,561,Corophium type,Corophiidae,amphipod,juvenile Corophium,4,S,,y
+349,EDSM,2019,7,7/8/2019 0:00,19-50-LSSC02,Sac DW Ship Channel,Delta Smelt,42,0.67,340,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.6,U,,Y
+353,EDSM,2019,9,9/10/2019 0:00,20-07-LSSC03,Sac DW Ship Channel,Delta Smelt,51,0.74,475,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2,,,Y
+355,EDSM,2019,10,10/15/2019 0:00,20-12-LSSC01,Sac DW Ship Channel,Delta Smelt,47,0.43,577,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1.9,Y,,Y
+355,EDSM,2019,10,10/15/2019 0:00,20-12-LSSC01,Sac DW Ship Channel,Delta Smelt,47,0.43,577,Unid Mysids,Hyperacanthomysis longirostris,mysids,,5.7,ED,,Y
+395,ELS,2019,5,5/21/2019 0:00,19-43-SC05,Sac DW Ship Channel,Delta Smelt,26,0.12,L1236,Tridentiger spp.,fish,fish,,2.6,,,Y
+403,ELS,2019,6,6/5/2019 0:00,19-45-LSSC05,Sac DW Ship Channel,Delta Smelt,20,0.04,L2256,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,ED,,Y
+403,ELS,2019,6,6/5/2019 0:00,19-45-LSSC05,Sac DW Ship Channel,Delta Smelt,20,0.04,L2256,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,2.6,ED,,Y
+426,EDSM,2020,7,7/6/2020 0:00,20-50-LSSC01,Sac DW Ship Channel,Delta Smelt,47,0.66,225,Corophium type,Corophiidae,amphipod,juvenile Corophium,1.8,,,y
+427,EDSM,2020,7,7/6/2020 0:00,20-50-LSSC02,Sac DW Ship Channel,Delta Smelt,50,0.7,226,Corophium type,Corophiidae,amphipod,juvenile Corophium,2,,,y
+427,EDSM,2020,7,7/6/2020 0:00,20-50-LSSC02,Sac DW Ship Channel,Delta Smelt,50,0.7,226,Unid Amphipod,Amphipoda,amphipod,Unid amphipod,1,,,y
+428,EDSM,2020,7,7/7/2020 0:00,20-50-LSSC05,Sac DW Ship Channel,Delta Smelt,45,0.56,227,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,5.5,,,y
+447,EDSM,2021,5,5/4/2021 0:00,21-41-LSSC07,Sac DW Ship Channel,Delta Smelt,22,0.04,L0372,Unid Mysids,Amphipoda,amphipod,,1.5,Y,,y
+464,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,67,2.55,S114,Gammarus type,Hyalella,amphipod,Hyalella sp.,1.8,,,Y
+464,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,67,2.55,S114,Gammarus type,Hyalella,amphipod,Hyalella sp.,1.9,,,Y
+464,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,67,2.55,S114,Gammarus type,Hyalella,amphipod,Hyalella sp.,2.2,,1.60E-04,Y
+464,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,67,2.55,S114,Gammarus type,Hyalella,amphipod,Hyalella sp.,2.7,,,Y
+464,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,67,2.55,S114,Gammarus type,Hyalella,amphipod,Hyalella sp.,3.2,,3.30E-04,Y
+464,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,67,2.55,S114,Gammarus type,Hyalella,amphipod,Hyalella sp.,3.3,,7.80E-04,Y
+464,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,67,2.55,S114,Gammarus type,Hyalella,amphipod,Hyalella sp.,3.3,,8.40E-04,Y
+469,EDSM,2022,1,1/12/2022 0:00,22-24-LSSC03,Sac DW Ship Channel,Delta Smelt,86,6.63,S119,Gammarus type,Crangonyx,amphipod,Crangonyx sp.,5,,1.05E-03,Y
+489,EDSM,2022,2,2/24/2022 0:00,22-30-LSSC01,Sac DW Ship Channel,Delta Smelt,55,1.33,S121,Corophium type,Corophiidae,amphipod,juvenile Corophium,1.7,,,Y
+494,EDSM,2022,3,3/2/2022 0:00,22-31-LSSC01,Sac DW Ship Channel,Delta Smelt,64,1.81,S126,Unid fish,fish,fish,,3.1,S,,Y
+496,EDSM,2022,3,3/8/2022 0:00,22-32-LSSC01,Sac DW Ship Channel,Delta Smelt,65,2.1,S128,Gammarus type,Gammarus daiberi,amphipod,G. daiberi,3.5,M,,Y
+531,EDSM,2022,8,8/16/2022 0:00,23-03-SSC01,Sac DW Ship Channel,Delta Smelt,53,1.24,S205,Hyperacanthomysis longirostris,Hyperacanthomysis longirostris,mysids,,1,ED,,Y
