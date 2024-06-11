@@ -1,0 +1,670 @@
+"Year","Month","Region","latitude","longitude","Database","LogNumber","Project","Date","Station","SerialNumber","Species","PreyType","PreyLengthSpecies","PreyLength","Estimate"
+2017,8,"Middle",38.38728046,-121.6234417,"DOP",2,"EDSM",2017-08-15,"18-03-SSC02","2","Delta Smelt","Hyperacanthomysis longirostris","",1,"ED"
+2018,7,"Middle",38.39557012,-121.6192754,"DOP",98,"EDSM",2018-07-05,"18-49-LSSC03","65","Delta Smelt","Hyperacanthomysis longirostris","",1.8,NA
+2018,7,"Middle",38.39557012,-121.6192754,"DOP",99,"EDSM",2018-07-05,"18-49-LSSC03","66","Delta Smelt","Hyperacanthomysis longirostris","",1.3,NA
+2018,7,"Middle",38.39557012,-121.6192754,"DOP",97,"EDSM",2018-07-05,"18-49-LSSC03","64","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2018,7,"Middle",38.42452113,-121.6063894,"DOP",133,"EDSM",2018-07-09,"18-50-LSSC01","150","Delta Smelt","Unid Mysids","",1.5,"S"
+2018,7,"Middle",38.44597435,-121.5961647,"DOP",102,"EDSM",2018-07-18,"18-51-LSSC01","69","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2018,7,"Middle",38.42158445,-121.6075834,"DOP",103,"EDSM",2018-07-19,"18-51-LSSC04","70","Delta Smelt","Hyperacanthomysis longirostris","",1.5,"U"
+2018,7,"Middle",38.42289066,-121.6071625,"DOP",104,"EDSM",2018-07-23,"18-52-LSSC02","71","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2018,7,"Lower",38.30247498,-121.6544037,"DOP",107,"EDSM",2018-07-24,"18-52-LSSC03","74","Delta Smelt","Hyperacanthomysis longirostris","",1.5,"S"
+2018,7,"Lower",38.30247498,-121.6544037,"DOP",107,"EDSM",2018-07-24,"18-52-LSSC03","74","Delta Smelt","Unid Amphipod","",1.8,"Y"
+2018,8,"Middle",38.38444265,-121.6250788,"DOP",114,"EDSM",2018-08-08,"19-02-LSSC02","81","Delta Smelt","Hyperacanthomysis longirostris","",1,"ED"
+2018,8,"Middle",38.38444265,-121.6250788,"DOP",115,"EDSM",2018-08-08,"19-02-LSSC02","82","Delta Smelt","Hyperacanthomysis longirostris","",5.7,NA
+2018,8,"Middle",38.37018585,-121.6310501,"DOP",120,"EDSM",2018-08-14,"19-03-LSSC01","87","Delta Smelt","Hyperacanthomysis longirostris","",5.7,"M"
+2018,8,"Lower",38.3326149,-121.6471252,"DOP",129,"EDSM",2018-08-27,"19-05-LSSC05","96","Delta Smelt","Hyperacanthomysis longirostris","",1,NA
+2018,8,"Lower",38.3326149,-121.6471252,"DOP",129,"EDSM",2018-08-27,"19-05-LSSC05","96","Delta Smelt","Unid Mysids","",2,NA
+2018,8,"Lower",38.3326149,-121.6471252,"DOP",130,"EDSM",2018-08-27,"19-05-LSSC05","97","Delta Smelt","Unid Mysids","",1.5,NA
+2018,8,"Lower",38.3326149,-121.6471252,"DOP",129,"EDSM",2018-08-27,"19-05-LSSC05","96","Delta Smelt","Hyperacanthomysis longirostris","",1,"G"
+2018,8,"Lower",38.3326149,-121.6471252,"DOP",129,"EDSM",2018-08-27,"19-05-LSSC05","96","Delta Smelt","Unid Mysids","",1.5,"U"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",151,"EDSM",2018-09-10,"19-07-LSSC02","100","Delta Smelt","Hyperacanthomysis longirostris","",1.7,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",151,"EDSM",2018-09-10,"19-07-LSSC02","100","Delta Smelt","Unid Mysids","",2.9,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",151,"EDSM",2018-09-10,"19-07-LSSC02","100","Delta Smelt","Unid Mysids","",5.7,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",152,"EDSM",2018-09-10,"19-07-LSSC02","101","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",153,"EDSM",2018-09-10,"19-07-LSSC02","102","Delta Smelt","Hyperacanthomysis longirostris","",1.3,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",154,"EDSM",2018-09-10,"19-07-LSSC02","103","Delta Smelt","Hyperacanthomysis longirostris","",1.3,"S"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",151,"EDSM",2018-09-10,"19-07-LSSC02","100","Delta Smelt","Unid Mysids","",7.2,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",155,"EDSM",2018-09-10,"19-07-LSSC02","104","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",155,"EDSM",2018-09-10,"19-07-LSSC02","104","Delta Smelt","Hyperacanthomysis longirostris","",2.6,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",155,"EDSM",2018-09-10,"19-07-LSSC02","104","Delta Smelt","Unid Mysids","",1.5,"S"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",154,"EDSM",2018-09-10,"19-07-LSSC02","103","Delta Smelt","Unid Mysids","",1.3,"S"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",151,"EDSM",2018-09-10,"19-07-LSSC02","100","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",157,"EDSM",2018-09-10,"19-07-LSSC02","106","Delta Smelt","Hyperacanthomysis longirostris","",1.5,"S"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",158,"EDSM",2018-09-10,"19-07-LSSC02","107","Delta Smelt","Hyperacanthomysis longirostris","",1,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",158,"EDSM",2018-09-10,"19-07-LSSC02","107","Delta Smelt","Hyperacanthomysis longirostris","",4.1,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",158,"EDSM",2018-09-10,"19-07-LSSC02","107","Delta Smelt","Unid Mysids","",7.2,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",159,"EDSM",2018-09-10,"19-07-LSSC02","108","Delta Smelt","Hyperacanthomysis longirostris","",2.6,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",159,"EDSM",2018-09-10,"19-07-LSSC02","108","Delta Smelt","Unid Mysids","",2.9,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",161,"EDSM",2018-09-10,"19-07-LSSC02","110","Delta Smelt","Unid Mysids","",1.5,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",162,"EDSM",2018-09-10,"19-07-LSSC02","111","Delta Smelt","Hyperacanthomysis longirostris","",2.6,"ED"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",243,"EDSM",2018-09-10,"19-07-LSSC02","116","Delta Smelt","Hyperacanthomysis longirostris","",1.6,"S"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",240,"EDSM",2018-09-10,"19-07-LSSC02","113","Delta Smelt","Hyperacanthomysis longirostris","",1.6,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",241,"EDSM",2018-09-10,"19-07-LSSC02","114","Delta Smelt","Hyperacanthomysis longirostris","",1.6,NA
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",241,"EDSM",2018-09-10,"19-07-LSSC02","114","Delta Smelt","Hyperacanthomysis longirostris","",1.6,"G"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",157,"EDSM",2018-09-10,"19-07-LSSC02","106","Delta Smelt","Corophium type","A. stimpsoni",2.7,"AL"
+2018,9,"Lower",38.35631943,-121.6380539,"DOP",156,"EDSM",2018-09-10,"19-07-LSSC02","105","Delta Smelt","Unid Mysids","",1.6,"S"
+2018,9,"Middle",38.374101,-121.6290512,"DOP",166,"EDSM",2018-09-11,"19-07-LSSC06","120","Delta Smelt","Hyperacanthomysis longirostris","",1.3,NA
+2018,9,"Middle",38.39395523,-121.6206055,"DOP",178,"EDSM",2018-09-27,"19-09-LSSC02","132","Delta Smelt","Unid Mysids","",1.4,"ED"
+2018,10,"Middle",38.39021492,-121.6225395,"DOP",183,"EDSM",2018-10-04,"19-10-LSSC01","137","Delta Smelt","Unid Mysids","",2.9,"ED"
+2018,10,"Middle",38.39021492,-121.6225395,"DOP",184,"EDSM",2018-10-04,"19-10-LSSC01","138","Delta Smelt","Hyperacanthomysis longirostris","",4.1,"ED"
+2018,10,"Middle",38.40896988,-121.6134822,"DOP",187,"EDSM",2018-10-09,"19-11-LSSC03","141","Delta Smelt","Unid Mysids","",1.6,"M"
+2018,10,"Middle",38.40896988,-121.6134822,"DOP",187,"EDSM",2018-10-09,"19-11-LSSC03","141","Delta Smelt","Corophium type","A. spinicorne",3,"AL"
+2018,10,"Middle",38.42774709,-121.6046702,"DOP",186,"EDSM",2018-10-09,"19-11-LSSC06","140","Delta Smelt","Unid Mysids","",2.9,"M"
+2018,10,"Middle",38.45693016,-121.5909119,"DOP",189,"EDSM",2018-10-17,"19-12-LSSC03","143","Delta Smelt","Corophium type","A. stimpsoni",1.2,NA
+2018,10,"Middle",38.45693016,-121.5909119,"DOP",189,"EDSM",2018-10-17,"19-12-LSSC03","143","Delta Smelt","Unid Mysids","",4.1,"M"
+2018,10,"Middle",38.3857193,-121.6245193,"DOP",209,"EDSM",2018-10-17,"19-12-LSSC04","399","Delta Smelt","Corophium type","juvenile Corophium",1.1,NA
+2018,10,"Middle",38.3857193,-121.6245193,"DOP",213,"EDSM",2018-10-17,"19-12-LSSC04","403","Delta Smelt","Unid Mysids","",1.5,"S"
+2018,10,"Middle",38.3857193,-121.6245193,"DOP",215,"EDSM",2018-10-17,"19-12-LSSC04","405","Delta Smelt","Unid Mysids","",1.5,"S"
+2018,10,"Middle",38.3857193,-121.6245193,"DOP",209,"EDSM",2018-10-17,"19-12-LSSC04","399","Delta Smelt","Unid Mysids","",1.5,NA
+2018,11,"Middle",38.41587448,-121.6106377,"DOP",221,"EDSM",2018-11-01,"19-14-LSSC06","411","Delta Smelt","Unid Mysids","",1.8,"M"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Hyperacanthomysis longirostris","",2.6,"S"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Hyperacanthomysis longirostris","",4.1,"ED"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Hyperacanthomysis longirostris","",2,"S"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Hyperacanthomysis longirostris","",4.9,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Hyperacanthomysis longirostris","",7.1,"ED"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Hyperacanthomysis longirostris","",4.2,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Hyperacanthomysis longirostris","",4.6,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Unid Mysids","",3,"S"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Unid Mysids","",3.2,"S"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Unid Mysids","",2.2,"S"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Unid Mysids","",2.5,"S"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",288,"EDSM",2019-07-03,"19-49-LSSC01","429","Delta Smelt","Unid fish","",13,"G"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Hyperacanthomysis longirostris","",2,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Hyperacanthomysis longirostris","",2.2,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Hyperacanthomysis longirostris","",2.5,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Hyperacanthomysis longirostris","",2.5,"G"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Hyperacanthomysis longirostris","",3,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Hyperacanthomysis longirostris","",3.2,NA
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Hyperacanthomysis longirostris","",4.1,"ED"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",295,"EDSM",2019-07-03,"19-49-LSSC01","436","Delta Smelt","Unid Mysids","",5.7,"ED"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",281,"EDSM",2019-07-03,"19-49-LSSC01","422","Delta Smelt","Unid Mysids","",4.3,"ED"
+2019,7,"Lower",38.35747528,-121.6371002,"DOP",287,"EDSM",2019-07-03,"19-49-LSSC01","428","Delta Smelt","Unid Mysids","",1.4,"ED"
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",305,"EDSM",2019-07-03,"19-49-LSSC02","448","Delta Smelt","Hyperacanthomysis longirostris","",1.8,NA
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",305,"EDSM",2019-07-03,"19-49-LSSC02","448","Delta Smelt","Unid Mysids","",1.5,NA
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",305,"EDSM",2019-07-03,"19-49-LSSC02","448","Delta Smelt","Hyperacanthomysis longirostris","",1.4,NA
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",305,"EDSM",2019-07-03,"19-49-LSSC02","448","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",312,"EDSM",2019-07-03,"19-49-LSSC02","455","Delta Smelt","Hyperacanthomysis longirostris","",1,"ED"
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",312,"EDSM",2019-07-03,"19-49-LSSC02","455","Delta Smelt","Unid Mysids","",1,"S"
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",314,"EDSM",2019-07-03,"19-49-LSSC02","459","Delta Smelt","Unid Mysids","",1.4,"ED"
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",310,"EDSM",2019-07-03,"19-49-LSSC02","453","Delta Smelt","Hyperacanthomysis longirostris","",1.5,NA
+2019,7,"Lower",38.33049965,-121.6484985,"DOP",310,"EDSM",2019-07-03,"19-49-LSSC02","453","Delta Smelt","Hyperacanthomysis longirostris","",1.8,NA
+2019,7,"Middle",38.37425041,-121.6297417,"DOP",349,"EDSM",2019-07-08,"19-50-LSSC02","340","Delta Smelt","Hyperacanthomysis longirostris","",1.6,"U"
+2019,7,"Middle",38.37425041,-121.6297417,"DOP",334,"EDSM",2019-07-08,"19-50-LSSC02","561","Delta Smelt","Corophium type","juvenile Corophium",4,"S"
+2019,7,"Middle",38.36758041,-121.632618,"DOP",327,"EDSM",2019-07-09,"19-50-LSSC05","554","Delta Smelt","Hyperacanthomysis longirostris","",1.6,NA
+2019,7,"Middle",38.36758041,-121.632618,"DOP",327,"EDSM",2019-07-09,"19-50-LSSC05","554","Delta Smelt","Hyperacanthomysis longirostris","",1.6,"G"
+2019,7,"Middle",38.36758041,-121.632618,"DOP",327,"EDSM",2019-07-09,"19-50-LSSC05","554","Delta Smelt","Hyperacanthomysis longirostris","",2,"G"
+2019,7,"Middle",38.36758041,-121.632618,"DOP",327,"EDSM",2019-07-09,"19-50-LSSC05","554","Delta Smelt","Hyperacanthomysis longirostris","",2,NA
+2019,7,"Middle",38.46887493,-121.5855713,"DOP",326,"EDSM",2019-07-15,"19-51-LSSC02","553","Delta Smelt","Corophium type","juvenile Corophium",1.1,"S"
+2019,7,"Middle",38.45663071,-121.5911522,"DOP",319,"EDSM",2019-07-25,"19-52-LSSC02","465","Delta Smelt","Corophium type","juvenile Corophium",1.1,NA
+2019,7,"Middle",38.38259506,-121.625946,"DOP",317,"EDSM",2019-07-24,"19-52-LSSC03","462","Delta Smelt","Hyperacanthomysis longirostris","",2.6,"ED"
+2019,7,"Middle",38.38259506,-121.625946,"DOP",316,"EDSM",2019-07-24,"19-52-LSSC03","461","Delta Smelt","Corophium type","A. spinicorne",2.5,"AL"
+2019,7,"Middle",38.38259506,-121.625946,"DOP",316,"EDSM",2019-07-24,"19-52-LSSC03","461","Delta Smelt","Hyperacanthomysis longirostris","",1.9,"M"
+2019,7,"Middle",38.38259506,-121.625946,"DOP",322,"EDSM",2019-07-24,"19-52-LSSC03","549","Delta Smelt","Corophium type","A. spinicorne",2.8,"AL"
+2019,8,"Middle",38.41235542,-121.612011,"DOP",249,"EDSM",2019-08-16,"20-03-LSSC02","473","Delta Smelt","Corophium type","A. stimpsoni",4,NA
+2019,9,"Lower",38.35187022,-121.6399002,"DOP",353,"EDSM",2019-09-10,"20-07-LSSC03","475","Delta Smelt","Hyperacanthomysis longirostris","",2,NA
+2019,10,"Lower",38.35396004,-121.6386585,"DOP",355,"EDSM",2019-10-15,"20-12-LSSC01","577","Delta Smelt","Hyperacanthomysis longirostris","",1.9,"Y"
+2019,10,"Lower",38.35396004,-121.6386585,"DOP",355,"EDSM",2019-10-15,"20-12-LSSC01","577","Delta Smelt","Unid Mysids","",5.7,"ED"
+2020,7,"Lower",38.28792572,-121.6580486,"DOP",426,"EDSM",2020-07-06,"20-50-LSSC01","225","Delta Smelt","Corophium type","juvenile Corophium",1.8,NA
+2020,7,"Middle",38.36380005,-121.6342087,"DOP",427,"EDSM",2020-07-06,"20-50-LSSC02","226","Delta Smelt","Corophium type","juvenile Corophium",2,NA
+2020,7,"Middle",38.36380005,-121.6342087,"DOP",427,"EDSM",2020-07-06,"20-50-LSSC02","226","Delta Smelt","Unid Amphipod","Unid amphipod",1,NA
+2020,7,"Lower",38.35089493,-121.6401024,"DOP",428,"EDSM",2020-07-07,"20-50-LSSC05","227","Delta Smelt","Hyperacanthomysis longirostris","",5.5,NA
+2021,5,"Middle",38.45063,-121.59487,"DOP",447,"EDSM",2021-05-04,"21-41-LSSC07","L0372","Delta Smelt","Unid Mysids","",1.5,"Y"
+2022,1,"Lower",38.27463,-121.66211,"DOP",464,"EDSM",2022-01-12,"22-24-LSSC03","S114","Delta Smelt","Gammarus type","Hyalella sp.",1.9,NA
+2022,1,"Lower",38.27463,-121.66211,"DOP",464,"EDSM",2022-01-12,"22-24-LSSC03","S114","Delta Smelt","Gammarus type","Hyalella sp.",2.2,NA
+2022,1,"Lower",38.27463,-121.66211,"DOP",464,"EDSM",2022-01-12,"22-24-LSSC03","S114","Delta Smelt","Gammarus type","Hyalella sp.",2.7,NA
+2022,1,"Lower",38.27463,-121.66211,"DOP",464,"EDSM",2022-01-12,"22-24-LSSC03","S114","Delta Smelt","Gammarus type","Hyalella sp.",3.3,NA
+2022,1,"Lower",38.27463,-121.66211,"DOP",464,"EDSM",2022-01-12,"22-24-LSSC03","S114","Delta Smelt","Gammarus type","Hyalella sp.",3.3,NA
+2022,1,"Lower",38.27463,-121.66211,"DOP",469,"EDSM",2022-01-12,"22-24-LSSC03","S119","Delta Smelt","Gammarus type","Crangonyx sp.",5,NA
+2022,1,"Lower",38.27463,-121.66211,"DOP",464,"EDSM",2022-01-12,"22-24-LSSC03","S114","Delta Smelt","Gammarus type","Hyalella sp.",3.2,NA
+2022,1,"Lower",38.27463,-121.66211,"DOP",464,"EDSM",2022-01-12,"22-24-LSSC03","S114","Delta Smelt","Gammarus type","Hyalella sp.",1.8,NA
+2022,2,"Lower",38.34321,-121.6443,"DOP",489,"EDSM",2022-02-24,"22-30-LSSC01","S121","Delta Smelt","Corophium type","juvenile Corophium",1.7,NA
+2022,3,"Middle",38.38802,-121.62252,"DOP",494,"EDSM",2022-03-02,"22-31-LSSC01","S126","Delta Smelt","Unid fish","",3.1,"S"
+2022,3,"Middle",38.36031,-121.63593,"DOP",496,"EDSM",2022-03-08,"22-32-LSSC01","S128","Delta Smelt","Gammarus type","G. daiberi",3.5,"M"
+2022,8,"Middle",38.40618,-121.61519,"DOP",531,"EDSM",2022-08-16,"23-03-SSC01","S205","Delta Smelt","Hyperacanthomysis longirostris","",1,"ED"
+2019,5,"Middle",38.36527,-121.63342,"DOP",395,"ELS",2019-05-21,"19-43-SC05","L1236","Delta Smelt","Tridentiger spp.","",2.6,NA
+2019,6,"Lower",38.32172012,-121.6508064,"DOP",403,"ELS",2019-06-05,"19-45-LSSC05","L2256","Delta Smelt","Hyperacanthomysis longirostris","",1,"ED"
+2019,6,"Lower",38.32172012,-121.6508064,"DOP",403,"ELS",2019-06-05,"19-45-LSSC05","L2256","Delta Smelt","Hyperacanthomysis longirostris","",2.6,"ED"
+2011,9,"Lower",38.22295,-121.67362,"FLaSH",107,"FMWT",2011-09-14,"715","1577","delta smelt","Corophium","",1.4,NA
+2011,9,"Lower",38.22295,-121.67362,"FLaSH",107,"FMWT",2011-09-14,"715","1577","delta smelt","Corophium","",1.2,NA
+2011,9,"Lower",38.22295,-121.67362,"FLaSH",107,"FMWT",2011-09-14,"715","1577","delta smelt","Corophium","",1.3,"G"
+2011,9,"Lower",38.22295,-121.67362,"FLaSH",107,"FMWT",2011-09-14,"715","1577","delta smelt","Corophium","",1.3,"G"
+2011,9,"Lower",38.22295,-121.67362,"FLaSH",107,"FMWT",2011-09-14,"715","1577","delta smelt","Corophium","",1.3,"G"
+2011,9,"Lower",38.22295,-121.67362,"FLaSH",107,"FMWT",2011-09-14,"715","1577","delta smelt","Corophium","",1.3,"G"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",6.1,"G"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",178,"FMWT",2011-11-21,"719","2979","delta smelt","Neomysis mercedis","",5.7,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",184,"FMWT",2011-11-21,"719","2975","delta smelt","Hyperacanthomysis longirostris","",3.4,"M"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",181,"FMWT",2011-11-21,"719","2977","delta smelt","Unid Mysids","",3.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",173,"FMWT",2011-11-21,"719","2976","delta smelt","Unid Mysids","",7.1,"ED"
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",211,"FMWT",2011-12-16,"719","2061","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2012,12,"Lower",38.33428,-121.64733,"FLaSH",1039,"FMWT",2012-12-11,"719","6132","delta smelt","Corophium","juvenile Corophium",2.2,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",3.1,"G"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",6.1,"G"
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",211,"FMWT",2011-12-16,"719","2061","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",6.1,"ED"
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",218,"FMWT",2011-12-16,"719","2064","delta smelt","Corophium","",1,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",175,"FMWT",2011-11-21,"719","2982","delta smelt","Unid Mysids","",5.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",3.1,"G"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",3.1,"ED"
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",215,"FMWT",2011-12-16,"719","2060","delta smelt","Hyperacanthomysis longirostris","",7.7,"E"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",184,"FMWT",2011-11-21,"719","2975","delta smelt","Unid Mysids","",5.1,"M"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",175,"FMWT",2011-11-21,"719","2982","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Unid Mysids","",6.1,"G"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",175,"FMWT",2011-11-21,"719","2982","delta smelt","Unid Mysids","",7.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",181,"FMWT",2011-11-21,"719","2977","delta smelt","Unid Mysids","",7.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",178,"FMWT",2011-11-21,"719","2979","delta smelt","Unid Mysids","",5.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",181,"FMWT",2011-11-21,"719","2977","delta smelt","Unid Mysids","",3.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",175,"FMWT",2011-11-21,"719","2982","delta smelt","Corophium","",1.1,"M"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",181,"FMWT",2011-11-21,"719","2977","delta smelt","Unid Mysids","",3.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",173,"FMWT",2011-11-21,"719","2976","delta smelt","Unid Mysids","",7.1,"G"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",199,"FMWT",2011-11-21,"719","2978","delta smelt","Hyperacanthomysis longirostris","",8,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",199,"FMWT",2011-11-21,"719","2978","delta smelt","Hyperacanthomysis longirostris","",2.6,"E"
+2012,10,"Lower",38.33428,-121.64733,"FLaSH",1018,"FMWT",2012-10-18,"719","5804","delta smelt","Hyperacanthomysis longirostris","",6.1,"ED"
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",218,"FMWT",2011-12-16,"719","2064","delta smelt","Corophium","",1.2,NA
+2012,12,"Lower",38.33428,-121.64733,"FLaSH",1039,"FMWT",2012-12-11,"719","6132","delta smelt","Corophium","Unid Corophium",5.2,NA
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",215,"FMWT",2011-12-16,"719","2060","delta smelt","Corophium","",1.2,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",172,"FMWT",2011-11-21,"719","2974","delta smelt","Corophium","",1.5,NA
+2012,12,"Lower",38.33428,-121.64733,"FLaSH",1039,"FMWT",2012-12-11,"719","6132","delta smelt","Gammarus","juvenile Gammarus",1.8,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",173,"FMWT",2011-11-21,"719","2976","delta smelt","Corophium","",1.1,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",180,"FMWT",2011-11-21,"719","2980","delta smelt","Hyperacanthomysis longirostris","",1.9,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",181,"FMWT",2011-11-21,"719","2977","delta smelt","Unid Mysids","",3.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",173,"FMWT",2011-11-21,"719","2976","delta smelt","Unid Mysids","",4.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",181,"FMWT",2011-11-21,"719","2977","delta smelt","Corophium","",1.1,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",173,"FMWT",2011-11-21,"719","2976","delta smelt","Unid Mysids","",4.1,"G"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",199,"FMWT",2011-11-21,"719","2978","delta smelt","Hyperacanthomysis longirostris","",7,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",199,"FMWT",2011-11-21,"719","2978","delta smelt","Hyperacanthomysis longirostris","",7,NA
+2012,11,"Lower",38.33428,-121.64733,"FLaSH",1029,"FMWT",2012-11-15,"719","5987","delta smelt","Corophium","juvenile Corophium",0.8,NA
+2012,11,"Lower",38.33428,-121.64733,"FLaSH",1029,"FMWT",2012-11-15,"719","5987","delta smelt","Corophium","juvenile Corophium",1,NA
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",218,"FMWT",2011-12-16,"719","2064","delta smelt","Corophium","",1.2,NA
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",211,"FMWT",2011-12-16,"719","2061","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",174,"FMWT",2011-11-21,"719","2983","delta smelt","Unid Mysids","",4.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",180,"FMWT",2011-11-21,"719","2980","delta smelt","Corophium","",1.1,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",178,"FMWT",2011-11-21,"719","2979","delta smelt","Unid Mysids","",4.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",180,"FMWT",2011-11-21,"719","2980","delta smelt","Hyperacanthomysis longirostris","",1.5,NA
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",218,"FMWT",2011-12-16,"719","2064","delta smelt","Corophium","",1.1,"G"
+2011,12,"Lower",38.33428,-121.64733,"FLaSH",218,"FMWT",2011-12-16,"719","2064","delta smelt","Corophium","",1.1,NA
+2012,11,"Lower",38.33428,-121.64733,"FLaSH",1029,"FMWT",2012-11-15,"719","5987","delta smelt","Unid Mysids","",6.1,NA
+2012,11,"Lower",38.33428,-121.64733,"FLaSH",1029,"FMWT",2012-11-15,"719","5987","delta smelt","Unid Mysids","",1.9,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",178,"FMWT",2011-11-21,"719","2979","delta smelt","Unid Mysids","",4.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",182,"FMWT",2011-11-21,"719","2981","delta smelt","Corophium","",0.75,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",180,"FMWT",2011-11-21,"719","2980","delta smelt","Corophium","",1.1,NA
+2012,12,"Lower",38.33428,-121.64733,"FLaSH",1039,"FMWT",2012-12-11,"719","6132","delta smelt","Gammarus","Unid Gammarus",3.5,NA
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",178,"FMWT",2011-11-21,"719","2979","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Lower",38.33428,-121.64733,"FLaSH",181,"FMWT",2011-11-21,"719","2977","delta smelt","Corophium","",1.1,"G"
+2012,12,"Middle",38.47387,-121.5844,"FLaSH",1040,"FMWT",2012-12-11,"796","6148","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",7.4,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",183,"FMWT",2011-11-21,"797","3044","delta smelt","Unid Mysids","",3.1,"G"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",183,"FMWT",2011-11-21,"797","3044","delta smelt","Hyperacanthomysis longirostris","",6,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",179,"FMWT",2011-11-21,"797","3042","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",198,"FMWT",2011-11-21,"797","3040","delta smelt","Hyperacanthomysis longirostris","",2.5,NA
+2012,12,"Middle",38.40462,-121.6156,"FLaSH",1041,"FMWT",2012-12-11,"797","6141","delta smelt","Corophium","juvenile Corophium",1.7,NA
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",6.1,"ED"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",5.3,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",200,"FMWT",2011-11-21,"797","3049","delta smelt","Hyperacanthomysis longirostris","",2.6,"E"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Hyperacanthomysis longirostris","",8,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",183,"FMWT",2011-11-21,"797","3044","delta smelt","Hyperacanthomysis longirostris","",2.5,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",183,"FMWT",2011-11-21,"797","3044","delta smelt","Unid Mysids","",6.1,"E"
+2012,11,"Middle",38.40462,-121.6156,"FLaSH",1030,"FMWT",2012-11-15,"797","6017","delta smelt","Unid Mysids","Unid juvenile",1.5,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",183,"FMWT",2011-11-21,"797","3044","delta smelt","Unid Mysids","",3.1,"E"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",8.8,"ED"
+2015,10,"Middle",38.40462,-121.6156,"FLaSH",2217,"FMWT",2015-10-19,"797","7260","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",179,"FMWT",2011-11-21,"797","3042","delta smelt","Hyperacanthomysis longirostris","",2,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",183,"FMWT",2011-11-21,"797","3044","delta smelt","Unid Mysids","",3.1,"E"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",8,NA
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",3.2,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",171,"FMWT",2011-11-21,"797","3045","delta smelt","Unid Mysids","",7.1,"ED"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",6.1,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",5.1,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",198,"FMWT",2011-11-21,"797","3040","delta smelt","Hyperacanthomysis longirostris","",9.2,"E"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",6.1,"ED"
+2012,11,"Middle",38.40462,-121.6156,"FLaSH",1030,"FMWT",2012-11-15,"797","6017","delta smelt","Corophium","juvenile Corophium",1.6,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",179,"FMWT",2011-11-21,"797","3042","delta smelt","Unid Mysids","",2.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",179,"FMWT",2011-11-21,"797","3042","delta smelt","Hyperacanthomysis longirostris","",1.7,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",198,"FMWT",2011-11-21,"797","3040","delta smelt","Hyperacanthomysis longirostris","",2.8,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",5.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",198,"FMWT",2011-11-21,"797","3040","delta smelt","Hyperacanthomysis longirostris","",8.1,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",5.1,"ED"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",5.2,NA
+2011,12,"Middle",38.40462,-121.6156,"FLaSH",219,"FMWT",2011-12-16,"797","2075","delta smelt","Hyperacanthomysis longirostris","",5.8,NA
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",6.1,"ED"
+2013,11,"Middle",38.40462,-121.6156,"FLaSH",1455,"FMWT",2013-11-19,"797","749","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",5.6,"G"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",200,"FMWT",2011-11-21,"797","3049","delta smelt","Unid Mysids","",2.6,"G"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Unid Mysids","",1.9,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",198,"FMWT",2011-11-21,"797","3040","delta smelt","Hyperacanthomysis longirostris","",5.7,NA
+2011,12,"Middle",38.40462,-121.6156,"FLaSH",219,"FMWT",2011-12-16,"797","2075","delta smelt","Unid Mysids","",6.1,"E"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",7.1,"ED"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Hyperacanthomysis longirostris","",3.3,"ED"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Unid Mysids","",1.9,"G"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",177,"FMWT",2011-11-21,"797","3046","delta smelt","Unid Mysids","",3.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",177,"FMWT",2011-11-21,"797","3046","delta smelt","Unid Mysids","",3.1,"ED"
+2012,11,"Middle",38.40462,-121.6156,"FLaSH",1030,"FMWT",2012-11-15,"797","6017","delta smelt","Unid Mysids","Unid juvenile",1.5,"G"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",6.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",7.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",176,"FMWT",2011-11-21,"797","3043","delta smelt","Unid Mysids","",3.1,"ED"
+2011,11,"Middle",38.40462,-121.6156,"FLaSH",185,"FMWT",2011-11-21,"797","3041","delta smelt","Unid Mysids","",4.1,"ED"
+2012,10,"Middle",38.40462,-121.6156,"FLaSH",1019,"FMWT",2012-10-18,"797","5835","delta smelt","Unid Mysids","",6.1,"G"
+2012,11,"Middle",38.40462,-121.6156,"FLaSH",1030,"FMWT",2012-11-15,"797","6017","delta smelt","Unid Mysids","Unid juvenile",1.5,"G"
+2014,8,"Middle",38.404222,-121.615639,"FLaSH",1981,"GES",2014-08-21,"797","197","delta smelt","Hyperacanthomysis longirostris","",1.7,NA
+2014,12,"Middle",38.404222,-121.615639,"FLaSH",1907,"GES",2014-12-02,"797","338","delta smelt","Corophium","juvenile Corophium",1.3,"G"
+2014,8,"Middle",38.404222,-121.615639,"FLaSH",1969,"GES",2014-08-21,"797","153","delta smelt","Hyperacanthomysis longirostris","",1.9,NA
+2014,12,"Middle",38.404222,-121.615639,"FLaSH",1907,"GES",2014-12-02,"797","338","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2014,8,"Middle",38.404222,-121.615639,"FLaSH",1979,"GES",2014-08-21,"797","189","delta smelt","Hyperacanthomysis longirostris","",3.3,NA
+2014,12,"Middle",38.404222,-121.615639,"FLaSH",1907,"GES",2014-12-02,"797","338","delta smelt","Unid Mysids","",3,"ED"
+2012,4,"Lower",38.20712,-121.66008,"FLaSH",646,"SKT",2012-04-04,"713","4920","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2012,4,"Lower",38.20712,-121.66008,"FLaSH",646,"SKT",2012-04-04,"713","4920","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",521,"SKT",2012-03-08,"713","4627","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,4,"Lower",38.20712,-121.66008,"FLaSH",646,"SKT",2012-04-04,"713","4920","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",521,"SKT",2012-03-08,"713","4627","delta smelt","Corophium","juvenile Corophium",1,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",518,"SKT",2012-03-08,"713","4635","delta smelt","Unid Amphipod","Unid amphipod",0.9,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",521,"SKT",2012-03-08,"713","4627","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",507,"SKT",2012-03-08,"713","4613","delta smelt","Corophium","A. spinicorne",3.2,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",518,"SKT",2012-03-08,"713","4635","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",513,"SKT",2012-03-08,"713","4632","delta smelt","Corophium","",1.3,"S"
+2014,3,"Lower",38.20712,-121.66008,"FLaSH",1505,"SKT",2014-03-12,"713","559","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Corophium","",1.3,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",515,"SKT",2012-03-08,"713","4636","delta smelt","Corophium","A. spinicorne",4.6,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",521,"SKT",2012-03-08,"713","4627","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",521,"SKT",2012-03-08,"713","4627","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2014,2,"Lower",38.20712,-121.66008,"FLaSH",1489,"SKT",2014-02-12,"713","361","delta smelt","Prickly sculpin","",6,"M"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Corophium","",1.3,"G"
+2012,4,"Lower",38.20712,-121.66008,"FLaSH",646,"SKT",2012-04-04,"713","4920","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,3,"Lower",38.20712,-121.66008,"FLaSH",1505,"SKT",2014-03-12,"713","559","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2014,3,"Lower",38.20712,-121.66008,"FLaSH",1505,"SKT",2014-03-12,"713","559","delta smelt","Gammarus","Unid Gammarus",4.9,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",510,"SKT",2012-03-08,"713","4619","delta smelt","Gammarus","juvenile Gammarus",1.7,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",507,"SKT",2012-03-08,"713","4613","delta smelt","Corophium","A. spinicorne",4.2,"ED"
+2012,4,"Lower",38.20712,-121.66008,"FLaSH",646,"SKT",2012-04-04,"713","4920","delta smelt","Corophium","Unid Corophium",1,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Corophium","",1.2,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",516,"SKT",2012-03-08,"713","4628","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",513,"SKT",2012-03-08,"713","4632","delta smelt","Corophium","",1.3,"S"
+2012,5,"Lower",38.20712,-121.66008,"FLaSH",1253,"SKT",2012-05-02,"713","5068","delta smelt","Corophium","juvenile Corophium",1.4,NA
+2014,2,"Lower",38.20712,-121.66008,"FLaSH",1489,"SKT",2014-02-12,"713","361","delta smelt","Corophium","A. stimpsoni",3.5,NA
+2014,2,"Lower",38.20712,-121.66008,"FLaSH",1488,"SKT",2014-02-12,"713","360","delta smelt","Gammarus","G. daiberi",3.2,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",515,"SKT",2012-03-08,"713","4636","delta smelt","Corophium","Unid Corophium",1.2,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",515,"SKT",2012-03-08,"713","4636","delta smelt","Corophium","Unid Corophium",1.3,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Corophium","",1.4,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",511,"SKT",2012-03-08,"713","4625","delta smelt","Corophium","juvenile Corophium",1.3,"S"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",518,"SKT",2012-03-08,"713","4635","delta smelt","Corophium","juvenile Corophium",0.9,"G"
+2014,1,"Lower",38.20712,-121.66008,"FLaSH",1468,"SKT",2014-01-15,"713","144","delta smelt","Gammarus","Crangonyx sp.",3.7,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",518,"SKT",2012-03-08,"713","4635","delta smelt","Corophium","juvenile Corophium",0.8,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",519,"SKT",2012-03-08,"713","4633","delta smelt","Gammarus","Crangonyx sp.",2.1,"M"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",519,"SKT",2012-03-08,"713","4633","delta smelt","Corophium","",1.1,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Prickly sculpin","",6.8,"U"
+2014,1,"Lower",38.20712,-121.66008,"FLaSH",1467,"SKT",2014-01-15,"713","143","delta smelt","Corophium","A. spinicorne",5,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",515,"SKT",2012-03-08,"713","4636","delta smelt","Corophium","Unid Corophium",1.2,NA
+2014,3,"Lower",38.20712,-121.66008,"FLaSH",1505,"SKT",2014-03-12,"713","559","delta smelt","Gammarus","Crangonyx sp.",5.4,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",509,"SKT",2012-03-08,"713","4621","delta smelt","Corophium","Unid Corophium",1.3,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Corophium","",1.1,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",508,"SKT",2012-03-08,"713","4616","delta smelt","Corophium","Unid Corophium",1.3,"S"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Prickly sculpin","",6.8,"U"
+2012,1,"Lower",38.20712,-121.66008,"FLaSH",388,"SKT",2012-01-19,"713","4098","delta smelt","Corophium","juvenile Corophium",1.8,NA
+2013,2,"Lower",38.20712,-121.66008,"FLaSH",1174,"SKT",2013-02-06,"713","6309","delta smelt","Corophium","A. stimpsoni",3.1,NA
+2014,1,"Lower",38.20712,-121.66008,"FLaSH",1468,"SKT",2014-01-15,"713","144","delta smelt","Corophium","A. spinicorne",5,"S"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Prickly sculpin","",6.8,"U"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",510,"SKT",2012-03-08,"713","4619","delta smelt","Corophium","A. spinicorne",5,NA
+2012,4,"Lower",38.20712,-121.66008,"FLaSH",646,"SKT",2012-04-04,"713","4920","delta smelt","Corophium","Unid Corophium",1.1,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",515,"SKT",2012-03-08,"713","4636","delta smelt","Corophium","Unid Corophium",1.1,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",516,"SKT",2012-03-08,"713","4628","delta smelt","Corophium","juvenile Corophium",1.3,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",515,"SKT",2012-03-08,"713","4636","delta smelt","Corophium","Unid Corophium",1.2,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Corophium","",1.2,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",509,"SKT",2012-03-08,"713","4621","delta smelt","Corophium","A. spinicorne",1.3,"S"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",515,"SKT",2012-03-08,"713","4636","delta smelt","Corophium","Unid Corophium",0.9,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",508,"SKT",2012-03-08,"713","4616","delta smelt","Corophium","A. stimpsoni",5.9,"ED"
+2014,3,"Lower",38.20712,-121.66008,"FLaSH",1505,"SKT",2014-03-12,"713","559","delta smelt","Gammarus","Crangonyx sp.",4.5,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",516,"SKT",2012-03-08,"713","4628","delta smelt","Unid fish","",4.5,NA
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",512,"SKT",2012-03-08,"713","4626","delta smelt","Unid fish","",6.8,"U"
+2014,1,"Lower",38.20712,-121.66008,"FLaSH",1467,"SKT",2014-01-15,"713","143","delta smelt","Unid Amphipod","Unid amphipod",5,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",507,"SKT",2012-03-08,"713","4613","delta smelt","Corophium","A. stimpsoni",3.2,"G"
+2012,3,"Lower",38.20712,-121.66008,"FLaSH",509,"SKT",2012-03-08,"713","4621","delta smelt","Corophium","Unid Corophium",1.2,NA
+2012,1,"Lower",38.22295,-121.67362,"FLaSH",392,"SKT",2012-01-19,"715","4104","delta smelt","Gammarus","A. abdita",3.2,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",3.5,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1077,"SKT",2013-01-09,"715","6256","delta smelt","Corophium","A. stimpsoni",2.3,NA
+2014,4,"Lower",38.22295,-121.67362,"FLaSH",1601,"SKT",2014-04-08,"715","582","delta smelt","Gammarus","Unid Gammarus",2.6,"ED"
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",3.7,NA
+2016,2,"Lower",38.22295,-121.67362,"FLaSH",2173,"SKT",2016-02-10,"715","7274","delta smelt","Gammarus","Hyalella sp.",3.6,NA
+2012,1,"Lower",38.22295,-121.67362,"FLaSH",391,"SKT",2012-01-19,"715","4103","delta smelt","Corophium","",1,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1077,"SKT",2013-01-09,"715","6256","delta smelt","Corophium","A. stimpsoni",2,"AL"
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1080,"SKT",2013-01-09,"715","6259","delta smelt","Corophium","A. spinicorne",2.4,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",3.3,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Unid Gammarus",3.1,"S"
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",2.2,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",525,"SKT",2012-03-08,"715","4649","delta smelt","Corophium","juvenile Corophium",1,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",3.3,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1080,"SKT",2013-01-09,"715","6259","delta smelt","Corophium","A. spinicorne",2,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",647,"SKT",2012-04-04,"715","4925","delta smelt","Corophium","juvenile Corophium",1,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",3.2,NA
+2014,2,"Lower",38.22295,-121.67362,"FLaSH",1490,"SKT",2014-02-12,"715","362","delta smelt","Prickly sculpin","",5.5,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",1.9,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2012,1,"Lower",38.22295,-121.67362,"FLaSH",391,"SKT",2012-01-19,"715","4103","delta smelt","Gammarus","Hyalella sp.",3.6,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1506,"SKT",2014-03-12,"715","555","delta smelt","Gammarus","juvenile Gammarus",1.6,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1506,"SKT",2014-03-12,"715","555","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2012,5,"Lower",38.22295,-121.67362,"FLaSH",1254,"SKT",2012-05-02,"715","5070","delta smelt","Neomysis mercedis","",1.9,"Y"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",520,"SKT",2012-03-08,"715","4641","delta smelt","Corophium","",1.4,NA
+2012,5,"Lower",38.22295,-121.67362,"FLaSH",1254,"SKT",2012-05-02,"715","5070","delta smelt","Corophium","Unid Corophium",1.8,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",524,"SKT",2012-03-08,"715","4646","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",3,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Unid Gammarus",2.5,"G"
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",3.7,"G"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Corophium","juvenile Corophium",2.1,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Crangonyx sp.",4.3,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1078,"SKT",2013-01-09,"715","6257","delta smelt","Gammarus","Crangonyx sp.",3.8,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1508,"SKT",2014-03-12,"715","557","delta smelt","Gammarus","Unid Gammarus",3.2,"ED"
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Crangonyx sp.",4.6,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",524,"SKT",2012-03-08,"715","4646","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",527,"SKT",2012-03-08,"715","4653","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2015,2,"Lower",38.22295,-121.67362,"FLaSH",1861,"SKT",2015-02-11,"715","7139","delta smelt","Gammarus","juvenile Gammarus",2.6,"ED"
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",683,"SKT",2012-04-04,"715","4929","delta smelt","Corophium","juvenile Corophium",1.2,"S"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1595,"SKT",2014-03-12,"715","558","delta smelt","Gammarus","Crangonyx sp.",2.6,NA
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.7,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Corophium","juvenile Corophium",2.1,NA
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Corophium","A. spinicorne",2.9,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Gammarus","Hyalella sp.",3.6,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Corophium","juvenile Corophium",2.1,"G"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",517,"SKT",2012-03-08,"715","4640","delta smelt","Prickly sculpin","",6.8,"U"
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.5,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",527,"SKT",2012-03-08,"715","4653","delta smelt","Corophium","juvenile Corophium",0.9,"G"
+2014,2,"Lower",38.22295,-121.67362,"FLaSH",1490,"SKT",2014-02-12,"715","362","delta smelt","Prickly sculpin","",6.2,NA
+2014,1,"Lower",38.22295,-121.67362,"FLaSH",1473,"SKT",2014-01-15,"715","149","delta smelt","Corophium","Unid Corophium",3,"G"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",522,"SKT",2012-03-08,"715","4642","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1078,"SKT",2013-01-09,"715","6257","delta smelt","Corophium","A. spinicorne",2.4,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",517,"SKT",2012-03-08,"715","4640","delta smelt","Corophium","",0.9,"S"
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.7,"G"
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.5,"G"
+2014,1,"Lower",38.22295,-121.67362,"FLaSH",1473,"SKT",2014-01-15,"715","149","delta smelt","Corophium","A. spinicorne",3,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",517,"SKT",2012-03-08,"715","4640","delta smelt","Prickly sculpin","",6.8,"U"
+2012,5,"Lower",38.22295,-121.67362,"FLaSH",1254,"SKT",2012-05-02,"715","5070","delta smelt","Gammarus","G. daiberi",3.2,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",647,"SKT",2012-04-04,"715","4925","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",517,"SKT",2012-03-08,"715","4640","delta smelt","Prickly sculpin","",3.8,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",681,"SKT",2012-04-04,"715","4923","delta smelt","Corophium","juvenile Corophium",1.2,"S"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",522,"SKT",2012-03-08,"715","4642","delta smelt","Corophium","juvenile Corophium",0.9,"G"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",526,"SKT",2012-03-08,"715","4651","delta smelt","Corophium","A. spinicorne",3.2,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1078,"SKT",2013-01-09,"715","6257","delta smelt","Corophium","A. spinicorne",2.8,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",647,"SKT",2012-04-04,"715","4925","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",522,"SKT",2012-03-08,"715","4642","delta smelt","Prickly sculpin","",4,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",651,"SKT",2012-04-04,"715","4924","delta smelt","Corophium","Unid Corophium",3.7,"G"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",517,"SKT",2012-03-08,"715","4640","delta smelt","Unid fish","",6.8,"G"
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.1,"G"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",2.8,NA
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Gammarus","Crangonyx sp.",2.9,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1077,"SKT",2013-01-09,"715","6256","delta smelt","Corophium","Unid Corophium",2,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",523,"SKT",2012-03-08,"715","4645","delta smelt","Gammarus","Hyalella sp.",5.8,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",525,"SKT",2012-03-08,"715","4649","delta smelt","Corophium","juvenile Corophium",1,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",681,"SKT",2012-04-04,"715","4923","delta smelt","Corophium","juvenile Corophium",1.2,"S"
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",647,"SKT",2012-04-04,"715","4925","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",527,"SKT",2012-03-08,"715","4653","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1078,"SKT",2013-01-09,"715","6257","delta smelt","Corophium","A. spinicorne",3.5,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",2.5,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",2.5,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",527,"SKT",2012-03-08,"715","4653","delta smelt","Corophium","juvenile Corophium",0.9,"G"
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",651,"SKT",2012-04-04,"715","4924","delta smelt","Corophium","A. stimpsoni",3.3,NA
+2014,1,"Lower",38.22295,-121.67362,"FLaSH",1469,"SKT",2014-01-15,"715","145","delta smelt","Corophium","A. spinicorne",2.8,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",526,"SKT",2012-03-08,"715","4651","delta smelt","Corophium","Unid Corophium",1,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Unid Gammarus",3.4,"G"
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Gammarus","Hyalella sp.",2.2,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1508,"SKT",2014-03-12,"715","557","delta smelt","Gammarus","juvenile Gammarus",1.5,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1080,"SKT",2013-01-09,"715","6259","delta smelt","Gammarus","Crangonyx sp.",3.8,"ED"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",522,"SKT",2012-03-08,"715","4642","delta smelt","Unid fish","",4,"S"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Corophium","A. spinicorne",4.3,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",528,"SKT",2012-03-08,"715","4657","delta smelt","Corophium","juvenile Corophium",0.9,"G"
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Corophium","juvenile Corophium",1.6,NA
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Corophium","juvenile Corophium",2,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",3.4,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",648,"SKT",2012-04-04,"715","4922","delta smelt","Corophium","Unid Corophium",4.9,NA
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.5,NA
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.8,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",528,"SKT",2012-03-08,"715","4657","delta smelt","Prickly sculpin","",6.8,"U"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",517,"SKT",2012-03-08,"715","4640","delta smelt","Prickly sculpin","",4,NA
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Corophium","juvenile Corophium",2,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",651,"SKT",2012-04-04,"715","4924","delta smelt","Corophium","A. spinicorne",4,NA
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Corophium","juvenile Corophium",1.9,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",517,"SKT",2012-03-08,"715","4640","delta smelt","Unid fish","",6.8,"G"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",527,"SKT",2012-03-08,"715","4653","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1078,"SKT",2013-01-09,"715","6257","delta smelt","Corophium","A. stimpsoni",3.9,NA
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","G. daiberi",2.3,NA
+2014,1,"Lower",38.22295,-121.67362,"FLaSH",1471,"SKT",2014-01-15,"715","147","delta smelt","Gammarus","Unid Gammarus",4,"G"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",526,"SKT",2012-03-08,"715","4651","delta smelt","Corophium","Unid Corophium",1,"G"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",3.4,NA
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4.1,NA
+2014,4,"Lower",38.22295,-121.67362,"FLaSH",1601,"SKT",2014-04-08,"715","582","delta smelt","Corophium","juvenile Corophium",2.6,"S"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",528,"SKT",2012-03-08,"715","4657","delta smelt","Corophium","juvenile Corophium",0.9,NA
+2014,12,"Lower",38.22295,-121.67362,"FLaSH",1817,"SKT",2014-12-17,"715","7082","delta smelt","Corophium","juvenile Corophium",2,NA
+2014,1,"Lower",38.22295,-121.67362,"FLaSH",1470,"SKT",2014-01-15,"715","146","delta smelt","Corophium","A. spinicorne",2.2,NA
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2157,"SKT",2017-03-08,"715","A32","delta smelt","Unid fish","",4.3,"S"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",3.9,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",651,"SKT",2012-04-04,"715","4924","delta smelt","Corophium","A. spinicorne",5.9,"ED"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1595,"SKT",2014-03-12,"715","558","delta smelt","Unid Amphipod","Unid amphipod",3.3,"Y"
+2013,1,"Lower",38.22295,-121.67362,"FLaSH",1077,"SKT",2013-01-09,"715","6256","delta smelt","Corophium","A. stimpsoni",2.9,"AL"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",528,"SKT",2012-03-08,"715","4657","delta smelt","Prickly sculpin","",6.8,"U"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",4.6,NA
+2016,1,"Lower",38.22295,-121.67362,"FLaSH",2170,"SKT",2016-01-13,"715","7271","delta smelt","Corophium","A. spinicorne",3.9,"M"
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",4,NA
+2014,1,"Lower",38.22295,-121.67362,"FLaSH",1470,"SKT",2014-01-15,"715","146","delta smelt","Gammarus","G. daiberi",3.8,"ED"
+2017,3,"Lower",38.22295,-121.67362,"FLaSH",2158,"SKT",2017-03-08,"715","A33","delta smelt","Unid fish","",3.7,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",681,"SKT",2012-04-04,"715","4923","delta smelt","Corophium","A. spinicorne",3.1,NA
+2014,1,"Lower",38.22295,-121.67362,"FLaSH",1469,"SKT",2014-01-15,"715","145","delta smelt","Gammarus","G. daiberi",4,NA
+2012,4,"Lower",38.22295,-121.67362,"FLaSH",683,"SKT",2012-04-04,"715","4929","delta smelt","Corophium","A. spinicorne",3.1,"S"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1506,"SKT",2014-03-12,"715","555","delta smelt","Gammarus","Crangonyx sp.",3.2,"G"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",522,"SKT",2012-03-08,"715","4642","delta smelt","Unid fish","",4,"S"
+2014,3,"Lower",38.22295,-121.67362,"FLaSH",1507,"SKT",2014-03-12,"715","556","delta smelt","Gammarus","Crangonyx sp.",5.6,NA
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",528,"SKT",2012-03-08,"715","4657","delta smelt","Prickly sculpin","",6.8,"U"
+2012,3,"Lower",38.22295,-121.67362,"FLaSH",528,"SKT",2012-03-08,"715","4657","delta smelt","Prickly sculpin","",6.8,"U"
+2012,5,"Lower",38.22295,-121.67362,"FLaSH",1254,"SKT",2012-05-02,"715","5070","delta smelt","Unid Amphipod","Unid amphipod",1,"G"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Gammarus","juvenile Gammarus",1.6,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",591,"SKT",2012-01-19,"719","4188","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",591,"SKT",2012-01-19,"719","4188","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",399,"SKT",2012-01-19,"719","4123","delta smelt","Corophium","",1,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",592,"SKT",2012-01-19,"719","4186","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",5.1,"S"
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",401,"SKT",2012-01-19,"719","4160","delta smelt","Corophium","A. spinicorne",3.6,NA
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1619,"SKT",2014-05-07,"719","17","delta smelt","Corophium","juvenile Corophium",1.7,"S"
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",590,"SKT",2012-01-19,"719","4124","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",7.6,"S"
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",6.2,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2016,4,"Lower",38.33428,-121.64733,"FLaSH",2204,"SKT",2016-04-04,"719","7297","delta smelt","Gammarus","Crangonyx sp.",2.7,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",699,"SKT",2012-01-19,"719","4121","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1576,"SKT",2014-03-12,"719","519","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1620,"SKT",2014-05-07,"719","19","delta smelt","Unid Mysids","",4.3,"Y"
+2012,3,"Lower",38.33428,-121.64733,"FLaSH",540,"SKT",2012-03-08,"719","4706","delta smelt","Gammarus","Crangonyx sp.",2.2,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2147,"SKT",2017-02-08,"719","A22","delta smelt","Unid fish","",5.8,NA
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1620,"SKT",2014-05-07,"719","19","delta smelt","Corophium","juvenile Corophium",1.4,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Gammarus","juvenile Gammarus",1.5,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",7.6,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1573,"SKT",2014-03-12,"719","507","delta smelt","Gammarus","juvenile Corophium",1.4,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",589,"SKT",2012-01-19,"719","4226","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,4,"Lower",38.33428,-121.64733,"FLaSH",1609,"SKT",2014-04-08,"719","592","delta smelt","Isopods","",1.6,NA
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2136,"SKT",2017-01-11,"719","A6","delta smelt","Gammarus","Hyalella sp.",2.1,NA
+2015,3,"Lower",38.33428,-121.64733,"FLaSH",1802,"SKT",2015-03-11,"719","7162","delta smelt","Gammarus","Unid Gammarus",4.2,NA
+2015,3,"Lower",38.33428,-121.64733,"FLaSH",1882,"SKT",2015-03-11,"719","7163","delta smelt","Unid Amphipod","",3.3,"Y"
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",6.4,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1051,"SKT",2013-01-09,"719","6219","delta smelt","Gammarus","G. daiberi",2.7,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1070,"SKT",2013-01-09,"719","6244","delta smelt","Gammarus","G. daiberi",5.1,"ED"
+2012,3,"Lower",38.33428,-121.64733,"FLaSH",542,"SKT",2012-03-08,"719","4709","delta smelt","Pacific herring","",4.3,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1065,"SKT",2013-01-09,"719","6236","delta smelt","Corophium","A. spinicorne",3,"AL"
+2012,3,"Lower",38.33428,-121.64733,"FLaSH",542,"SKT",2012-03-08,"719","4709","delta smelt","Pacific herring","",4.3,"G"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1573,"SKT",2014-03-12,"719","507","delta smelt","Gammarus","juvenile Corophium",1.4,NA
+2012,4,"Lower",38.33428,-121.64733,"FLaSH",686,"SKT",2012-04-04,"719","4938","delta smelt","Prickly sculpin","",6.9,"U"
+2014,12,"Lower",38.33428,-121.64733,"FLaSH",1818,"SKT",2014-12-17,"719","7083","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",6.2,"S"
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",592,"SKT",2012-01-19,"719","4186","delta smelt","Corophium","juvenile Corophium",1.3,"G"
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1625,"SKT",2014-05-07,"719","27","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1625,"SKT",2014-05-07,"719","27","delta smelt","Corophium","juvenile Corophium",1.4,"S"
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",398,"SKT",2012-01-19,"719","4116","delta smelt","Corophium","",1,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",592,"SKT",2012-01-19,"719","4186","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2147,"SKT",2017-02-08,"719","A22","delta smelt","Unid fish","",5.1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1581,"SKT",2014-03-12,"719","547","delta smelt","Gammarus","Crangonyx sp.",3.2,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1066,"SKT",2013-01-09,"719","6237","delta smelt","Corophium","A. spinicorne",3.2,NA
+2012,3,"Lower",38.33428,-121.64733,"FLaSH",542,"SKT",2012-03-08,"719","4709","delta smelt","Pacific herring","",4.3,"G"
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1619,"SKT",2014-05-07,"719","17","delta smelt","Corophium","juvenile Corophium",1.8,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Gammarus","juvenile Gammarus",1.6,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2014,4,"Lower",38.33428,-121.64733,"FLaSH",1604,"SKT",2014-04-08,"719","3","delta smelt","Unid Amphipod","Unid juvenile",3,"Y"
+2013,2,"Lower",38.33428,-121.64733,"FLaSH",1179,"SKT",2013-02-06,"719","6329","delta smelt","Corophium","juvenile Corophium",1.6,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,4,"Lower",38.33428,-121.64733,"FLaSH",657,"SKT",2012-04-04,"719","4941","delta smelt","Corophium","juvenile Corophium",1.8,"M"
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1625,"SKT",2014-05-07,"719","27","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1574,"SKT",2014-03-12,"719","514","delta smelt","Gammarus","juvenile Gammarus",1.5,"G"
+2016,2,"Lower",38.33428,-121.64733,"FLaSH",2174,"SKT",2016-02-10,"719","7275","delta smelt","Corophium","A. spinicorne",2.8,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",6.2,"S"
+2014,4,"Lower",38.33428,-121.64733,"FLaSH",1607,"SKT",2014-04-08,"719","588","delta smelt","Corophium","juvenile Corophium",2.6,"S"
+2014,12,"Lower",38.33428,-121.64733,"FLaSH",1818,"SKT",2014-12-17,"719","7083","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1582,"SKT",2014-03-12,"719","548","delta smelt","Gammarus","juvenile Gammarus",2,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",6.3,"S"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1573,"SKT",2014-03-12,"719","507","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Unid Amphipod","Unid juvenile",1.5,NA
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1626,"SKT",2014-05-07,"719","30","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2016,4,"Lower",38.33428,-121.64733,"FLaSH",2190,"SKT",2016-04-04,"719","7291","delta smelt","Gammarus","Crangonyx sp.",5.5,NA
+2016,4,"Lower",38.33428,-121.64733,"FLaSH",2190,"SKT",2016-04-04,"719","7291","delta smelt","Gammarus","Crangonyx sp.",3.4,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1574,"SKT",2014-03-12,"719","514","delta smelt","Gammarus","juvenile Gammarus",1.4,NA
+2016,4,"Lower",38.33428,-121.64733,"FLaSH",2187,"SKT",2016-04-04,"719","7288","delta smelt","Gammarus","Crangonyx sp.",3.2,"ED"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1574,"SKT",2014-03-12,"719","514","delta smelt","Gammarus","juvenile Gammarus",1.5,NA
+2015,5,"Lower",38.33428,-121.64733,"FLaSH",1887,"SKT",2015-05-06,"719","7168","delta smelt","Corophium","juvenile Corophium",1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1578,"SKT",2014-03-12,"719","528","delta smelt","Unid Amphipod","Unid amphipod",3.3,"Y"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1582,"SKT",2014-03-12,"719","548","delta smelt","Gammarus","juvenile Gammarus",1.6,"S"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1573,"SKT",2014-03-12,"719","507","delta smelt","Gammarus","juvenile Corophium",1.5,NA
+2016,3,"Lower",38.33428,-121.64733,"FLaSH",2180,"SKT",2016-03-09,"719","7281","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Gammarus","juvenile Gammarus",1.5,NA
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2137,"SKT",2017-01-11,"719","A7","delta smelt","Gammarus","Crangonyx sp.",3.3,"S"
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",6.4,"S"
+2014,4,"Lower",38.33428,-121.64733,"FLaSH",1609,"SKT",2014-04-08,"719","592","delta smelt","Isopods","",1.4,NA
+2014,4,"Lower",38.33428,-121.64733,"FLaSH",1609,"SKT",2014-04-08,"719","592","delta smelt","Isopods","",1.4,NA
+2012,2,"Lower",38.33428,-121.64733,"FLaSH",482,"SKT",2012-02-15,"719","4489","delta smelt","Corophium","",1.1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1581,"SKT",2014-03-12,"719","547","delta smelt","Gammarus","juvenile Gammarus",1.5,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1573,"SKT",2014-03-12,"719","507","delta smelt","Gammarus","juvenile Gammarus",1.2,NA
+2017,4,"Lower",38.33428,-121.64733,"FLaSH",2162,"SKT",2017-04-05,"719","A37","delta smelt","Gammarus","Crangonyx sp.",2.3,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1059,"SKT",2013-01-09,"719","6227","delta smelt","Corophium","Unid Corophium",3.1,"S"
+2012,3,"Lower",38.33428,-121.64733,"FLaSH",550,"SKT",2012-03-08,"719","4734","delta smelt","Corophium","A. spinicorne",5.9,"G"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Gammarus","juvenile Gammarus",1.2,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",589,"SKT",2012-01-19,"719","4226","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2136,"SKT",2017-01-11,"719","A6","delta smelt","Gammarus","Hyalella sp.",4.3,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1068,"SKT",2013-01-09,"719","6239","delta smelt","Corophium","C. alienense",2.3,NA
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1624,"SKT",2014-05-07,"719","25","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2013,3,"Lower",38.33428,-121.64733,"FLaSH",1184,"SKT",2013-03-06,"719","6421","delta smelt","Gammarus","Unid Gammarus",1.8,"M"
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2134,"SKT",2017-01-11,"719","A4","delta smelt","Gammarus","Hyalella sp.",4,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1065,"SKT",2013-01-09,"719","6236","delta smelt","Gammarus","Hyalella sp.",3.5,NA
+2015,5,"Lower",38.33428,-121.64733,"FLaSH",1885,"SKT",2015-05-06,"719","7166","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",399,"SKT",2012-01-19,"719","4123","delta smelt","Corophium","",1,NA
+2012,3,"Lower",38.33428,-121.64733,"FLaSH",550,"SKT",2012-03-08,"719","4734","delta smelt","Corophium","A. spinicorne",5.9,"ED"
+2017,4,"Lower",38.33428,-121.64733,"FLaSH",2164,"SKT",2017-04-05,"719","A39","delta smelt","Gammarus","Crangonyx sp.",2.7,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1581,"SKT",2014-03-12,"719","547","delta smelt","Corophium","juvenile Corophium",2.3,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Gammarus","juvenile Gammarus",1.6,NA
+2014,4,"Lower",38.33428,-121.64733,"FLaSH",1604,"SKT",2014-04-08,"719","3","delta smelt","Corophium","A. spinicorne",2.6,NA
+2014,5,"Lower",38.33428,-121.64733,"FLaSH",1620,"SKT",2014-05-07,"719","19","delta smelt","Corophium","juvenile Corophium",1.4,"S"
+2013,3,"Lower",38.33428,-121.64733,"FLaSH",1181,"SKT",2013-03-06,"719","6416","delta smelt","Corophium","juvenile Corophium",1.8,NA
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2135,"SKT",2017-01-11,"719","A5","delta smelt","Gammarus","Hyalella sp.",5.3,"G"
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2133,"SKT",2017-01-11,"719","A3","delta smelt","Gammarus","Hyalella sp.",4.3,NA
+2017,4,"Lower",38.33428,-121.64733,"FLaSH",2162,"SKT",2017-04-05,"719","A37","delta smelt","Corophium","juvenile Corophium",1.4,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Gammarus","juvenile Gammarus",1.7,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",400,"SKT",2012-01-19,"719","4143","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,4,"Lower",38.33428,-121.64733,"FLaSH",686,"SKT",2012-04-04,"719","4938","delta smelt","Prickly sculpin","",6.9,"U"
+2012,3,"Lower",38.33428,-121.64733,"FLaSH",547,"SKT",2012-03-08,"719","4721","delta smelt","Prickly sculpin","",4.8,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",399,"SKT",2012-01-19,"719","4123","delta smelt","Corophium","",1,"G"
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",403,"SKT",2012-01-19,"719","4190","delta smelt","Corophium","",1.2,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",704,"SKT",2012-01-19,"719","4223","delta smelt","Gammarus","juvenile Gammarus",1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Corophium","juvenile Corophium",1.1,"G"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Unid Amphipod","Unid juvenile",3.3,"Y"
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2134,"SKT",2017-01-11,"719","A4","delta smelt","Gammarus","Hyalella sp.",4,NA
+2013,4,"Lower",38.33428,-121.64733,"FLaSH",1155,"SKT",2013-04-04,"719","6476","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2015,3,"Lower",38.33428,-121.64733,"FLaSH",1882,"SKT",2015-03-11,"719","7163","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2014,4,"Lower",38.33428,-121.64733,"FLaSH",1607,"SKT",2014-04-08,"719","588","delta smelt","Corophium","A. spinicorne",2.6,"S"
+2012,2,"Lower",38.33428,-121.64733,"FLaSH",478,"SKT",2012-02-15,"719","4472","delta smelt","Corophium","",1,NA
+2015,3,"Lower",38.33428,-121.64733,"FLaSH",1882,"SKT",2015-03-11,"719","7163","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1582,"SKT",2014-03-12,"719","548","delta smelt","Gammarus","juvenile Gammarus",1.4,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1575,"SKT",2014-03-12,"719","515","delta smelt","Gammarus","juvenile Gammarus",1.5,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1046,"SKT",2013-01-09,"719","6213","delta smelt","Corophium","A. spinicorne",4.4,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1582,"SKT",2014-03-12,"719","548","delta smelt","Gammarus","juvenile Gammarus",1.6,"S"
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",5.8,"S"
+2016,2,"Lower",38.33428,-121.64733,"FLaSH",2174,"SKT",2016-02-10,"719","7275","delta smelt","Corophium","Unid Corophium",1.9,"S"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Corophium","juvenile Corophium",1.2,"G"
+2017,1,"Lower",38.33428,-121.64733,"FLaSH",2135,"SKT",2017-01-11,"719","A5","delta smelt","Gammarus","Hyalella sp.",5.3,NA
+2015,3,"Lower",38.33428,-121.64733,"FLaSH",1882,"SKT",2015-03-11,"719","7163","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,2,"Lower",38.33428,-121.64733,"FLaSH",484,"SKT",2012-02-15,"719","4511","delta smelt","Unid Amphipod","Unid amphipod",1,"S"
+2015,1,"Lower",38.33428,-121.64733,"FLaSH",1831,"SKT",2015-01-14,"719","7096","delta smelt","Corophium","juvenile Corophium",1.5,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",592,"SKT",2012-01-19,"719","4186","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2147,"SKT",2017-02-08,"719","A22","delta smelt","Corophium","A. spinicorne",4,"AL"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1581,"SKT",2014-03-12,"719","547","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2016,3,"Lower",38.33428,-121.64733,"FLaSH",2179,"SKT",2016-03-09,"719","7280","delta smelt","Gammarus","Hyalella sp.",2.6,NA
+2017,2,"Lower",38.33428,-121.64733,"FLaSH",2148,"SKT",2017-02-08,"719","A23","delta smelt","Unid fish","",6.4,"S"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1582,"SKT",2014-03-12,"719","548","delta smelt","Gammarus","juvenile Gammarus",1.6,"S"
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",399,"SKT",2012-01-19,"719","4123","delta smelt","Corophium","",1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2012,4,"Lower",38.33428,-121.64733,"FLaSH",693,"SKT",2012-04-04,"719","4954","delta smelt","Gammarus","Unid Gammarus",2.6,"ED"
+2016,2,"Lower",38.33428,-121.64733,"FLaSH",2174,"SKT",2016-02-10,"719","7275","delta smelt","Corophium","A. spinicorne",2.8,"S"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1580,"SKT",2014-03-12,"719","545","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Gammarus","juvenile Gammarus",1.6,"G"
+2016,2,"Lower",38.33428,-121.64733,"FLaSH",2174,"SKT",2016-02-10,"719","7275","delta smelt","Corophium","juvenile Corophium",1.9,NA
+2013,1,"Lower",38.33428,-121.64733,"FLaSH",1063,"SKT",2013-01-09,"719","6234","delta smelt","Corophium","A. spinicorne",3.1,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",401,"SKT",2012-01-19,"719","4160","delta smelt","Corophium","juvenile Corophium",1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1578,"SKT",2014-03-12,"719","528","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,2,"Lower",38.33428,-121.64733,"FLaSH",602,"SKT",2012-02-15,"719","4490","delta smelt","Corophium","juvenile Corophium",1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1578,"SKT",2014-03-12,"719","528","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2013,2,"Lower",38.33428,-121.64733,"FLaSH",1179,"SKT",2013-02-06,"719","6329","delta smelt","Corophium","A. stimpsoni",3.6,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",704,"SKT",2012-01-19,"719","4223","delta smelt","Gammarus","juvenile Gammarus",1,NA
+2012,2,"Lower",38.33428,-121.64733,"FLaSH",480,"SKT",2012-02-15,"719","4476","delta smelt","Corophium","",0.9,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Corophium","juvenile Corophium",1.1,"G"
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1580,"SKT",2014-03-12,"719","545","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2012,1,"Lower",38.33428,-121.64733,"FLaSH",400,"SKT",2012-01-19,"719","4143","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2014,3,"Lower",38.33428,-121.64733,"FLaSH",1577,"SKT",2014-03-12,"719","526","delta smelt","Gammarus","juvenile Gammarus",1.6,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2075,"STN",2015-07-01,"719","7181","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2074,"STN",2015-07-01,"719","7180","delta smelt","Corophium","juvenile Corophium",1.2,"G"
+2013,8,"Lower",38.33428,-121.64733,"FLaSH",1350,"STN",2013-08-19,"719","294","delta smelt","Unid Mysids","",1.4,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1.5,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2074,"STN",2015-07-01,"719","7180","delta smelt","Corophium","juvenile Corophium",1.2,"G"
+2014,6,"Lower",38.33428,-121.64733,"FLaSH",1651,"STN",2014-06-02,"719","1","delta smelt","Hyperacanthomysis longirostris","",3.3,"ED"
+2014,7,"Lower",38.33428,-121.64733,"FLaSH",1687,"STN",2014-07-14,"719","147","delta smelt","Hyperacanthomysis longirostris","",1.8,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2074,"STN",2015-07-01,"719","7180","delta smelt","Corophium","A. spinicorne",2.4,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2074,"STN",2015-07-01,"719","7180","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2013,7,"Lower",38.33428,-121.64733,"FLaSH",1371,"STN",2013-07-22,"719","201","delta smelt","Hyperacanthomysis longirostris","",1.9,"ED"
+2013,7,"Lower",38.33428,-121.64733,"FLaSH",1343,"STN",2013-07-22,"719","200","delta smelt","Hyperacanthomysis longirostris","",1.5,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2074,"STN",2015-07-01,"719","7180","delta smelt","Corophium","juvenile Corophium",1.2,"G"
+2013,7,"Lower",38.33428,-121.64733,"FLaSH",1341,"STN",2013-07-22,"719","196","delta smelt","Hyperacanthomysis longirostris","",1.5,NA
+2014,6,"Lower",38.33428,-121.64733,"FLaSH",1655,"STN",2014-06-02,"719","6","delta smelt","Unid Mysids","",2.6,"Y"
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1.8,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1.6,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2074,"STN",2015-07-01,"719","7180","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2069,"STN",2015-07-01,"719","7175","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2075,"STN",2015-07-01,"719","7181","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2075,"STN",2015-07-01,"719","7181","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2013,7,"Lower",38.33428,-121.64733,"FLaSH",1344,"STN",2013-07-22,"719","202","delta smelt","Hyperacanthomysis longirostris","",1.5,"S"
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1.1,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1.3,"G"
+2013,7,"Lower",38.33428,-121.64733,"FLaSH",1371,"STN",2013-07-22,"719","201","delta smelt","Hyperacanthomysis longirostris","",1.9,"ED"
+2013,7,"Lower",38.33428,-121.64733,"FLaSH",1371,"STN",2013-07-22,"719","201","delta smelt","Hyperacanthomysis longirostris","",1.9,"ED"
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1.5,NA
+2015,6,"Lower",38.33428,-121.64733,"FLaSH",2065,"STN",2015-06-18,"719","7171","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2074,"STN",2015-07-01,"719","7180","delta smelt","Corophium","juvenile Corophium",1.2,NA
+2013,7,"Lower",38.33428,-121.64733,"FLaSH",1371,"STN",2013-07-22,"719","201","delta smelt","Hyperacanthomysis longirostris","",1.9,"ED"
+2015,7,"Lower",38.33428,-121.64733,"FLaSH",2072,"STN",2015-07-01,"719","7178","delta smelt","Corophium","",1.1,NA
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1376,"STN",2012-06-25,"797","5217","delta smelt","Corophium","juvenile Corophium",1.1,NA
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1419,"STN",2012-06-11,"797","5158","delta smelt","Hyperacanthomysis longirostris","",1.5,NA
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1421,"STN",2012-06-25,"797","5216","delta smelt","Tridentiger spp.","",2.4,NA
+2012,8,"Middle",38.40462,-121.6156,"FLaSH",1399,"STN",2012-08-20,"797","5335","delta smelt","Hyperacanthomysis longirostris","",1.5,NA
+2012,8,"Middle",38.40462,-121.6156,"FLaSH",1387,"STN",2012-08-20,"797","5336","delta smelt","Corophium","juvenile Corophium",1.3,NA
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1423,"STN",2012-06-25,"797","5219","delta smelt","Corophium","A. stimpsoni",2.2,NA
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1423,"STN",2012-06-25,"797","5219","delta smelt","Hyperacanthomysis longirostris","",1.5,"S"
+2012,8,"Middle",38.40462,-121.6156,"FLaSH",1393,"STN",2012-08-20,"797","5339","delta smelt","Unid Mysids","",1.9,"ED"
+2012,8,"Middle",38.40462,-121.6156,"FLaSH",1389,"STN",2012-08-20,"797","5338","delta smelt","Unid Mysids","",1.8,NA
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1419,"STN",2012-06-11,"797","5158","delta smelt","Hyperacanthomysis longirostris","",1.5,NA
+2012,8,"Middle",38.40462,-121.6156,"FLaSH",1399,"STN",2012-08-20,"797","5335","delta smelt","Hyperacanthomysis longirostris","",1.9,"ED"
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1293,"STN",2012-06-11,"797","5163","delta smelt","Hyperacanthomysis longirostris","",1.6,NA
+2012,6,"Middle",38.40462,-121.6156,"FLaSH",1293,"STN",2012-06-11,"797","5163","delta smelt","Corophium","",1.1,NA
+2014,6,"Middle",38.40462,-121.6156,"FLaSH",1659,"STN",2014-06-02,"797","15","delta smelt","Hyperacanthomysis longirostris","",3.1,"Y"
+2012,8,"Middle",38.40462,-121.6156,"FLaSH",1399,"STN",2012-08-20,"797","5335","delta smelt","Unid Mysids","",1.9,"ED"
