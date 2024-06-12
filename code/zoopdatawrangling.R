@@ -483,7 +483,7 @@ write.csv(IBM_biomass, "outputs/IBMR_ave_biomass.csv")
 
 #####################################
 
-diettest = read_csv("code/shipchannel_dietbiomass.csv")
+diettest = read_csv("data/shipchannel_dietbiomass_new.csv")
 
 dietlong = pivot_longer(diettest, cols = c(acartela:mysids), names_to = "IBMR", values_to = "Biomass")
 

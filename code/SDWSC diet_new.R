@@ -274,7 +274,7 @@ l2
 #read in LW conversions. use the conversion file from my newsletter article
 #the mysid lw conversions are funky, so will use Orsi for now until we figure it out. Since these are in dry weights, and the 
 
-lw_conversions = read_xlsx("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/Mesomicromacro Biomass conversions.xlsx", sheet = "Macro-zooplankton") %>% 
+lw_conversions = read_xlsx("Data/Mesomicromacro Biomass conversions.xlsx", sheet = "Macro-zooplankton") %>% 
   #filter(Preservative != "Formalin"& Weight_type != "Dry") %>%  #filtering so its just wet and not formalin---- used this when we were using my conversions and not Orsi's. Now just using mine for amphipods
   filter(MacroCategory == "amphipod" & Preservative == "Ethanol" & Weight_type == "Wet" | Preservative == "Formalin" & Weight_type == "Dry") %>%  #filtering so have orsi for the mysids, which is in dry weight and the others in wet
   rename("PreyConversion" = Taxname) %>% 

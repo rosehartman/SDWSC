@@ -111,6 +111,7 @@ avg_diet = sdwsc_diet_wide %>%
   group_by(Year, Month, Region) %>% 
   summarize(n= length (SampleID))
 
+
 #want to make a plot with sample sizes by region
 
 n1 = ggplot(avg_diet, aes(x = Month, y = n))
@@ -267,7 +268,7 @@ save(diet_mon, file = "data/dietbymonth.RData")
 #make stacked plots of the diet categories by year, month, region
 #eventually want to filter for months wanted but just curious about this now
 library(RColorBrewer)
-mypal = c(brewer.pal(12, "Set3"), "tan", "olivedrab2", "violetred")
+mypal = c(brewer.pal(12, "Set3"), "tan", "olivedrab2", "violetred", "slateblue2")
 db1 = ggplot(diet_mon, aes(x = Year, y = mean_mon))
 db2 = db1+ geom_bar(stat = "identity", aes(fill = IBMR), position = "fill") + 
   facet_wrap(~Region) + 
@@ -301,7 +302,8 @@ ggsave(dbsf2, filename = "sdwscdietbiomass_sumfall.tiff", device = "tiff", width
 
 
 ggplot(sumfall, aes(x = Month, y = mean_mon, fill = IBMR))+ geom_col(position = "fill")+
-  facet_wrap(~Region)
+  facet_wrap(~Region)+ 
+  scale_fill_manual(values = mypal, name = NULL)
 
 ##################################################################################
 #now break out sinocalanus seperately
