@@ -1,0 +1,1027 @@
+---
+title: "SDWSC Smelt Bioenergetics"
+author: "Brock Huntsman"
+date: "2024-06-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Location of Data
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+#setwd("C:/Users/bhuntsman/Documents/SDWSC Bioenergetics")
+library(lubridate)
+library(tidyverse)
+library(ggplot2)
+library(mgcv)
+
+```
+
+# Data from Github
+https://github.com/rosehartman/SDWSC
+
+## Temperature
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+temp <- read.csv("https://raw.githubusercontent.com/rosehartman/SDWSC/main/data/Temperature_Data_2023_Imputed.csv") %>%
+  transform(Date = as.Date(Date)) %>%
+  mutate(Month = month(Date),
+         Day = yday(Date))
+
+ggplot(data = temp) +
+  geom_line(aes(x = Date, y = Temp, colour = as.factor(Depth)),
+            size = 2, alpha = 0.6) +
+  facet_wrap(Station ~ ., ncol = 2) +
+  geom_hline(yintercept = 21.6, size = 1, lty = 2) +
+  geom_hline(yintercept = 23, colour = "red4", size = 1, lty = 2) +
+#  scale_colour_gradient(low = "blue2", high = "red3") +
+  scale_colour_manual(values = c("blue2", "purple2", "orange2", "red2")) +
+  labs(x = "", 
+       y = expression(paste("Daily temperatures ( ",degree,"C)")),
+       colour = "Depth (m)") +
+  theme_bw()
+
+```
+
+
+## Diet and Size
+Accessing consumed prey and prey proportions based on total consumption.
+
+Length-Weight relationship: W (mg) = 0.005 * L^3. Used 25 mm (juvenile) = 0.1g
+
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+lw_fxn <- function(x){
+  wgt <- (0.005 * x^3) / 1000 # make g instead of mg
+  return(wgt)
+}
+
+#################################################
+# Abundance #
+#################################################
+diet_numb <- read.csv("https://raw.githubusercontent.com/rosehartman/SDWSC/main/shipchannel_dietbynumb.csv") %>%
+  mutate(Date = as.Date(Date)) %>%
+  transform(Species = dplyr::recode(Species, "delta smelt" = "Delta smelt")) %>%
+  select(Year:longitude, Region, Date:TotalBodyWeight, 
+         Acanthocyclops.spp:Nippoleucon.hinumensis) %>%
+  gather(., Taxa, Count, Acanthocyclops.spp:Nippoleucon.hinumensis)
+              
+#################################################
+# Biomass #
+#################################################
+diet_mass <- read.csv("https://raw.githubusercontent.com/rosehartman/SDWSC/main/data/shipchannel_dietbiomass_new.csv") %>%
+  mutate(Date = as.Date(Date)) %>%
+  select(Year:Region, Station, Date, Secchi:TotalBodyWeight, acartela:mysids) %>%
+  mutate(Day = yday(Date),
+         TotalMass = rowSums(select(., acartela:mysids))) %>%
+  gather(., Taxa, Mass, acartela:mysids) %>%
+  mutate(Prop = Mass / TotalMass)
+
+# Individual fish diet proportions
+ind_prop <- select(diet_mass, Year:Month, Day, Region:TotalMass, Taxa, Prop) %>%
+  spread(., Taxa, Prop) %>%
+  mutate(Prop = rowSums(select(., acartela:sino))) %>% #check values - should all be 1
+  filter(TotalMass > 0)
+  
+
+#################################################
+# Size #
+#################################################
+dsm_size <- select(diet_mass, Year:Date, ForkLength:TotalBodyWeight) %>%
+  distinct() %>% # remove duplicates created by gathering diet community data
+  mutate(Day = yday(Date)) %>%
+  mutate(Ref_Day = ifelse(Day > 99, Day - 99, Day + 265)) %>%
+  mutate(Age = ifelse(Ref_Day < 200 & ForkLength > 65, "Age 1",
+               ifelse(Ref_Day > 200 & ForkLength > 75, "Age 1", "Age 0")))
+
+# Fit GAM to Predict Length of Age 0 #
+library(mgcv)
+fl_gam <- bam(ForkLength ~ 
+                s(Ref_Day, bs = "cr", k = 5),
+              data = filter(dsm_size, Age == "Age 0"),
+              discrete = T)
+summary(fl_gam)
+
+gam.check(fl_gam)
+abline(0, 1, col = "red")
+
+## Predict Size by Day: Mean and CI's ##
+pred_size <- data.frame(Date = seq(from = as.Date("2011-01-01"), to = as.Date("2011-12-31"),
+                                by = 1)) %>%
+  mutate(Month = month(Date),
+         Day = yday(Date)) %>%
+  mutate(Ref_Day = ifelse(Day > 99, Day - 99, Day + 265)) %>%
+  mutate(FL_avg = predict.gam(fl_gam, ., se = T)$fit,
+        FL_se = predict.gam(fl_gam, ., se = T)$se.fit) %>%
+  mutate(FL_05 = FL_avg - (2 * FL_se),
+         FL_95 = FL_avg + (2 * FL_se))
+
+
+## Plot Raw Size Data ##
+plot2 <- ggplot(data = filter(dsm_size, Age == "Age 0"),
+       aes(x = Ref_Day, y = ForkLength,colour = Region)) +
+  geom_point(data = dsm_size, 
+               aes(x = Ref_Day, y = ForkLength, colour = Region, shape = Age),
+               size = 3, alpha = 0.4) +
+  labs(x = "Reference Day (Day 1 = 4/10/2011)", y = "Fork Length (mm)") +
+  scale_colour_manual(values = c("blue3", "red3", "purple3")) +
+  scale_shape_manual(values = c(16, 1)) +
+  geom_smooth( size = 2, se = F) +
+  theme_bw()
+
+plot3 <- ggplot(data = filter(dsm_size, Age == "Age 0"),
+       aes(x = Ref_Day, y = ForkLength)) +
+  geom_rect(aes(xmin = 1, xmax = 168, ymin = -Inf, ymax = Inf),
+            fill = "gray 90") +
+  geom_point(data = dsm_size, 
+             aes(x = Ref_Day, y = ForkLength, colour = Region, shape = Age),
+             size = 3, alpha = 0.4) +
+  geom_point(data = pred_size, 
+               aes(x = Ref_Day, y = FL_avg),
+               size = 2, alpha = 0.4, colour = "black") +
+  labs(x = "Reference Day (Day 1 = 4/10/2011)", y = "Fork Length (mm)") +
+  scale_colour_manual(values = c("blue3", "red3", "purple3")) +
+  scale_shape_manual(values = c(16, 1)) +
+#  geom_smooth(colour = "black", size = 2, se = F) +
+  theme_bw()
+
+```
+
+
+# DS Bioenergetics Model: Predict Consumption
+This function is producing p-values way too high and it doesn't result in a final weight that matches the growth function below.
+
+Used Cummins, K.W. 1967. Calorific equivalents for studies in ecological energetics.Vol. 52. Pittsburgh PA: University of Pittsburgh, 1967
+```{r, echo = T, message = F, warning = F}
+bio_consume_fxn <- function(DataFile, Weight.Initial, Weight.Final,
+                                   Spawning.Day = 0, Gonad.Loss = 0)
+{
+  #Read in the user defined data:
+  TheData <- DataFile
+  
+  #===============================================================================================================
+  #-----INPUT PHYSIOLOGICAL PARAMETERS-----#
+  #===============================================================================================================
+  #Consumption related parameters (user defined):
+  CA <- 0.096 #Estimate from Smith and Nobriga 2023 (0.090, 0.110): Rose = 0.18
+  CB <- -0.354 #Estimate from Smith and Nobriga 2023 (-0.53, -0.251): Rose = -0.275
+  CQ <- 10 # Rose et al. 2013 
+  CTO <- 20 # Rose et al. 2013 
+  CTM <- 23 #Estimate from Smith and Nobriga 2023 (20.5, 23.6), Rose 23
+  CTL <- 27  # Rose et al. 2013 
+  CK1 <- 0.40 # Rose et al. 2013
+  CK4 <- 0.01 # Rose et al. 2013
+  
+  #Respiration related parameters (user defined):
+  RA <- 0.0027 # Rose et al. 2013 
+  RB <- -0.216 # Rose et al. 2013
+  RQ <- 0.064 #Estimate from Smith and Nobriga 2023 (0.036, 0.080): Rose = 0.036
+  RTO <- 0.0196 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  RTM <- 0 
+  RTL <- 25 
+  RK1 <- 1 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  RK4 <- 0 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  ACT <- 1.0198 # Rice 1983 
+  BACT <- 0 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  SDA <- 0.175 # Rose et al. 2013 
+  OxyConv <- 13562 #J/gram of O2 in respiration conversions (Elliot and Davidson 1975).   
+  
+  #Egestion and excretion parameters (user defined):
+  FA <- 0.16 # Rose et al. 2013
+  FB <- -0.222
+  FG <- 0.631
+  UA <- 0.1 # Rose et al. 2013
+  UB <- 0.58
+  UG <- -0.299
+  
+  #Predator energy densities for EQUATION 1 (user defined):
+  Predator.Energy <- 4814 # Rose et al. 2013 J/g. 
+  
+  # 1 calorie/gram = 4.184 Joules/gram
+  Prey1 <- 3180 # 2590 (acartela) Rose et al. 2013 for all but Limnoithona: J/g
+  Prey2 <- 3180 # (allcopnaup) Rose et al. 2013 for all but Limnoithona
+  Prey3 <- 3180 # (amphipod) Rose et al. 2013 for all but Limnoithona 
+  Prey4 <- 3180 # (daphnia) Rose et al. 2013 for all but Limnoithona
+  Prey5 <- 3180 # (eurytem) Rose et al. 2013 for all but Limnoithona
+  Prey6 <- 2226 # (limno) Rose et al. 2013 for all but Limnoithona = 70% of all other taxa
+  Prey7 <- 3180 # (mysids) Rose et al. 2013 for all but Limnoithona
+  Prey8 <- 3180 # (othcalad) Rose et al. 2013 # Cladocera = 5182 c/g dry weight, 760 c/g wet = 3180 j/g 
+  Prey9 <- 3180 # (othcaljuv) Rose et al. 2013 for all but Limnoithona
+  Prey10 <- 3180 # (othclad) Rose et al. 2013 for all but Limnoithona
+  Prey11 <- 3180 # (othcyc) Rose et al. 2013 for all but Limnoithona
+  Prey12 <- 3180 # (other) Rose et al. 2013 for all but Limnoithona
+  Prey13 <- 3180 # (pdiapfor) Rose et al. 2013 for all but Limnoithona
+  Prey14 <- 3180 # (pdiapjuv) Rose et al. 2013 for all but Limnoithona
+  Prey15 <- 3180 # (sino) Rose et al. 2013 for all but Limnoithona
+  
+  #Consumer inputs (grams):
+  Weight0 <- Weight.Initial #Intial consumer weight. W0 
+  WeightF <- Weight.Final   #Final weight of consumer after simulation period.
+  Gonad.Loss <- Gonad.Loss  #As a proportion of fish body mass.  
+  
+  Gonad.Loss.Day <- Spawning.Day   #Day of simulation that corresponds to spawning and gamete 
+
+  #===============================================================================================================
+  #FUNCTION NUMBER 1: {Bioenergetics}          
+  
+  #Runs bioenergetics model for a single day in a given simulation and spits out
+  #vector of bioenergetics quantities --> Used for fitting the p-value and for
+  #generating consumption once p-value has been fit --> For looping below.
+  #===============================================================================================================
+  #"i" is a row in the input data file, "WO" is the consumer weight, and "P" is an arbitrary
+  #p-value that will eventually be fitted to observed growth using this function.
+  
+  Bioenergetics <- function(i, W0, P){  
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----CONSUMPTION: Cool- and Cold-water Species Function for CONSUMPTION-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    G1 <- (1 / (CTO - CQ)) * log((0.98 * (1 - CK1)) / (CK1 * 0.02))
+    L1 <- exp(G1 * (TheData$Temp[i] - CQ))
+    KA <- (CK1 * L1) / (1 + CK1 * (L1 - 1))
+    G2 <- (1 / (CTL - CTM)) * log((0.98 * (1 - CK4)) / (CK4 * 0.02))
+    L2 <- exp(G2 * (CTL - TheData$Temp[i]))
+    KB <- (CK4 * L2) / (1 + CK4 * (L2 - 1))
+    ft.con <- KA * KB 
+
+    Consumption <- (CA * W0^CB) * P * ft.con #Units --> Specific (g/g/d).
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----EGESTION (solid) and EXCRETION (nitrogenous): Equation 1 Not accounting for Indigestible Prey -----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #Both types of waste loss are simply a constant fraction of consumption: 
+    Egestion <- FA*Consumption 
+    Excretion <- UA*(Consumption-Egestion)
+    #Units --> Specific (g/g/d).
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----RESPIRATION and SDA: Equation 1-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #Exponential with swimming speed--dependent on mass and water temperature below a cuttoff (RTL):
+    ifelse(TheData$Temp[i] > RTL, 
+           VEL <- RK1 * W0^RK4, 
+           VEL <- ACT * (W0^RK4) * exp(BACT * TheData$Temp[i]))
+    ft.metabolism <- exp(RQ * TheData$Temp[i])
+    ACTIVITY <- exp(RTO*VEL)                           
+
+    Respiration <- RA * (W0^RB) * ft.metabolism * ACTIVITY #Units --> Specific (g O2/g/d). 
+    SDAction <- SDA * (Consumption - Egestion) #Units --> Specific (g/g/d) 
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----PREDATOR ENERGY (J/g): Equation 1-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> 
+    Pred.Energy <- Predator.Energy
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----Convert grams to joules and calculate GROWTH for simulation day i-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    Growth <- ((((Consumption) * 
+                   ((Prey1 * TheData$Diet1[i]) + 
+                    (Prey2 * TheData$Diet2[i]) + 
+                    (Prey3 * TheData$Diet3[i]) + 
+                    (Prey4 * TheData$Diet4[i]) + 
+                    (Prey5 * TheData$Diet5[i]) + 
+                    (Prey6 * TheData$Diet6[i]) + 
+                    (Prey7 * TheData$Diet7[i]) + 
+                    (Prey8 * TheData$Diet8[i]) + 
+                    (Prey9 * TheData$Diet9[i]) + 
+                    (Prey10 * TheData$Diet10[i]) +
+                    (Prey11 * TheData$Diet11[i]) +
+                    (Prey12 * TheData$Diet12[i]) +
+                    (Prey13 * TheData$Diet13[i]) +
+                    (Prey14 * TheData$Diet14[i]) +
+                    (Prey15 * TheData$Diet15[i]))) - 
+        ((Egestion + Excretion + SDAction) * 
+           ((Prey1 * TheData$Diet1[i]) + 
+            (Prey2 * TheData$Diet2[i]) + 
+            (Prey3 * TheData$Diet3[i]) + 
+            (Prey4 * TheData$Diet4[i]) + 
+            (Prey5 * TheData$Diet5[i]) + 
+            (Prey6 * TheData$Diet6[i]) + 
+            (Prey7 * TheData$Diet7[i]) + 
+            (Prey8 * TheData$Diet8[i]) + 
+            (Prey9 * TheData$Diet9[i]) + 
+            (Prey10 * TheData$Diet10[i]) +
+            (Prey11 * TheData$Diet11[i]) +
+            (Prey12 * TheData$Diet12[i]) +
+            (Prey13 * TheData$Diet13[i]) +
+            (Prey14 * TheData$Diet14[i]) +
+            (Prey15 * TheData$Diet15[i])) + 
+           (Respiration * OxyConv))) / Pred.Energy) * W0    #In terms of daily weight gain (g/day).
+    #Divide this value by W0 to get back to a specific rate (g/g/d).
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----Update GROWTH if spawning occurred and return vector of bioenergetics quantities-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    Consumption.Specific <- Consumption #Units --> g/g/d
+    Consumption.total <- Consumption.Specific * W0 #Units --> g/d
+    
+    #If spawning occurred: need to update total growth on spawning day:
+    if (i == Gonad.Loss.Day & Gonad.Loss > 0) {
+      Growth <- Growth - (Gonad.Loss * (Growth + W0))
+      } 
+    else { 
+      Growth <- Growth
+      } #Units --> g       
+    
+    Growth.Specific <- Growth / W0 #Units --> g/g/d
+    
+    #Weight of fish at end of simulation day:
+    Weight.End <- Growth + W0 #Units --> g   
+    
+    #Egestion, Excretion, Respiration, and SDA are in specific terms.
+    
+    #Return a vector of all bionergetics quantities from the days simulation: 
+    return(c(Growth, Growth.Specific, Weight.End, Consumption.total,
+             Consumption.Specific, Egestion, Excretion, Respiration, SDAction))
+  }
+  
+  #===============================================================================================================
+  #FUNCTION NUMBER 2: {FIT.PVALUE}
+  
+  #Primary function that computes the deviation between observed and estimated growth based on some defined P-value. 
+  #This function will be optimized below (i.e., P-value that makes function output equal zero).        
+  #===============================================================================================================
+
+  FIT.PVALUE <- function(P) {                
+    P1 <- P[1]
+    
+    #Matrix of zeros to fill with bioenergetics quantities once looping is initiated.
+    Results <- matrix(0, ncol = 9, nrow = (length(TheData$SimDay))) 
+    
+    #Need a starting point to intitiate looping --> compute bioenergetics quantities for simulation day 1: 
+    Results[1, ] <- Bioenergetics(1, Weight0, P1)
+    
+    #Loop through data for every day of simulation period defined by length of input .txt file.
+    #Growth accruing from previous days are continuously added to the consumers weight throughout 
+    #the simulation period.
+    for (i in 2:length(TheData$SimDay)) {
+      Results[i, ] <- Bioenergetics(i, Results[i - 1, 3], P1)
+    }
+    
+    #How much did the fish grow over the course of the simulation period? 
+    G.total <- sum(Results[, 1])
+    
+    #Total observed growth:
+    Total.Growth <- WeightF - Weight0
+    
+    #Return the deviation between observed and predicted growth.  The following accounts for all 
+    #possible growth responses (i.e., posotive, negative, static).  This quantity will be minimized
+    #once the optimization routine below is called.
+    return(abs(G.total - Total.Growth))
+  }
+  
+  #===============================================================================================================
+  #FUNCTION NUMBER 3: {GET.CONSUMPTION}
+
+  #Repeat simulations, extract total consumption, and split consumption into individual diet components using best
+  #fit P-value (P1):
+  #===============================================================================================================
+  
+  GET.CONSUMPTION <- function(P1) {  
+    
+    #Matrix of zeros to fill with bioenergetics quantities once looping is initiated.
+    Results <- matrix(0, ncol = 9, nrow = (length(TheData$SimDay)))
+    
+    #Need a starting point to intitiate looping --> compute bioenergetics quantities for simulation day 1: 
+    Results[1, ] <- Bioenergetics(1, Weight0, P1)
+    
+    #Loop through data for every day of simulation period defined by length of input .txt file.
+    #Growth accruing from previous days are continuously added to the consumers weight throughout 
+    #the simulation period.
+    for (i in 2:length(TheData$SimDay)) {
+      Results[i, ] <- Bioenergetics(i, Results[i - 1, 3], P1) 
+    }
+    
+    #===============================================================================================================
+    #-----BUILD TABLE OF KEY RESULTS FOR USER-----#
+    #===============================================================================================================
+    #How many days were in the simulation period? 
+    Day <- data.frame(seq(1, length(TheData$SimDay), by = 1)) #Units --> days
+    
+    #How much prey did the fish consume in total on every day of simulation(summed across diet items)? 
+    Daily.Total.Con <- Results[, 4] #Units --> g/day
+    
+    #Partition total daily consumption into different diet items based on diet proportions specified 
+    #by the user: 
+    Daily.Total.Con.Diet1 <- Daily.Total.Con*TheData$Diet1 #Units --> g/day
+    Daily.Total.Con.Diet2 <- Daily.Total.Con*TheData$Diet2 #Units --> g/day
+    Daily.Total.Con.Diet3 <- Daily.Total.Con*TheData$Diet3 #Units --> g/day
+    Daily.Total.Con.Diet4 <- Daily.Total.Con*TheData$Diet4 #Units --> g/day
+    Daily.Total.Con.Diet5 <- Daily.Total.Con*TheData$Diet5 #Units --> g/day
+    Daily.Total.Con.Diet6 <- Daily.Total.Con*TheData$Diet6 #Units --> g/day
+    Daily.Total.Con.Diet7 <- Daily.Total.Con*TheData$Diet7 #Units --> g/day
+    Daily.Total.Con.Diet8 <- Daily.Total.Con*TheData$Diet8 #Units --> g/day
+    Daily.Total.Con.Diet9 <- Daily.Total.Con*TheData$Diet9 #Units --> g/day
+    Daily.Total.Con.Diet10 <- Daily.Total.Con*TheData$Diet10 #Units --> g/day
+    Daily.Total.Con.Diet11 <- Daily.Total.Con*TheData$Diet11 #Units --> g/day
+    Daily.Total.Con.Diet12 <- Daily.Total.Con*TheData$Diet12 #Units --> g/day
+    Daily.Total.Con.Diet13 <- Daily.Total.Con*TheData$Diet13 #Units --> g/day
+    Daily.Total.Con.Diet14 <- Daily.Total.Con*TheData$Diet14 #Units --> g/day
+    Daily.Total.Con.Diet15 <- Daily.Total.Con*TheData$Diet15 #Units --> g/day
+    
+    #Combine consumption of all diet items into a new data frame: 
+    All.Diet <- data.frame(cbind(Daily.Total.Con.Diet1,
+                                  Daily.Total.Con.Diet2, 
+                                  Daily.Total.Con.Diet3, 
+                                  Daily.Total.Con.Diet4, 
+                                  Daily.Total.Con.Diet5, 
+                                  Daily.Total.Con.Diet6, 
+                                  Daily.Total.Con.Diet7, 
+                                  Daily.Total.Con.Diet8, 
+                                  Daily.Total.Con.Diet9, 
+                                  Daily.Total.Con.Diet10,
+                                  Daily.Total.Con.Diet11,
+                                  Daily.Total.Con.Diet12,
+                                  Daily.Total.Con.Diet13,
+                                  Daily.Total.Con.Diet14,
+                                  Daily.Total.Con.Diet15)) 
+    
+    #How much did the fish weigh at the end of each simulation day?
+    Daily.Weight <- Results[, 3] #Units --> g
+    
+    #How much did the fish grow on every day of the simulation? 
+    Daily.Weight.Gain <- Results[, 1] #Units --> g/day
+    
+    #Combine all these lists of quantities together into a streamlined output table to return to the user: 
+    Output <- cbind(Day, 
+                    All.Diet,     
+                    Daily.Total.Con,
+                    Daily.Weight.Gain,
+                    Daily.Weight)
+    
+    #Give each column of the output table a meaningful name: 
+    colnames(Output) <- c("Sim.Day",
+                          "D1.Con(g/d)",
+                          "D2.Con(g/d)",
+                          "D3.Con(g/d)",
+                          "D4.Con(g/d)",
+                          "D5.Con(g/d)",
+                          "D6.Con(g/d)",
+                          "D7.Con(g/d)",
+                          "D8.Con(g/d)",
+                          "D9.Con(g/d)",
+                          "D10.Con(g/d)",
+                          "D11.Con(g/d)",
+                          "D12.Con(g/d)",
+                          "D13.Con(g/d)",
+                          "D14.Con(g/d)",
+                          "D15.Con(g/d)",
+                          "Total.Con",
+                          "W.Gain(g/d)",
+                          "Daily.Weight(g)")                      
+    return(Output)   
+  }
+
+  #Fit the p-value.  An upper limit of 2.0 is set for the P-value. 
+  Pvalue.Opt <- optimize(f = FIT.PVALUE, lower = 0, upper = 2, tol = 0.0000001) 
+  
+  #Extract the fitted p-value: 
+  Best.Pvalue <- data.frame(Pvalue.Opt[1])
+  
+  #What is the quantity of the function FIT.PVALUE that corresponds  
+  #with the optimal P-value? 
+  Objective <- data.frame(Pvalue.Opt[2])
+  
+  #Use the best P-value and model consumption: 
+  Results.Final <- GET.CONSUMPTION(Best.Pvalue[1, 1]) 
+  
+  #Return the final results to the user: 
+  #return (Results.Final)
+  results <- data.frame(MeanConsume_gPday = mean(Results.Final$Total.Con),# mean consumption
+                        TotalConsume_g = sum(Results.Final$Total.Con),# total consumption
+                        Pvalue = Best.Pvalue[1, 1], # p-value
+                        FinalWeight_g = Results.Final$`Daily.Weight(g)`[nrow(Results.Final)],
+                        TotalConsumePrey1_gPday = sum(Results.Final$`D1.Con(g/d)`),
+                        TotalConsumePrey2_gPday = sum(Results.Final$`D2.Con(g/d)`),
+                        TotalConsumePrey3_gPday = sum(Results.Final$`D3.Con(g/d)`),
+                        TotalConsumePrey4_gPday = sum(Results.Final$`D4.Con(g/d)`),
+                        TotalConsumePrey5_gPday = sum(Results.Final$`D5.Con(g/d)`),
+                        TotalConsumePrey6_gPday = sum(Results.Final$`D6.Con(g/d)`),
+                        TotalConsumePrey7_gPday = sum(Results.Final$`D7.Con(g/d)`),
+                        TotalConsumePrey8_gPday = sum(Results.Final$`D8.Con(g/d)`),
+                        TotalConsumePrey9_gPday = sum(Results.Final$`D9.Con(g/d)`),
+                        TotalConsumePrey10_gPday = sum(Results.Final$`D10.Con(g/d)`),
+                        TotalConsumePrey11_gPday = sum(Results.Final$`D11.Con(g/d)`),
+                        TotalConsumePrey12_gPday = sum(Results.Final$`D12.Con(g/d)`),
+                        TotalConsumePrey13_gPday = sum(Results.Final$`D13.Con(g/d)`),
+                        TotalConsumePrey14_gPday = sum(Results.Final$`D14.Con(g/d)`),
+                        TotalConsumePrey15_gPday = sum(Results.Final$`D15.Con(g/d)`))
+  return(results)
+}
+
+
+#save(bio_results, file = "~/Delta Climate Models/bio_results_full.csv")
+
+```
+
+# DS Bioenergetics Model: Predict Growth
+```{r, echo = T, message = F, warning = F}
+bio_grow_fxn <- function(DataFile, Weight.Initial, P,
+                         Spawning.Day = 0, Gonad.Loss = 0)
+{
+  #Read in the user defined data:
+  TheData <- DataFile
+  
+  #===============================================================================================================
+  #-----INPUT PHYSIOLOGICAL PARAMETERS-----#
+  #===============================================================================================================
+  #Consumption related parameters (user defined):
+  CA <- 0.096 #Estimate from Smith and Nobriga 2023 (0.090, 0.110)
+  CB <- -0.354 #Estimate from Smith and Nobriga 2023 (-0.53, -0.251) 
+  CQ <- 10 # Rose et al. 2013 
+  CTO <- 20 # Rose et al. 2013 
+  CTM <- 23 #Estimate from Smith and Nobriga 2023 (20.5, 23.6), Rose = 23
+  CTL <- 27  # Rose et al. 2013 
+  CK1 <- 0.40 # Rose et al. 2013
+  CK4 <- 0.01 # Rose et al. 2013
+  
+  #Respiration related parameters (user defined):
+  RA <- 0.0027 # Rose et al. 2013 
+  RB <- -0.216 # Rose et al. 2013
+  RQ <- 0.064 #Estimate from Smith and Nobriga 2023 (0.036, 0.080)
+  RTO <- 0.0196 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  RTM <- 0 
+  RTL <- 25 
+  RK1 <- 1 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  RK4 <- 0 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  ACT <- 1.0198 # Rice 1983 
+  BACT <- 0 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  SDA <- 0.175 # Rose et al. 2013 
+  OxyConv <- 13562 #J/gram of O2 in respiration conversions (Elliot and Davidson 1975).   
+  
+  #Egestion and excretion parameters (user defined):
+  FA <- 0.16 # Rose et al. 2013
+  FB <- -0.222
+  FG <- 0.631
+  UA <- 0.1 # Rose et al. 2013
+  UB <- 0.58
+  UG <- -0.299
+  
+  #Predator energy densities for EQUATION 1 (user defined):
+  Predator.Energy <- 4814 # Rose et al. 2013 J/g. reported energy density of 4.42kJ/g  # 1020.59 cal/g (4270.149 J/g) from Irwin et al. 2003
+  
+  # 1 calorie/gram = 4.184 Joules/gram
+  Prey1 <- 3180 # 2590 (acartela) Rose et al. 2013 for all but Limnoithona: J/g
+  Prey2 <- 3180 # (allcopnaup) Rose et al. 2013 for all but Limnoithona
+  Prey3 <- 3180 # (amphipod) Rose et al. 2013 for all but Limnoithona 
+  Prey4 <- 3180 # (daphnia) Rose et al. 2013 for all but Limnoithona
+  Prey5 <- 3180 # (eurytem) Rose et al. 2013 for all but Limnoithona
+  Prey6 <- 2226 # (limno) Rose et al. 2013 for all but Limnoithona = 70% of all other taxa
+  Prey7 <- 3180 # (mysids) Rose et al. 2013 for all but Limnoithona
+  Prey8 <- 3180 # (othcalad) Rose et al. 2013 # Cladocera = 5182 c/g dry weight, 760 c/g wet = 3180 j/g 
+  Prey9 <- 3180 # (othcaljuv) Rose et al. 2013 for all but Limnoithona
+  Prey10 <- 3180 # (othclad) Rose et al. 2013 for all but Limnoithona
+  Prey11 <- 3180 # (othcyc) Rose et al. 2013 for all but Limnoithona
+  Prey12 <- 3180 # (other) Rose et al. 2013 for all but Limnoithona
+  Prey13 <- 3180 # (pdiapfor) Rose et al. 2013 for all but Limnoithona
+  Prey14 <- 3180 # (pdiapjuv) Rose et al. 2013 for all but Limnoithona
+  Prey15 <- 3180 # (sino) Rose et al. 2013 for all but Limnoithona
+  
+  #Consumer inputs (grams):
+  Weight0 <- W0 <- Weight.Initial #Intial consumer weight.
+  Gonad.Loss <- Gonad.Loss  #As a proportion of fish body mass.  
+  
+  Gonad.Loss.Day <- Spawning.Day   #Day of simulation that corresponds to spawning and gamete 
+
+  #===============================================================================================================
+  #FUNCTION NUMBER 1: {Bioenergetics}          
+  
+  #Runs bioenergetics model for a single day in a given simulation and spits out
+  #vector of bioenergetics quantities --> Used for fitting the p-value and for
+  #generating consumption once p-value has been fit --> For looping below.
+  #===============================================================================================================
+  #"i" is a row in the input data file, "WO" is the consumer weight, and "P" is an arbitrary
+  #p-value that will eventually be fitted to observed growth using this function.
+  
+  Bioenergetics <- function(i, W0, P){  
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----CONSUMPTION: Cool and Cold-water Species Function for CONSUMPTION-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    G1 <- (1 / (CTO - CQ)) * log((0.98 * (1 - CK1)) / (CK1 * 0.02))
+    L1 <- exp(G1 * (TheData$Temp[i] - CQ))
+    KA <- (CK1 * L1) / (1 + CK1 * (L1 - 1))
+    G2 <- (1 / (CTL - CTM)) * log((0.98 * (1 - CK4)) / (CK4 * 0.02))
+    L2 <- exp(G2 * (CTL - TheData$Temp[i]))
+    KB <- (CK4 * L2) / (1 + CK4 * (L2 - 1))
+    ft.con <- KA * KB 
+
+    Consumption <- (CA * W0^CB) * P * ft.con #Units --> Specific (g/g/d).
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----EGESTION (solid) and EXCRETION (nitrogenous): Equation 1 Not accounting for Indigestible Prey -----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #Both types of waste loss are simply a constant fraction of consumption: 
+    Egestion <- FA*Consumption 
+    Excretion <- UA*(Consumption-Egestion)
+    #Units --> Specific (g/g/d).
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----RESPIRATION and SDA: Equation 1-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #Exponential with swimming speed--dependent on mass and water temperature below a cuttoff (RTL):
+    ifelse(TheData$Temp[i] > RTL, 
+           VEL <- RK1 * W0^RK4, 
+           VEL <- ACT * (W0^RK4) * exp(BACT * TheData$Temp[i]))
+    ft.metabolism <- exp(RQ * TheData$Temp[i])
+    ACTIVITY <- exp(RTO*VEL)                           
+
+    Respiration <- RA * (W0^RB) * ft.metabolism * ACTIVITY #Units --> Specific (g O2/g/d). 
+    SDAction <- SDA * (Consumption - Egestion) #Units --> Specific (g/g/d) 
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----PREDATOR ENERGY (J/g): Equation 1-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> 
+    Pred.Energy <- Predator.Energy
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----Convert grams to joules and calculate GROWTH for simulation day i-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    Growth <- ((((Consumption) * 
+                   ((Prey1 * TheData$Diet1[i]) + 
+                    (Prey2 * TheData$Diet2[i]) + 
+                    (Prey3 * TheData$Diet3[i]) + 
+                    (Prey4 * TheData$Diet4[i]) + 
+                    (Prey5 * TheData$Diet5[i]) + 
+                    (Prey6 * TheData$Diet6[i]) + 
+                    (Prey7 * TheData$Diet7[i]) + 
+                    (Prey8 * TheData$Diet8[i]) + 
+                    (Prey9 * TheData$Diet9[i]) + 
+                    (Prey10 * TheData$Diet10[i]) +
+                    (Prey11 * TheData$Diet11[i]) +
+                    (Prey12 * TheData$Diet12[i]) +
+                    (Prey13 * TheData$Diet13[i]) +
+                    (Prey14 * TheData$Diet14[i]) +
+                    (Prey15 * TheData$Diet15[i]))) - 
+        ((Egestion + Excretion + SDAction) * 
+           ((Prey1 * TheData$Diet1[i]) + 
+            (Prey2 * TheData$Diet2[i]) + 
+            (Prey3 * TheData$Diet3[i]) + 
+            (Prey4 * TheData$Diet4[i]) + 
+            (Prey5 * TheData$Diet5[i]) + 
+            (Prey6 * TheData$Diet6[i]) + 
+            (Prey7 * TheData$Diet7[i]) + 
+            (Prey8 * TheData$Diet8[i]) + 
+            (Prey9 * TheData$Diet9[i]) + 
+            (Prey10 * TheData$Diet10[i]) +
+            (Prey11 * TheData$Diet11[i]) +
+            (Prey12 * TheData$Diet12[i]) +
+            (Prey13 * TheData$Diet13[i]) +
+            (Prey14 * TheData$Diet14[i]) +
+            (Prey15 * TheData$Diet15[i])) + 
+           (Respiration * OxyConv))) / Pred.Energy) * W0    #In terms of daily weight gain (g/day).
+    #Divide this value by W0 to get back to a specific rate (g/g/d).
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----Update GROWTH if spawning occurred and return vector of bioenergetics quantities-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    Consumption.Specific <- Consumption #Units --> g/g/d
+    Consumption.total <- Consumption.Specific * W0 #Units --> g/d
+    
+    #If spawning occurred: need to update total growth on spawning day:
+    if (i == Gonad.Loss.Day & Gonad.Loss > 0) {
+      Growth <- Growth - (Gonad.Loss * (Growth + W0))
+      } 
+    else { 
+      Growth <- Growth
+      } #Units --> g       
+    
+    Growth.Specific <- Growth / W0 #Units --> g/g/d
+    
+    #Weight of fish at end of simulation day:
+    Weight.End <- Growth + W0 #Units --> g   
+    
+    #Egestion, Excretion, Respiration, and SDA are in specific terms.
+    
+    #Return a vector of all bionergetics quantities from the days simulation: 
+    return(c(Growth, Growth.Specific, Weight.End, Consumption.total,
+             Consumption.Specific, Egestion, Excretion, Respiration, SDAction))
+  }
+  
+  FIT.PVALUE <- function(P){
+    P1 <- P
+    Results <- matrix(0, ncol = 9, nrow = length(TheData$SimDay))
+    
+    Results[1, ] <- Bioenergetics(1, Weight0, P1)
+    
+    for (i in 2:nrow(Results)){
+      Results[i, ] <- Bioenergetics(i, Results[i - 1, 3], P1)
+    } #i
+    
+    Results_final <- data.frame(FinalWGT_g = Results[length(TheData$SimDay), 3],
+                                Growth_g = Results[length(TheData$SimDay), 3] - W0,
+                                GrowthRate_gd = (Results[length(TheData$SimDay), 3] - W0) / 
+                                                  max(TheData$SimDay),
+                                SpecificGrowth_ggd = ((Results[length(TheData$SimDay), 3] - W0) /
+                                                       W0) / max(TheData$SimDay))
+      
+    return(Results_final)
+  }
+  results <- FIT.PVALUE(P)
+  return(results)
+}
+
+#save(bio_results, file = "~/Delta Climate Models/bio_results_full.csv")
+
+```
+
+
+## Check Result to Make sure Consumption Function and Growth Functions Produce the Same Results
+```{r, echo = T, message = F, warning = F}
+# function to fill days of diets whee NA's are present
+diet_fxn <- function(x, # diet matrix
+                     month #vector of months
+                     ){
+  # Day Reference #
+  day_ref <- data.frame(Date = seq(from = as.Date("2011-01-01"), 
+                                   to = as.Date("2011-12-31"), by = 1)) %>%
+    mutate(Month = month(Date),
+           Day = yday(Date)) %>%
+    filter(Month %in% month) %>%
+    select(Month, Day)
+
+  # Diet Data Frame #
+  df <- filter(x, Month %in% month) %>%
+    group_by(Day) %>%
+    slice_sample(n = 1) %>%
+    ungroup() %>%
+    select(Day, acartela:sino) %>%
+    merge(., day_ref, all.y = T)
+  
+  # ID missing rows and rows with data #
+  na_ref <- which(is.na(df$allcopnaup))
+  nona_ref <- setdiff(1:nrow(df), na_ref)
+  nona_ref <- sample(nona_ref, 1)
+  rnd_ref <- df[nona_ref, ]
+
+  # Fill in missing rows with a random sample #
+  df[na_ref, 2:ncol(df)] <- rnd_ref[2:ncol(df)]
+  
+  return(df)
+}
+
+month_test <- 5 
+
+temp_test <- filter(temp, # sept only has 24 days in the temp data frame
+                    Month %in% month_test,
+                    Station == "CM74",
+                    Depth == 5)
+
+diet_test <- diet_fxn(ind_prop,
+                      month_test)
+
+
+dat_test <- data.frame(SimDay = 1:nrow(temp_test),
+                     Temp = temp_test$Temp,
+                     Diet1 = diet_test[, 2], 
+                     Diet2 = diet_test[, 3], 
+                     Diet3 = diet_test[, 4], 
+                     Diet4 = diet_test[, 5], 
+                     Diet5 = diet_test[, 6], 
+                     Diet6 = diet_test[, 7], 
+                     Diet7 = diet_test[, 8],
+                     Diet8 = diet_test[, 9],
+                     Diet9 = diet_test[, 10],
+                     Diet10 = diet_test[, 11],
+                     Diet11 = diet_test[, 12],
+                     Diet12 = diet_test[, 13],
+                     Diet13 = diet_test[, 14],
+                     Diet14 = diet_test[, 15],
+                     Diet15 = diet_test[, 16])
+
+consume_test <- bio_consume_fxn(dat_test, 0.7, 
+                             0.8, 0, 0)
+
+grow_test <- bio_grow_fxn(dat_test, 0.7, 
+                             consume_test$Pvalue, 0, 0)
+
+cbind.data.frame(Test = c("Grow Model", "Consume Model"),
+      FinalWGT = c(consume_test$FinalWeight_g, grow_test$FinalWGT_g))
+
+rm(list = c("grow_test", "consume_test", 
+            "month_test", "temp_test",
+            "diet_test", "dat_test"))
+  
+```
+
+
+# Pass Scenarios Through Bioenergetics
+## Original Test estimating consumption for predicting growth with random selection around modeled size distributions. Done for each month, Region/Station, and Depth.
+```{r, echo = T, message = F, warning = F, eval = F}
+niter <- 10
+month_ref <- 1:12
+st_ref <- unique(temp$Station)
+dep_ref <- unique(temp$Depth)
+
+result_dsm <- data.frame()
+
+for (iter in 1:niter){
+for (mon in 1:length(month_ref)){
+  for (sta in 1:length(st_ref)){
+    for (dep in 1:length(dep_ref)){
+      # Temperature Data #
+      temp_df <- filter(temp, 
+                  Station == st_ref[sta],
+                  Depth == dep_ref[dep],
+                  Month %in% month_ref[mon])
+      
+      # Diet Data #
+      diet_df <- diet_fxn(ind_prop,
+                          month_ref[mon])
+      
+      # Size Data #
+      wgt_val <- filter(pred_size, 
+                        Day %in% c(min(temp_df$Day), max(temp_df$Day)))
+
+      size_df <- data.frame(Start = rnorm(1, wgt_val[1, 5], wgt_val[1, 6]),
+                            End = rnorm(1, wgt_val[2, 5], wgt_val[2, 6])) %>%
+        mutate(StartWGT = lw_fxn(Start),
+               EndWGT = lw_fxn(End))
+      
+      tryCatch({
+      
+      if(nrow(temp_df) == 0){
+        result <- NULL
+      } else {
+        
+        # Create Bioenergetics Dataframes #
+        bio_df <- data.frame(SimDay = 1:nrow(temp_df),
+                     Temp = temp_df$Temp,
+                     Diet1 = diet_df[, 2], 
+                     Diet2 = diet_df[, 3], 
+                     Diet3 = diet_df[, 4], 
+                     Diet4 = diet_df[, 5], 
+                     Diet5 = diet_df[, 6], 
+                     Diet6 = diet_df[, 7], 
+                     Diet7 = diet_df[, 8],
+                     Diet8 = diet_df[, 9],
+                     Diet9 = diet_df[, 10],
+                     Diet10 = diet_df[, 11],
+                     Diet11 = diet_df[, 12],
+                     Diet12 = diet_df[, 13],
+                     Diet13 = diet_df[, 14],
+                     Diet14 = diet_df[, 15],
+                     Diet15 = diet_df[, 16])
+        
+        result <- data.frame(iter, st_ref[sta], dep_ref[dep], month_ref[mon],
+                             size_df[1, 'StartWGT'], 
+                             bio_consume_fxn(bio_df, size_df[1, 'StartWGT'], 
+                                       size_df[1, 'EndWGT'], 0, 0))
+        } #else
+        
+        result_dsm <- bind_rows(result_dsm, result)
+      }, #trycatch
+      error = function(fail){
+        save(fail, file = paste(iter, st_ref[sta], dep_ref[dep], month_ref[mon],
+                                 "Fail.txt", sep = "_"))
+      }
+      ) #end of trycatch
+    } #dep
+  } #sta
+} #mon
+} #iter
+
+
+```
+
+
+## Scenarios: No Depth and size scenarios
+**(A)** Consumption by mean size across days
+**(B)** Consumption by min size across days
+**(C)** Consumption by max size across days
+**(D)** Consumption by max start and mean end across days
+**(E)** Consumption by mean start and min end across days
+**(F)** Consumption by max start and min end across days
+```{r, echo = T, message = F, warning = F}
+niter <- 2
+month_ref <- 1:12
+st_ref <- unique(temp$Station)
+
+result_scenario1 <- result_scenario2 <- result_scenario3 <- 
+  result_scenario4 <- result_scenario5 <- result_scenario6 <- data.frame()
+
+for (iter in 1:niter){
+for (mon in 1:length(month_ref)){
+  for (sta in 1:length(st_ref)){
+      # Temperature Data #
+      temp_df <- filter(temp, 
+                  Station == st_ref[sta],
+              #    Depth == dep_ref[dep],
+                  Month %in% month_ref[mon]) %>%
+        group_by(Station, Date, Day, Month) %>%
+        summarize(Temp = mean(Temp)) %>%
+        ungroup()
+      
+      # Diet Data #
+      diet_df <- diet_fxn(ind_prop,
+                          month_ref[mon])
+      
+      # Size Data #
+      wgt_val <- filter(pred_size, 
+                        Day %in% c(min(temp_df$Day), max(temp_df$Day)))
+
+      size_df <- data.frame(Start_avg = wgt_val$FL_avg[1],# rnorm(1, wgt_val[1, 5], wgt_val[1, 6]),
+                            Start_max = wgt_val$FL_95[1],
+                            Start_min = wgt_val$FL_05[1],
+                            End_avg = wgt_val$FL_avg[2], #rnorm(1, wgt_val[2, 5], wgt_val[2, 6])
+                            End_min = wgt_val$FL_05[2],
+                            End_max = wgt_val$FL_95[2]) %>%
+        mutate(Start_avg = lw_fxn(Start_avg),
+               Start_min = lw_fxn(Start_min),
+               Start_max = lw_fxn(Start_max),
+               End_avg = lw_fxn(End_avg),
+               End_min = lw_fxn(End_min),
+               End_max = lw_fxn(End_max))
+      
+      tryCatch({
+      
+      if(nrow(temp_df) == 0){
+        result <- NULL
+      } else {
+        
+        # Create Bioenergetics Dataframes #
+        bio_df <- data.frame(SimDay = 1:nrow(temp_df),
+                     Temp = temp_df$Temp,
+                     Diet1 = diet_df[, 2], 
+                     Diet2 = diet_df[, 3], 
+                     Diet3 = diet_df[, 4], 
+                     Diet4 = diet_df[, 5], 
+                     Diet5 = diet_df[, 6], 
+                     Diet6 = diet_df[, 7], 
+                     Diet7 = diet_df[, 8],
+                     Diet8 = diet_df[, 9],
+                     Diet9 = diet_df[, 10],
+                     Diet10 = diet_df[, 11],
+                     Diet11 = diet_df[, 12],
+                     Diet12 = diet_df[, 13],
+                     Diet13 = diet_df[, 14],
+                     Diet14 = diet_df[, 15],
+                     Diet15 = diet_df[, 16])
+        
+        result1 <- data.frame(iter, "Avg - Avg", st_ref[sta], month_ref[mon],
+                             size_df[1, 'Start_avg'], size_df[1, 'End_avg'],
+                             bio_cold_consume_fxn(bio_df, size_df[1, 'Start_avg'], 
+                                       size_df[1, 'End_avg'], 0, 0))
+        result2 <- data.frame(iter, "Avg - Min", st_ref[sta], month_ref[mon],
+                             size_df[1, 'Start_avg'], size_df[1, 'End_min'],
+                             bio_cold_consume_fxn(bio_df, size_df[1, 'Start_avg'], 
+                                       size_df[1, 'End_min'], 0, 0))
+        result3 <- data.frame(iter, "Max - Max", st_ref[sta], month_ref[mon],
+                             size_df[1, 'Start_max'], size_df[1, 'End_max'],
+                             bio_cold_consume_fxn(bio_df, size_df[1, 'Start_max'], 
+                                       size_df[1, 'End_max'], 0, 0))
+        result4 <- data.frame(iter, "Max - Avg", st_ref[sta], month_ref[mon],
+                             size_df[1, 'Start_max'], size_df[1, 'End_avg'],
+                             bio_cold_consume_fxn(bio_df, size_df[1, 'Start_max'], 
+                                       size_df[1, 'End_avg'], 0, 0))
+        result5 <- data.frame(iter, "Max - Min", st_ref[sta], month_ref[mon],
+                             size_df[1, 'Start_max'], size_df[1, 'End_min'],
+                             bio_cold_consume_fxn(bio_df, size_df[1, 'Start_max'], 
+                                       size_df[1, 'End_min'], 0, 0))
+        result6 <- data.frame(iter, "Min - Min", st_ref[sta], month_ref[mon],
+                             size_df[1, 'Start_min'], size_df[1, 'End_min'],
+                             bio_cold_consume_fxn(bio_df, size_df[1, 'Start_min'], 
+                                       size_df[1, 'End_min'], 0, 0))
+                } #else
+        
+        result_scenario1 <- bind_rows(result_scenario1, result1)
+        result_scenario2 <- bind_rows(result_scenario2, result2)
+        result_scenario3 <- bind_rows(result_scenario3, result3)
+        result_scenario4 <- bind_rows(result_scenario4, result4)
+        result_scenario5 <- bind_rows(result_scenario5, result5)
+        result_scenario6 <- bind_rows(result_scenario6, result6)
+        
+      }, #trycatch
+      error = function(fail){
+        save(fail, file = paste(iter, st_ref[sta], month_ref[mon],
+                                 "Fail.txt", sep = "_"))
+      }
+      ) #end of trycatch
+  } #sta
+} #mon
+} #iter
+
+colnames(result_scenario1) <- c("Iter", "Scenario", "Station", "Month", "Start", "End", 
+    colnames(result_scenario2)[7:ncol(result_scenario2)])
+
+colnames(result_scenario2) <- colnames(result_scenario1)
+colnames(result_scenario3) <- colnames(result_scenario1)
+colnames(result_scenario4) <- colnames(result_scenario1)
+colnames(result_scenario5) <- colnames(result_scenario1)
+colnames(result_scenario6) <- colnames(result_scenario1)
+
+  
+result_scenario <- rbind.data.frame(result_scenario1, result_scenario2, result_scenario3,
+                                    result_scenario4, result_scenario5, result_scenario6)
+
+ggplot(data = filter(result_scenario, Month != 4)) +
+  geom_line(aes(x = Month, y = Pvalue, colour = Scenario),
+            alpha = 0.7, size = 1) +
+  theme_bw()
+
+```
+
+
+
+
+
+

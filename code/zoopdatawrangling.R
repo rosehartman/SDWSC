@@ -80,8 +80,16 @@ zoopI2wzeros2 = zoopI2 %>%
               names_from = IBMR2, values_from = BPUE, values_fill = 0) %>%
   pivot_longer(cols = c(allcopnaup:last_col()), names_to = "IBMR", values_to = "BPUE")
 
-zoopIave2 = group_by(zoopI2wzeros2, Region, TowType, Month, Year, MonthYear, IBMR) %>%
-  summarize(BPUE = mean(BPUE))
+zoopI2wzeros2.1 = zoopI2 %>%
+  pivot_wider(id_cols = c(SampleID, TowType, Date, Latitude, Longitude, Source, Station, DOY, Month, Year, MonthYear, Region),
+              names_from = IBMR2, values_from = CPUE, values_fill = 0) %>%
+  pivot_longer(cols = c(allcopnaup:last_col()), names_to = "IBMR", values_to = "CPUE")
+
+zoopI2zerosall = left_join(zoopI2wzeros2, zoopI2wzeros2.1)
+
+zoopIave2 = left_join(zoopI2wzeros2, zoopI2wzeros2.1) %>%
+  group_by(Region, TowType, Month, Year, MonthYear, IBMR) %>%
+  summarize(BPUE = mean(BPUE), CPUE = mean(CPUE))
 
 
 #Average BPUE by tow type, and region
@@ -128,14 +136,12 @@ mysidlenghts = read_excel("data/MysidAmphipodLengths.xlsx")
 myslookup =  read_excel("data/MysidAmphipodSpeciesLookUp.xlsx")
 
 #@@@ Come back to this
-lw_conversions = read_xlsx("Data/Mesomicromacro Biomass conversions.xlsx", 
-                           sheet = "Macro-zooplankton") %>% 
-  #filter(Preservative != "Formalin"& Weight_type != "Dry") %>%  #filtering so its just wet and not fhttp://127.0.0.1:29981/graphics/plot_zoom_png?width=987&height=713ormalin---- used this when we were using my conversions and not Orsi's. Now just using mine for amphipods
-  filter(MacroCategory == "amphipod" & Preservative == "Ethanol" & Weight_type == "Wet" | 
-           Preservative == "Formalin" & Weight_type == "Dry") %>%  #filtering so have orsi for the mysids, which is in dry weight and the others in wet
+
+lw_conversions = read_xlsx("Data/Mesomicromacro Biomass conversions.xlsx", sheet = "Macro-zooplankton") %>% 
+  #filter(Preservative != "Formalin"& Weight_type != "Dry") %>%  #filtering so its just wet and not formalin---- used this when we were using my conversions and not Orsi's. Now just using mine for amphipods
+  filter(MacroCategory == "amphipod" & Preservative == "Ethanol" & Weight_type == "Wet" | Preservative == "Formalin" & Weight_type == "Dry") %>%  #filtering so have orsi for the mysids, which is in dry weight and the others in wet
   rename("PreyConversion" = Taxname) %>% 
   select(PreyConversion, MacroCategory, Preservative, Weight_type, a_grams, a_mg, b)
-
 
 conversions = read_excel("data/ZoopSynth_biomass_CEBupdated.xlsx", sheet = "Macro-zooplankton")
 
@@ -162,10 +168,6 @@ ggplot(con, aes(x = Length, y = bpue, linetype = Weight_type, color = Source)) +
   facet_wrap(Preservative~Taxname)
 
 #############################################################
-conversions = filter(conversions, Preservative == "Formalin") %>%
-  filter(!(Taxname == "Hyperacanthomysis longirostris" & Weight_type == "Wet")) %>%
-  select(Taxname, a2, b, Weight_type)
-
 #add species names, summarize by sample and size, calculate frequency of occurance
 
 mysids = left_join(mysidlenghts, myslookup) %>%
@@ -200,11 +202,11 @@ mysidstot = FMWTmys %>%
 
 
 mysids2 = mysidstot %>%
-  left_join(conversions)
+  left_join(lw_conversions, by = c("Taxname" = "PreyConversion"))
 
 
 
-#assume dry weight is 10% wet weight
+#assume dry weight is 25% wet weight
 #assume carbon weight is 0.4 times dry weight
 #then covert to micro-grams to match the mesozoo[s]
 
@@ -216,13 +218,13 @@ FMWTvols = filter(fmwtmys, Station %in% fmwtsats$Station) %>%
 
 Mysidsbc = mysids2 %>%
   left_join(FMWTvols) %>%
-  mutate(BPUE = (a2*(Size^b))*CPUE2) %>%
+  mutate(BPUE = (a_grams*(Size^b))*CPUE2) %>%
   #filter(Preservative == "Formalin", Weight_type == "Dry") %>%
   mutate(BPUEdryC = case_when(Weight_type == "Wet" ~ BPUE* .25*.4,
                               Weight_type == "Dry"~ BPUE*.4,
                               TRUE ~ BPUE),
-         #multiply by 1000 to convert 
-         bpue = BPUEdryC*1000) %>%
+         #multiply by 1000000 to convert from g to ug
+         bpue = BPUEdryC*1000000) %>%
   select(-BPUE, -BPUEdryC)
 
 Mysidsbc2 = mutate(Mysidsbc, Month = month(Date),
@@ -243,6 +245,8 @@ Mysidsbc2 = mutate(Mysidsbc, Month = month(Date),
 Mysidstot = group_by(Mysidsbc2, Month, Date, Station,MacroCode) %>%
   summarize(CPUE = sum(CPUE2), bpue = sum(bpue, na.rm =T)) %>%
   mutate(Year = year(Date))
+
+ggplot(Mysidstot, aes(x = CPUE, y = bpue, color = MacroCode))+ geom_point()
 
 mysidstot0 = pivot_wider(Mysidstot, names_from = MacroCode, values_from = bpue, values_fill = 0) %>%
   pivot_longer(cols = c(mysid, amphipod), names_to = "IBMR", values_to = "bpue")
@@ -332,14 +336,14 @@ mysidstotd = DOPmys2 %>%
   ungroup() %>%
   left_join(DOPtots) %>%
   mutate(FO = count/total_count, CPUE2 = FO*CPUE)%>%
-  left_join(conversions) %>%
-  mutate(BPUE = (a2*(Length^b))*CPUE2) %>%
+  left_join(lw_conversions, by = c("Taxname"= "PreyConversion")) %>%
+  mutate(BPUE = (a_grams*(Length^b))*CPUE2) %>%
   #filter(Preservative == "Formalin", Weight_type == "Dry") %>%
   mutate(BPUEdryC = case_when(Weight_type == "Wet" ~ BPUE* .25*.4,
                               Weight_type == "Dry"~ BPUE*.4,
                               TRUE ~ BPUE),
-         #multiply by 1000 to convert 
-         bpue = BPUEdryC*1000) %>%
+         #multiply by 1000000 to convert from g to ug
+         bpue = BPUEdryC*1000000) %>%
   select(-BPUE, -BPUEdryC) %>%
   mutate(Month = month(tow_date),
          include = case_when(Month ==6 & Length <=4 ~ "Yes",
@@ -392,7 +396,7 @@ mysidsall = bind_rows(mutate(Mysidstots, Source = "FMWT"), DOPmysalld)
 
 mysidsmonth = bind_rows(Mysidstots, DOPmysalld) %>%
   group_by( Month, Year, Region, IBMR) %>%
-  summarize(bpue = mean(bpue), cpue = mean(CPUE, na.rm =T)) %>%
+  summarize(bpue = mean(bpue, na.rm =T), cpue = mean(CPUE, na.rm =T)) %>%
   mutate(Biomass_C = bpue/cpue)
 
 save(mysidsmonth, file = "data/mysidsmonth.Rdata")
@@ -403,69 +407,71 @@ save(mysidsmonth, file = "data/mysidsmonth.Rdata")
 ####################################################################################
 
 load("data/mysidsmonth.Rdata")
-load("data/dietbymonth.RData")
+load("data/dietmonth.RData")
 
 
 ##############################################################################
 #if we're lining things up with diet studies, get rid of tow type
 
-zoopIave3 = group_by(zoopI2wzeros2, Region,  Month, Year, MonthYear, IBMR) %>%
-  summarize(BPUE = mean(BPUE))
+zoopIave3 = group_by(zoopI2zerosall, Region,  Month, Year, MonthYear, IBMR) %>%
+  summarize(BPUE = mean(BPUE, na.rm = T), CPUE = mean(CPUE, na.rm = T))
 #oh, they don't seperate sinocal juv, i shouldn't do that with the diets either.
 
 
-totIBMR = rename(mysidsmonth, BPUE = bpue) %>%
+totIBMR = rename(mysidsmonth, BPUE = bpue, CPUE = cpue) %>%
   bind_rows( zoopIave3) %>%
-  dplyr::select(-MonthYear) %>%
-  rename(ZooplanktonBPUE = BPUE)
+  dplyr::select(-MonthYear)
 
 table(totIBMR$IBMR, totIBMR$Year)
 
 table(totIBMR$IBMR, totIBMR$Month)
 
 
+ggplot(totIBMR, aes(x = CPUE, y = BPUE, color = IBMR))+geom_point()+
+  geom_point(data = filter(totIBMR, IBMR == "mysid"), size =5)+
+  coord_cartesian(ylim = c(0,1000), xlim = c(0,1000))+
+  facet_wrap(~IBMR, scales = "free_y")
 
 
-#bind diet and zooplankton data together
-IBMRdietzoops = left_join(totIBMR, diet_mon) %>%
-  rename(DietBiomass = mean_mon)
+ggplot(totIBMR, aes(x = Month, y = BPUE, color = IBMR))+geom_point()+
+  geom_point(data = filter(totIBMR, IBMR == "mysid"), size =5)+
+  facet_wrap(~IBMR, scales = "free_y")
 
-write.csv(IBMRdietzoops, "outputs/IBMRdietmatrix.csv", row.names = FALSE)
 
-IBMR2 = pivot_longer(IBMRdietzoops, cols = c(ZooplanktonBPUE, DietBiomass), 
-                     names_to = "Metric", values_to = "Biomass")
+ggplot(totIBMR, aes(x = Month, y = CPUE, color = IBMR))+geom_point()+
+  geom_point(data = filter(totIBMR, IBMR == "mysid"), size =5)+
+  facet_wrap(~IBMR, scales = "free_y")
 
-mypal = c(brewer.pal(8, "Set2"), brewer.pal(8, "Dark2"))
 
-ggplot(filter(IBMR2, Month %in% c(6:10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
+#now bind diet and zoops together
+allbugs = bind_rows(mutate(rename(dietmonth, BPUE = bpue), Metric = "Diet"),
+                    mutate(totIBMR, Metric = "Zoops")) %>%
+  mutate(IBMR = case_when(IBMR == "mysids" ~ "mysid",
+                          TRUE ~ IBMR))
+
+
+mypal = c(brewer.pal(8, "Set2"), brewer.pal(8, "Dark2"), "pink")
+
+ggplot(filter(allbugs, Month %in% c(6:10)), aes(x = Metric, y = BPUE, fill = IBMR))+ geom_col(position = "fill")+
   facet_grid(Region~Year)+
  scale_fill_manual(values = mypal, name = NULL)
 
-ggplot(filter(IBMR2, Month %in% c(6:10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col()+
-  facet_grid(Region~Year)+
-  scale_fill_manual(values = mypal, name = NULL)
 
-
-ggplot(filter(IBMR2, Month %in% c(6:10)), aes(x = Metric, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
-  facet_wrap(~Region)+
-  scale_fill_manual(values = mypal, name = NULL)
-
-ggplot(IBMR2, aes(x = Month, y = Biomass, fill = IBMR))+ geom_col(position = "fill")+
-  facet_grid(Metric~Region)+
-  scale_fill_manual(values = mypal)+
-  theme_bw()
-
-ggplot(IBMR2, aes(x = Month, y = Biomass, fill = IBMR))+ geom_col()+
-  facet_grid(.~Region)+
-  scale_fill_manual(values = mypal)+
-  theme_bw()
 
 #zooplankton data in wide format for will
 
-zoops_ibmr_wide = pivot_wider(IBMRdietzoops, id_cols = c(Month, Year, Region),
-                              values_from = ZooplanktonBPUE, names_from = IBMR)
+zoops_ibmr_wide = pivot_wider(totIBMR, id_cols = c(Month, Year, Region),
+                              values_from = BPUE, names_from = IBMR)
 
-write.csv(zoops_ibmr_wide, "outputs/IBMRzoopswide.csv", row.names = FALSE)
+write.csv(zoops_ibmr_wide, "outputs/IBMRzoopswide_June12.csv", row.names = FALSE)
+
+zoops_ibmr_catch = pivot_wider(totIBMR, id_cols = c(Month, Year, Region),
+                               values_from = BPUE, names_from = IBMR)
+
+
+write.csv(zoops_ibmr_catch, "outputs/IBMRzoopsCPUE_June12.csv", row.names = FALSE)
+
+
 
 ggplot(IBMR2, aes(x = Month, y = Biomass, color = IBMR)) + geom_point()
 
