@@ -102,7 +102,7 @@ ggplot(zoopIwzeros, aes(x =Region, y = BPUE, fill = IBMR))+
 ggplot(zoopIwzeros, aes(x =Region, y = BPUE, fill = IBMR))+
   facet_grid(Source~Month)+ geom_point()+ theme(axis.text.x = element_text(angle = 90))
 
-
+save(zoopIave2, zoopIwzeros, zoopI2wzeros2, file = "data/zoopdataIBMR.RData")
 #OK, now mysids
 #####################################################################################
 
@@ -457,6 +457,23 @@ ggplot(filter(allbugs, Month %in% c(6:10)), aes(x = Metric, y = BPUE, fill = IBM
  scale_fill_manual(values = mypal, name = NULL)
 
 
+ggplot(filter(allbugs, Month %in% c(6:10)), aes(x = Metric, y = BPUE, fill = IBMR))+ geom_col(position = "fill")+
+  facet_grid(Region~Month)+
+  scale_fill_manual(values = mypal, name = NULL)
+
+
+ggplot(filter(allbugs, Metric == "Zoops" ), aes(x = Month, y = BPUE, fill = IBMR))+ geom_col()+
+  facet_grid(Region~.)+
+  scale_fill_manual(values = mypal, name = NULL)
+
+ggplot(dietmonth, aes(x = Month, y = bpue, fill = IBMR))+ geom_col()+
+  facet_wrap(~Region, scales = "free_x", nrow =3)+
+  scale_fill_manual(values = mypal, name = NULL)
+
+
+ggplot(filter(allbugs, Metric == "Diet" ), aes(x = Month, y = BPUE, fill = IBMR))+ geom_col()+
+  facet_grid(Region~.)+
+  scale_fill_manual(values = mypal, name = NULL)
 
 #zooplankton data in wide format for will
 
@@ -464,6 +481,7 @@ zoops_ibmr_wide = pivot_wider(totIBMR, id_cols = c(Month, Year, Region),
                               values_from = BPUE, names_from = IBMR)
 
 write.csv(zoops_ibmr_wide, "outputs/IBMRzoopswide_June12.csv", row.names = FALSE)
+
 
 zoops_ibmr_catch = pivot_wider(totIBMR, id_cols = c(Month, Year, Region),
                                values_from = BPUE, names_from = IBMR)
@@ -486,6 +504,8 @@ mys_ibmr_convsersions = group_by(Mysidstots, Month, Year,  IBMR) %>%
 IBM_biomass = bind_rows(zoops_ibmr_conversion, mys_ibmr_convsersions)
 
 write.csv(IBM_biomass, "outputs/IBMR_ave_biomass.csv")
+
+ggplot(IBM_biomass, aes(x = ))
 
 #####################################
 

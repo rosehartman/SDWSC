@@ -158,6 +158,7 @@ sdwscdiet = st_as_sf(allwithstations, coords = c("longitude", "latitude"),
 
 write.csv(sdwscdiet, "Outputs/shipchannel_dietbynumb.csv", row.names = FALSE)
 
+#sdwscdiet = read_csv("Outputs/shipchannel_dietbynumb.csv")
 #want to look at sample sizes to see how things are distributed
 
 sdwsc_n = sdwscdiet %>% 
@@ -330,7 +331,7 @@ Diet_count = pivot_wider(totmeso_ibmr, id_cols = c(Year, Month, Region, LogNumbe
                          names_from = IBMR, values_from = totcount)
 
 write.csv(Diet_count, "outputs/Diet_count.csv")
-
+#Diet_count = read_csv("outputs/Diet_count.csv")
 ###Macro Biomass-------
 
 #find biomass for the macrozoop
@@ -401,7 +402,7 @@ alldups = allbiomass %>%
 
 
 write.csv(allbiomass, "shipchannel_dietbiomass_new.csv", row.names = FALSE)
-
+#read_csv("shipchannel_dietbiomass_new.csv")
 biomasslong = pivot_longer(allbiomass, cols = c(acartela:mysids), 
                            names_to= "IBMR", values_to = "mass")
 
