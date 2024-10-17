@@ -128,7 +128,7 @@ ggplot(zoopIave, aes(x =Region, y = BPUE, fill = IBMR))+
 #region and depth
 
 #i'm taking out the vertical and oblique tows just so I can make this figure, i need to fiture out what to do with them later.
-regave = filter(zoopIave, Month %in% c(6:11), TowType %in% c("Bottom", "Surface")) %>%
+regave = filter(zoopIave2, Month %in% c(6:11), TowType %in% c("Bottom", "Surface")) %>%
   group_by(Region, TowType, IBMR) %>%
   summarize(BPUE = mean(BPUE)) %>%
   mutate(TowType = factor(TowType, levels = c("Surface", "Bottom")))
@@ -141,9 +141,14 @@ ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col(position = "fil
 ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col()+
   facet_wrap(~TowType, ncol =1)
 
+ggplot(regave, aes(x = TowType, y = BPUE, fill = IBMR))+ geom_col()+
+  facet_wrap(~Region, ncol =1, scales = "free_y")
+
 ggplot(regave, aes(x = IBMR, y = log(BPUE+1), fill = Region))+ geom_col(position = "dodge")+
   facet_wrap(~TowType, ncol =1)
 
+#export just surface/bottom for brock. 
+write.csv(regave, "outputs/zoopTopBottom.csv")
 ##############################################################################
 #if we're lining things up with diet studies, get rid of tow type
 
