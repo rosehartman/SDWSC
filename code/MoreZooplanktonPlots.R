@@ -142,13 +142,16 @@ ggplot(regave, aes(x = Region, y = BPUE, fill = IBMR))+ geom_col()+
   facet_wrap(~TowType, ncol =1)
 
 ggplot(regave, aes(x = TowType, y = BPUE, fill = IBMR))+ geom_col()+
-  facet_wrap(~Region, ncol =1, scales = "free_y")
+  facet_wrap(~Region, ncol =1, scales = "free_y")+
+  scale_fill_manual(values = mypal)
 
 ggplot(regave, aes(x = IBMR, y = log(BPUE+1), fill = Region))+ geom_col(position = "dodge")+
   facet_wrap(~TowType, ncol =1)
 
 #export just surface/bottom for brock. 
 write.csv(regave, "outputs/zoopTopBottom.csv")
+zoopTopBottom = regave
+save(zoopTopBottom, file = "outputs/zoopTopBottom.RData")
 ##############################################################################
 #if we're lining things up with diet studies, get rid of tow type
 
