@@ -152,6 +152,60 @@ ggplot(regave, aes(x = IBMR, y = log(BPUE+1), fill = Region))+ geom_col(position
 write.csv(regave, "outputs/zoopTopBottom.csv")
 zoopTopBottom = regave
 save(zoopTopBottom, file = "outputs/zoopTopBottom.RData")
+
+############################################################################
+#We want to look at differneces over tiem, but also by tow type. WE may 
+#have to look at average surface/bottom differences and apply them to oblique toes
+regaveyear = filter(zoopIave2, Month %in% c(6:11), TowType %in% c("Bottom", "Surface"))
+
+#export just surface/bottom for brock. 
+write.csv(regaveyear, "outputs/zoopTopBottom_byyear.csv")
+zoopTopBottom_byyear = regave
+save(zoopTopBottom, file = "outputs/zoopTopBottom_byyear.RData")
+
+#OK, now what's the average percent of critters in surface versus bottom?
+
+adjfact = pivot_wider(regaveyear, names_from = TowType, values_from = BPUE) %>%
+  mutate(Adj = Surface/mean(Bottom,Surface), Adjb = Bottom/mean(Bottom,Surface))
+
+
+facts = filter(adjfact, !is.nan(Adj), !is.infinite(Adj)) %>%
+  group_by( IBMR, Month) %>%
+  summarize(Adj = mean(Adj, na.rm = T), Adjb = mean(Adjb, na.rm = T))
+
+#so, for an oblique tow, we can say that the density is about the mean of surface + bottom
+#that means that Surface would be Obl*(Adj) and bottom would be Obl*(Adjb)
+
+zoopTB_early = filter(zoopIave2, Month %in% c(6:11), TowType %in% c("Oblique")) %>%
+  ungroup() %>%
+  left_join(facts) %>%
+  mutate(Surface = BPUE*Adj, Bottom = BPUE*Adjb) %>%
+  rename(Oblique = BPUE) %>%
+  select(Region, Month, Year, IBMR, Surface, Bottom, Oblique)
+
+zoop_expanded = pivot_longer(zoopTB_early, cols = c(Surface, Bottom, Oblique), names_to = "TowType",
+                             values_to = "BPUE")
+
+ggplot(zoop_expanded, aes(x = Year, y = BPUE, fill = IBMR))+
+  geom_col()+
+  facet_grid(Month~TowType)
+
+ggplot(zoop_expanded, aes(x = Year, y = BPUE, fill = IBMR))+
+  geom_col()+
+  facet_grid(Region~TowType)
+
+zoop_expanded_real = filter(zoopIave2, Month %in% c(6:11), TowType != "Vertical")
+ggplot(zoop_expanded_real, aes(x = Year, y = BPUE, fill = IBMR))+
+  geom_col()+
+  facet_grid(Month~TowType)
+
+zoop_expanded_real = filter(zoopIave2, Month %in% c(6:11), TowType != "Vertical")
+ggplot(zoop_expanded_real, aes(x = Year, y = BPUE, fill = IBMR))+
+  geom_col()+
+  facet_grid(Region~TowType)
+
+save(zoop_expanded, file = "Data/zoop_expanded.RData")
+
 ##############################################################################
 #if we're lining things up with diet studies, get rid of tow type
 
@@ -252,3 +306,30 @@ mys_ibmr_convsersions = group_by(Mysidstots, Month, Year,  IBMR) %>%
 IBM_biomass = bind_rows(zoops_ibmr_conversion, mys_ibmr_convsersions)
 
 write.csv(IBM_biomass, "outputs/IBMR_ave_biomass.csv")
+
+##################################################################
+#quickly look at all data from teh main IEP surveys over tiem
+
+library(zooper)
+library(sf)
+library(deltamapr)
+
+regzoops = Zoopsynther(Data_type = "Community", Years = 2005:2024, Size_class = "Meso")
+regzoopsX = filter(regzoops, month(Date) %in% c(6:10)) %>%
+  filter(!is.na(Longitude)) %>%
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326) %>%
+  st_transform(crs = st_crs(R_EDSM_Subregions_1617P1)) %>%
+  st_join(R_EDSM_Subregions_1617P1) %>%
+  st_join(R_EDSM_Regions_1617P1) %>%
+  st_drop_geometry()
+
+zoopsum = group_by(regzoopsX, SubRegion, Region, Year, Taxlifestage, Order, Class) %>%
+  summarize(CPUE = mean(CPUE))
+
+ggplot(zoopsum, aes(x = Year, y = CPUE, fill = Class)) +
+  geom_col()+
+  facet_wrap(~SubRegion)
+ggplot()+
+  geom_sf(data = WW_Delta)+
+  geom_sf(data = filter(R_EDSM_Subregions_1617P1, SubRegion == "Disappointment Slough"),
+          fill = "red", alpha = 0.5)
