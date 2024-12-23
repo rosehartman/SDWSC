@@ -25,7 +25,7 @@ library(lubridate)
 #########DOP Data-------
 
 
-dop = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/DOP Qry_Diet By Number Matrix All Prey.csv", check.names = FALSE) %>% #adding in the check names argument is needed for when reading a csv so it doesn't remove the spaces in the prey columns
+dop = read.csv("Data/DOP Qry_Diet By Number Matrix All Prey.csv", check.names = FALSE) %>% #adding in the check names argument is needed for when reading a csv so it doesn't remove the spaces in the prey columns
   mutate(Date2 = mdy_hm(Date)) %>% #need to convert to date, but also has the time in there which is why use _hm
   mutate(Date = date(Date2), 
          Database = "DOP", 
@@ -36,7 +36,7 @@ dop = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/DOP Qry_Diet By 
 
 #for some reason the late 2021 and early 2022 enviro data aren't talking to each other in the database and don't pop up in the queries. Copying the enviro data from the database and hoping to merge it to the diet by number file
 
-dop_enviro = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/DOP Qry_Enviro for SDWSC.csv", check.names = FALSE) %>% 
+dop_enviro = read.csv("Data/DOP Qry_Enviro for SDWSC.csv", check.names = FALSE) %>% 
   select(-c(SpecialStudyID, SerialNumber)) %>% 
   mutate(Date2 = mdy_hms(Date)) %>% #need to convert to date, but also has the time in there which is why use _hm
   mutate(Date = date(Date2)) %>% 
@@ -75,7 +75,7 @@ dups = dop3 %>%
 
 #have flash data that has been formatted to post from 2011 to 2020. Taking this file since i know it has the correct GES samples which pops up as duplicates when run it again.... something weird with the tow
 
-flash2020 = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/FLaSH 2011 to 2020 Delta Smelt Diet by Number to Post.csv", check.names = FALSE) %>% 
+flash2020 = read.csv("Data/FLaSH 2011 to 2020 Delta Smelt Diet by Number to Post.csv", check.names = FALSE) %>% 
   mutate(Station = as.character(Station)) %>% 
   mutate(Date2= mdy(Date)) %>% #this doesn't have the time, so just mdy
   mutate(Date = Date2) %>% 
@@ -83,7 +83,7 @@ flash2020 = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/FLaSH 2011
 
 #flash queries don't put out empties for some reason so need to add them
 
-flashempty = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/FLaSH Qry_Empties to Post with Enviro.csv", check.names = FALSE) %>% 
+flashempty = read.csv("Data/FLaSH Qry_Empties to Post with Enviro.csv", check.names = FALSE) %>% 
   select(-Time) %>% 
   mutate(SerialNumber = as.character(SerialNumber)) %>% 
   mutate(Date2= mdy(Date)) %>% 
@@ -96,7 +96,7 @@ flash2 = bind_rows(flash2020, flashempty)
 
 #add the recent data after 2020. Only fish in 2022 were caught
 
-flash2022 = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/Flash 2021 to 2022 Qry_Diet by Number All Prey to Post with Enviro.csv", check.names = FALSE) %>% 
+flash2022 = read.csv("Data/Flash 2021 to 2022 Qry_Diet by Number All Prey to Post with Enviro.csv", check.names = FALSE) %>% 
   select(-Time) %>% 
   mutate(Station = as.character(Station)) %>% 
   mutate(Date2= mdy_hm(Date)) %>% 
@@ -119,10 +119,10 @@ all = bind_rows(flash_all, dop3) %>%
 
 #need to add in the coordinates to be able to add region
 
-stations2020 = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/Delta Smelt Diet Station Lookup.csv") %>% 
+stations2020 = read.csv("Data/Delta Smelt Diet Station Lookup.csv") %>% 
   rename(Project = project, Station = station)
 
-stations2022 = read_xlsx("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/DOP Stations 2021 to 2023.xlsx")
+stations2022 = read_xlsx("Data/DOP Stations 2021 to 2023.xlsx")
 
 stations = full_join(stations2020, stations2022) %>% 
   select(-region)
@@ -145,7 +145,8 @@ sdwscregions = filter(R_EDSM_Subregions_19P3, SubRegion %in% c("Upper Sacramento
 
 #filtering out so only have a diet by number data frame with ship channel critters
 
-sdwscdiet = st_as_sf(allwithstations, coords = c("longitude", "latitude"), crs = 4326, remove = FALSE) %>%
+sdwscdiet = st_as_sf(allwithstations, coords = c("longitude", "latitude"), 
+                     crs = 4326, remove = FALSE) %>%
   st_transform(crs = st_crs(sdwscregions)) %>%
   st_join(sdwscregions) %>%
   st_drop_geometry() %>%
@@ -157,6 +158,7 @@ sdwscdiet = st_as_sf(allwithstations, coords = c("longitude", "latitude"), crs =
 
 write.csv(sdwscdiet, "Outputs/shipchannel_dietbynumb.csv", row.names = FALSE)
 
+#sdwscdiet = read_csv("Outputs/shipchannel_dietbynumb.csv")
 #want to look at sample sizes to see how things are distributed
 
 sdwsc_n = sdwscdiet %>% 
@@ -186,7 +188,7 @@ n2
 #need to add in the basic ibmr macro category and which prey conversion equation I'll use for the length conversions.
 #could do this in r with if statements but want to save time and just did it with the csv from access
 
-dop_lengths = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/DOP SDWSC Qry_Prey Lengths.csv", check.names = FALSE) %>%
+dop_lengths = read.csv("Data/DOP SDWSC Qry_Prey Lengths.csv", check.names = FALSE) %>%
   mutate(Database = "DOP",   #adding a database column
          Date2 = mdy_hm(Date),  #need to do the same thing with the dates like i did the diet by number files
          Date = date(Date2)) %>%  #now move it to just the date, no time 
@@ -195,7 +197,7 @@ dop_lengths = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/DOP SDWS
 
 #using flash prepared files to 2020 again since GES gives duplicates
 
-f2020_lengths = read.csv("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/FLaSH Delta Smelt 2011-2020 Prey Lengths to Post.csv", check.names = FALSE) %>% 
+f2020_lengths = read.csv("Data/FLaSH Delta Smelt 2011-2020 Prey Lengths to Post.csv", check.names = FALSE) %>% 
   rename(LogNumber = FLaSHLogNumber) %>% 
   mutate(Database = "FLaSH", 
          Station = as.character(Station), 
@@ -282,9 +284,11 @@ lw_conversions = read_xlsx("Data/Mesomicromacro Biomass conversions.xlsx", sheet
 
 lw = left_join(sdwsc_lengths, lw_conversions, by= c("PreyConversion", "MacroCategory")) %>% 
   filter(MacroCategory != "fish" & MacroCategory != "isopods") %>%  #only keeping mysids and amphipods
-  mutate(Weight = (a_grams*(PreyLength^b)*100000)) %>% #find weight and then convert to ug
+  mutate("L^b" = (PreyLength^b)) %>% 
+  mutate(Weight_g = (a_grams*`L^b`)) %>% 
+  mutate(Weight_ug = (Weight_g*1000000)) %>% #find weight and then convert to ug
   rename(IBMR = MacroCategory) %>% 
-  select(-c(Species, PreyConversion, PreyLengthSpecies, Estimate:b))
+  select(-c(Species, PreyConversion, PreyLengthSpecies, Estimate, Preservative, a_grams:b))
 
 
 #Biomass-------------
@@ -294,7 +298,7 @@ lw = left_join(sdwsc_lengths, lw_conversions, by= c("PreyConversion", "MacroCate
 
 ###Meso Biomass--------
 
-bm_conversions = read_xlsx("~/Data/SDWSC Synthesis/SDWSC Zoop/Analysis/Data/Diet and IBMR Conversions.xlsx") %>% 
+bm_conversions = read_xlsx("Data/Diet and IBMR Conversions.xlsx") %>% 
   mutate("DietCategory" = PostCategory) %>% 
   select(-PostCategory)
 
@@ -319,24 +323,31 @@ sdwscdietbm = left_join(sdwscdiet_long, bm_conversions, by = "DietCategory" ) %>
 
 totmeso_ibmr = sdwscdietbm %>% 
   group_by(across(Year:GutContents), IBMR) %>% #across helps grab a list of columns instead of having to name them all out, need the paratheses inbetween because the IBMR is separate
-  summarize(totbm = sum(DietBiomass))
+  summarize(totbm = sum(DietBiomass), totcount = sum(DietbyNumber))
 
-  
+Diet_count = pivot_wider(totmeso_ibmr, id_cols = c(Year, Month, Region, LogNumber,
+                                                   Project, SerialNumber, SurfaceTemperature, SurfaceConductivity,
+                                                   SurfacePPT, Secchi, Turbidity, ForkLength, TotalBodyWeight),
+                         names_from = IBMR, values_from = totcount)
+
+write.csv(Diet_count, "outputs/Diet_count.csv")
+#Diet_count = read_csv("outputs/Diet_count.csv")
 ###Macro Biomass-------
 
 #find biomass for the macrozoop
 #dry weight = 10% of wet weight
-#carbon weight .4 times wet weight
+#carbon weight 40% dry weight
 #so multiply by .04 to go from wet weight to biomass
+
+#not clear what's going on but with these conversions the mysids end up being less biomass than the copepods. Deciding to use a dry weight = 25% wet weight makes it much better. Will use for now
 
 #need to calc the mysids and amphipods separately since the mysids are in dry weight and amphipods in wet weight. 
 #do in 2 separate steps so I make sure I don't mess it up. 
 #first convert amphipods to dry weight
 
 macrobm = lw %>% 
-  mutate(DryWeight= (case_when(IBMR == "amphipod" ~ Weight*0.1, IBMR == "mysids" ~ Weight))) %>% 
-  mutate(DietBiomass = (DryWeight*0.4)) %>% 
-  select(-c(latitude, longitude, PreyType, PreyLength, Weight, DryWeight))
+  mutate(DietBiomass= (case_when(Weight_type == "Wet" ~ Weight_ug*.25*.4, Weight_type == "Dry" ~ Weight_ug*.4))) %>% 
+  select(-c(latitude, longitude, PreyType, PreyLength))
 
 #want to get the sum of the biomass for each fish. Need to make sure I put zeros in here too
 
@@ -348,7 +359,7 @@ macsum_wide = macsum %>%
   pivot_wider(id_cols = `Year`: `SerialNumber`, 
               names_from = IBMR, 
               values_from = totbm, 
-              values_fill = 0)
+              values_fill = 0) 
 
 macdups = macsum_wide %>% 
   group_by(LogNumber, Project, Date, Station) %>% 
@@ -390,8 +401,16 @@ alldups = allbiomass %>%
   filter(n>1)
 
 
-write.csv(allbiomass, "Outputs/ shipchannel_dietbiomass.csv", row.names = FALSE)
+write.csv(allbiomass, "shipchannel_dietbiomass_new.csv", row.names = FALSE)
+#read_csv("shipchannel_dietbiomass_new.csv")
+biomasslong = pivot_longer(allbiomass, cols = c(acartela:mysids), 
+                           names_to= "IBMR", values_to = "mass")
+
+ggplot(biomasslong, aes(x = taxa, y = mass)) + geom_boxplot()
 
 
+#create a monthly version
+dietmonth = group_by(biomasslong, Year, Month, Region, IBMR) %>%
+  summarize(bpue = mean(mass, na.rm =T))
 
-
+save(dietmonth, file = "data/dietmonth.RData")
