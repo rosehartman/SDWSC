@@ -4,6 +4,7 @@
 library(cder)
 library(dataRetrieval)
 library(tidyverse)
+library(sf)
 
 #CDEC has one near Liberty Island
 
@@ -38,10 +39,10 @@ mutate(Temperature = case_when(!is.na(X_00010_00000) ~ X_00010_00000,
   select(StationID, DateTimeUTC, Date, Temperature)
 
 DWSCtemps = bind_rows(t1a, tc2) %>%
-  mutate(StationID = factor(StationID, levels = c("11455338", "DWS", "11455142", "11455095"),
+  mutate(StationID2 = factor(StationID, levels = c("11455338", "DWS", "11455142", "11455095"),
                             labels = c("M51-11455338", "M56-DWS", "M62-11455142", "M70-11455095"))) 
 
-ggplot(DWSCtemps, aes(x = DateTimeUTC, y = Temperature, color = StationID))+
+ggplot(DWSCtemps, aes(x = DateTimeUTC, y = Temperature, color = StationID2))+
   geom_line()
 
 
@@ -52,7 +53,28 @@ ggplot(DWSCtemps, aes(x = DateTimeUTC, y = Temperature, color = StationID))+
 latlongs = data.frame(StationID = c("11455095", "11455142", "11455338", "DWS"),
                       Latitude = c(38.47686944, 38.34166667, 	38.23739167, 38.25611),
                       Longitude = c(-121.5836417, -121.6438889, -121.6739556, 	-121.66667),
-                      Marker = c(70,62,51, 56))
+                      Marker = c(70,62,51, 56),
+                      Region = c("Top", "Middle", "Lower", "Lower"))
+
+########################################################
+#Which region are each of these in?
+library(deltamapr)
+
+scregions = filter(R_EDSM_Subregions_19P3, SubRegion %in% c("Upper Sacramento River Ship Channel",
+                                                            "Lower Sacramento River Ship Channel"))
+
+latlongssf = st_as_sf(latlongs, coords = c("Longitude", "Latitude"), crs = 4326)
+
+ggplot(latlongssf) +
+  geom_sf(data = scregions, aes(fill = SubRegion))+
+  geom_sf()+
+  geom_sf_label(aes(label = StationID))
+  
+
+
+##########################################################
+
+
 DWSCtemps = left_join(DWSCtemps, latlongs)
 
 save(DWSCtemps, file = "outputs/longTermTemps.RData")
@@ -94,8 +116,9 @@ turb1a = rename(turb1, StationID = site_no, DateTimeUTC = dateTime) %>%
  # filter(Turbidity >0, Turbidity <700)
 
 DWSCturb = bind_rows(turb1a, turbc2) %>%
-  mutate(StationID = factor(StationID, levels = c("11455338", "DWS", "11455142", "11455095"),
-                            labels = c("M51-11455338", "M56-DWS", "M62-11455142", "M70-11455095"))) 
+  mutate(StationID2 = factor(StationID, levels = c("11455338", "DWS", "11455142", "11455095"),
+                            labels = c("M51-11455338", "M56-DWS", "M62-11455142", "M70-11455095"))) %>%
+  left_join(latlongs)
 
 ggplot(DWSCturb, aes(x = DateTimeUTC, y = Turbidity, color = StationID))+
    geom_line()+
