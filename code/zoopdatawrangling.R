@@ -10,9 +10,27 @@ library(RColorBrewer)
 
 #this is all the mezozooplaknton data
 load("data/shipchannelzoops.RData")
+
+#zooper has been updated with FMWT and STN for 2023 since I made that one, let's add them in
+
+load("C:/Users/rhartman/OneDrive - California Department of Water Resources/ZoopSynth/zooper/data/zoopComb.rda")
+load("C:/Users/rhartman/OneDrive - California Department of Water Resources/ZoopSynth/zooper/data/zoopEnvComb.rda")
+ FMWTsczoops = Zoopsynther(Data_type = "Community", Sources = c("FMWT", "STN"), 
+                           Years = c(2011:2023), Zoop = zoopComb,
+                           ZoopEnv = zoopEnvComb) %>%
+   mutate(DOY = yday(Date))
+ shipchannelall = bind_rows(filter(shipchannelall, Source != "FMWT", Source != "STN"), 
+                            filter(FMWTsczoops, SizeClass == "Meso"))
+# 
+# save(shipchannelall, file = "data/shipchannelzoops.RData")
+
 names(shipchannelall)
 unique(shipchannelall$Source)
 unique(shipchannelall$SizeClass)
+
+#Why are the 2023 data going away when I add the regions?
+#The stations should be 795, 796, 797, 719, 721, 722m 723m 713m 711
+test2023 = filter(shipchannelall, Station %in% c("795", "796", "797", "719", "721", "722", "723", "713", "711"), Year ==2023)
 
 #this loads which taxa are in which IBMR group and waht their carbon weight conversion is
 crosswalk = read_csv("data/zoopstaxa.csv") %>%
@@ -21,23 +39,48 @@ crosswalk = read_csv("data/zoopstaxa.csv") %>%
 
 scregions = filter(R_EDSM_Subregions_19P3, SubRegion %in% c("Upper Sacramento River Ship Channel",
                                                             "Lower Sacramento River Ship Channel"))
-ggplot()+
-  geom_sf(data = R_EDSM_Subregions_19P3) 
+
 zoopssfx = st_as_sf(shipchannelall, coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
   st_transform(crs = st_crs(scregions)) %>%
-  st_join(scregions) %>%
+  st_join(scregions) 
+
+# zoopssfx2 = filter(shipchannelall, Source %in% c("FMWT", "STN")) %>%
+#   select( Station, Source, Longitude, Latitude) %>%
+#   distinct() %>%
+#   st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+#   st_transform(crs = st_crs(scregions)) %>%
+#   st_join(scregions) 
+# 
+# zoo2023 = test2023 %>%
+#   select( Station, Source, Longitude, Latitude) %>%
+#   distinct() %>%
+#   st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = FALSE) %>%
+#   st_transform(crs = st_crs(scregions)) %>%
+#   st_join(scregions) 
+
+
+# ggplot(zoopssfx2) +
+#   geom_sf(aes(color = Source))+ geom_sf(data = scregions, alpha = 0.5)+
+#   geom_sf_label(aes(label = Station))+
+#   coord_sf(ylim = c(38.15, 38.55), xlim = c(-121.8, -121.55), crs = 4326)
+
+zoopssf = zoopssfx%>%
   st_drop_geometry() %>%
   filter(!is.na(SubRegion))
 
 #attach IBMR groups and calculate BPUE
-zoops = left_join(zoopssfx, crosswalk, relationship = "many-to-one") %>%
-  mutate(BPUE = CPUE * CarbonWeight_ug, DOY = yday(Date))
+zoops = left_join(zoopssf, crosswalk, relationship = "many-to-one") %>%
+  mutate(BPUE = CPUE * CarbonWeight_ug, DOY = yday(Date)) %>%
+  filter(!is.na(IBMR))
 
 ggplot(zoops, aes(x = Latitude, y = CPUE)) +geom_point(aes(color = TowType))+
   facet_wrap(~IBMR, scales = "free")
 
 ggplot(zoops, aes(x = Latitude, y = BPUE)) +geom_point(aes(color = TowType))+
   facet_wrap(~IBMR, scales = "free")
+
+ggplot(zoops, aes(x = Date, y = BPUE)) +geom_point(aes(color = TowType))+
+  facet_wrap(~Source, scales = "free")
 
 #sum by IBMR group
 zoopI = group_by(zoops, SampleID, SubRegion, IBMR, TowType, Date, Latitude, Longitude, Source, Station, DOY) %>%
@@ -61,9 +104,11 @@ zoopI2 = group_by(zoops, SampleID, SubRegion, IBMR2, TowType, Date, Latitude, Lo
 
 #add in zeros and calculate average
 zoopIwzeros = zoopI %>%
-  pivot_wider(id_cols = c(SampleID, TowType, Date, Latitude, Longitude, Source, Station, DOY, Month, Year, MonthYear, Region),
+  pivot_wider(id_cols = c(SampleID, TowType, Date, Latitude, Longitude, Source, 
+                          Station, DOY, Month, Year, MonthYear, Region),
               names_from = IBMR, values_from = BPUE, values_fill = 0) %>%
   pivot_longer(cols = c(allcopnaup:last_col()), names_to = "IBMR", values_to = "BPUE")
+
 
 zoopIave = group_by(zoopIwzeros, Region, TowType, Month, Year, MonthYear, IBMR) %>%
   summarize(BPUE = mean(BPUE))
@@ -86,6 +131,11 @@ zoopI2wzeros2.1 = zoopI2 %>%
   pivot_longer(cols = c(allcopnaup:last_col()), names_to = "IBMR", values_to = "CPUE")
 
 zoopI2zerosall = left_join(zoopI2wzeros2, zoopI2wzeros2.1)
+
+
+#quick plot to make sure i've got 2023
+ggplot(zoopI2wzeros2.1, aes(x = Date, y = CPUE, color = IBMR)) + geom_point()
+
 
 zoopIave2 = left_join(zoopI2wzeros2, zoopI2wzeros2.1) %>%
   group_by(Region, TowType, Month, Year, MonthYear, IBMR) %>%
@@ -110,7 +160,7 @@ save(zoopIave2, zoopIwzeros, zoopI2wzeros2, file = "data/zoopdataIBMR.RData")
 
 
 #FMWT mysids
-fmwtmys = Zoopsynther(Data_type = "Community", Sources = "FMWT", Size_class = "Macro", Years = c(2010:2020)) 
+fmwtmys = Zoopsynther(Data_type = "Community", Sources = "FMWT", Size_class = "Macro", Years = c(2010:2023)) 
 
 #load("data/shipchannelzoops.RData")
 #filter to stations in the ship channel

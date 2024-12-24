@@ -156,7 +156,8 @@ save(zoopTopBottom, file = "outputs/zoopTopBottom.RData")
 ############################################################################
 #We want to look at differneces over tiem, but also by tow type. WE may 
 #have to look at average surface/bottom differences and apply them to oblique toes
-regaveyear = filter(zoopIave2, Month %in% c(6:11), TowType %in% c("Bottom", "Surface"))
+regaveyear = filter(zoopIave2, Month %in% c(6:11), 
+                    TowType %in% c("Bottom", "Surface"))
 
 #export just surface/bottom for brock. 
 write.csv(regaveyear, "outputs/zoopTopBottom_byyear.csv")
@@ -165,8 +166,8 @@ save(zoopTopBottom, file = "outputs/zoopTopBottom_byyear.RData")
 
 #OK, now what's the average percent of critters in surface versus bottom?
 
-adjfact = pivot_wider(regaveyear, names_from = TowType, values_from = BPUE) %>%
-  mutate(Adj = Surface/mean(Bottom,Surface), Adjb = Bottom/mean(Bottom,Surface))
+adjfact = pivot_wider(select(regaveyear, -CPUE), names_from = TowType, values_from = BPUE) %>%
+  mutate(Adj = Surface/mean(c(Bottom,Surface)), Adjb = Bottom/mean(c(Bottom,Surface)))
 
 
 facts = filter(adjfact, !is.nan(Adj), !is.infinite(Adj)) %>%
