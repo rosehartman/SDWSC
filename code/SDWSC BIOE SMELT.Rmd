@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Location of Data
 ```{r, echo = F, warning = F, message = FALSE, eval = T}
-setwd("C:/Users/bhuntsman/Documents/SDWSC Bioenergetics")
+#setwd("C:/Users/bhuntsman/Documents/SDWSC Bioenergetics")
 library(lubridate)
 library(tidyverse)
 library(ggplot2)

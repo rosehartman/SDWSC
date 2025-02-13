@@ -8,6 +8,7 @@ library(sf)
 library(lme4)
 library(lmerTest)
 library(effects)
+library(emmeans)
 
 #CDEC has one near Liberty Island
 
@@ -98,8 +99,8 @@ DWSCtemps = left_join(DWSCtemps, latlongs)
 
 save(DWSCtemps, file = "outputs/longTermTemps.RData")
 
-######################################
-#all the turbidity
+################all the turbidity######################
+#
 
 #does it have turbitity?
 
@@ -162,7 +163,7 @@ ggplot(DWSCturbmean, aes(x = Date, y = Turb, color = StationID))+
 save(DWSCallWQ, file = "Data/DWSCallWQ.RData")
 
 #################################################\
-#what's the oldest water temperature data we have?
+#what's the oldest water temperature data we have? ####
 #https://portal.edirepository.org/nis/mapbrowse?packageid=edi.591.2
 watertemp = read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=edi.591.2&entityid=fb147771773b8354667a0b43e3f8e0e4")
 
@@ -199,7 +200,9 @@ ggplot(filter(SRHx, month(Date) %in% c(6:9)), aes(x = Date, y = MeanTemp)) + geo
 
 ggplot(filter(SRHx, month(Date) %in% c(6:9)), aes(x = Date, y = Max)) + geom_point()+
   geom_smooth(method = "lm")+
-  facet_wrap(~month(Date))
+  facet_wrap(~month(Date))+
+  ylab("Daily Mean Temperature (degrees C)")+
+  theme_bw()
 
 
 #I'm not sure if the autocorrelation stuff is working, so let's domonthly means
@@ -214,29 +217,51 @@ lmmeans = lm(MeanTemp ~ Year*Month, data = SRHx2)
 summary(lmmeans)
 #Whelp, I guess not. 
 
-#how about days above a 22 C or 24 C?
+#how about days above a 22 C or 24 C? ##############
 
 SRHdays = SRHx %>%
-  mutate(Month = month(Date), Year = year(Date),
+  mutate(Month = month(Date), Monthf = as.factor(Month), Year = year(Date),
          above22 = case_when(MeanTemp >22 ~ 1,
                              TRUE ~0),
          above24 = case_when(MeanTemp >24 ~ 1,
                              TRUE ~0)) %>%
-  group_by(Month, Year) %>%
+  group_by(Month, Monthf, Year) %>%
   summarize(above22 = sum(above22, na.rm =T), above24 = sum(above24, na.rm =T)) %>%
-  filter(Month %in% c(6:10))
+  filter(Month %in% c(6:9))
 
 ggplot(SRHdays, aes(x = Year, y = above22)) +
   geom_point()+
   geom_smooth(method = "lm")+
-  facet_wrap(~Month)
+  facet_wrap(~Month)+
+  ylab("Number of days with mean temperature above 22 C")
 
 ggplot(SRHdays, aes(x = Year, y = above24)) +
   geom_point()+
   geom_smooth(method = "lm")+
   facet_wrap(~Month)
 
-#Air temperature 
+lmdays = lm(above22 ~ Year*Monthf, data = SRHdays)
+summary(lmdays)
+plot(allEffects(lmdays))
+emtrends(lmdays, pairwise ~ Monthf, "Year")
+
+####now for the whole summer #####
+
+SRHdaysY = SRHx %>%
+  mutate(Month = month(Date), Monthf = as.factor(Month), Year = year(Date),
+         above22 = case_when(MeanTemp >22 ~ 1,
+                             TRUE ~0),
+         above24 = case_when(MeanTemp >24 ~ 1,
+                             TRUE ~0)) %>%
+  filter(Month %in% c(6:9)) %>%
+  group_by(Year) %>%
+  summarize(above22 = sum(above22, na.rm =T), above24 = sum(above24, na.rm =T)) 
+
+lmdaysY = lm(above22 ~ Year, data = SRHdaysY)
+summary(lmdaysY)
+plot(allEffects(lmdaysY))
+
+#Air temperature  #####
 SRHair = cdec_query("SRH", 4, start.date = ymd("2000-01-01"), end.date = today())
 
 SRHair2 = mutate(SRHair, Date =date(ObsDate), Temp = (Value-32)*5/9) %>%
@@ -248,7 +273,7 @@ SRHair2 = mutate(SRHair, Date =date(ObsDate), Temp = (Value-32)*5/9) %>%
 ggplot(filter(SRHair2, month(Date) %in% c(6:10)), aes(x = Date, y = MeanTempAir)) + geom_point()+
   geom_smooth(method = "lm")
 
-#how correlated is the ship channel and SRH?
+#how correlated is the ship channel and SRH? ###################
 
 tc2sum = mutate(tc, Date =date(ObsDate), Temp = (Value-32)*5/9) %>%
   rename(Station = StationID) %>%
@@ -300,7 +325,7 @@ ggplot(compareSRHDWS, aes(x = Max, y = MaxDWS)) + geom_point(alpha = 0.5, color 
 
 
 #OK, I give up. Let's do trends in water temperature at hood
-SRHx = mutate(SRHx, Month = month(Date), Year = year(Date), DOY = yday(Date)) %>%
+SRHx = mutate(SRHx, Month = month(Date), Monthf = as.factor(Month), Year = year(Date), DOY = yday(Date)) %>%
   group_by(Year) %>%
   mutate(Lagtemp = lag(MeanTemp), test = Lagtemp -MeanTemp) %>%
   ungroup()
@@ -313,18 +338,42 @@ tempgam = gam(MeanTemp ~ Year + s(DOY, bs = "cc"), data = SRHx)
 summary(tempgam)
 plot(tempgam, all.terms = T)
 
-templm = lm(MeanTemp ~ Year + Month + Lagtemp, data = SRHx)
+templm = lm(MeanTemp ~ Year*Monthf + Lagtemp, data = SRHx)
 summary(templm)
 plot(templm)
+plot(allEffects(templm))
 
 #Let's try just the summer months
 
 SRHsummer = filter(SRHx, Month %in% c(6:9)) %>%
   mutate(Yearf = as.factor(Year))
-templm = lm(MeanTemp ~ Year + Month + Lagtemp, data = SRHsummer)
+templm = lm(MeanTemp ~ Year*Monthf + Lagtemp, data = SRHsummer)
 summary(templm)
 plot(templm)
 plot(allEffects(templm))
+emtrends(templm, pairwise ~ Monthf, "Year")
+
+#Let's try just the summer months
+
+templmJ = lm(MeanTemp ~ Year + Lagtemp, data = filter(SRHsummer, Month ==7))
+summary(templmJ)
+
+#ok, so July has gotten significantly hotter
+
+
+#now year as a factor
+templmyf = lm(MeanTemp ~ Yearf + Lagtemp, data = SRHsummer)
+summary(templmyf)
+plot(templmyf)
+test = summary(emmeans(templmyf, pairwise ~ Yearf))$contrasts
+#no. no significatn differences. Am i doing somethign wrong?
+
+templmyf = lm(MeanTemp ~ Yearf*Monthf + Lagtemp, data = SRHsummer)
+summary(templmyf)
+plot(templmyf)
+test = summary(emmeans(templmyf, pairwise ~ Yearf, by = "Monthf"))$contrasts
+plot(emmeans(templmyf, pairwise ~ Yearf, by = "Monthf"), comparisons = T)
+#Ech, really not working
 
 
 #maybe the AR1 term instead?
@@ -340,3 +389,68 @@ tempgamAR1 = bam(MeanTemp ~ s(Year, by = Month) + s(DOY, bs = "cc"), rho = rho1,
 summary(tempgamAR1)
 acf_resid(tempgamAR1)
 plot(tempgamAR1, all.terms =T)
+
+###############################################
+#Matt mentioned degree dayts ###############
+library(pollen)
+
+tempDD = SRHsummer %>%
+  group_by(Year) %>%
+mutate(DD = gdd(tmax = Max, tmin = Min, tbase = 20, type = "B")) %>%
+  ungroup()
+
+ggplot(tempDD, aes(x = DOY, y = DD, color = Yearf)) + geom_line()
+
+DDend = tempDD %>%
+  group_by(Year) %>%
+  summarize(DDmax = max(DD))
+
+ggplot(DDend, aes(x = Year, y = DDmax)) + geom_point()+ geom_smooth(method = "lm")+
+  ylab("Degree Days")
+
+lmdd = lm(DDmax~ Year, data = DDend)
+summary(lmdd)
+
+#######bioenergetic thresholds## #######
+#I'm not entirely sure what tehse parameters are, but I think theya re temperature related
+
+CTO <- 20 # Rose et al. 2013 
+CTM <- 23 #Estimate from Smith and Nobriga 2023 (20.5, 23.6), Rose 23
+CTL <- 27  # Rose et al. 2013 
+CQ <- 10 # Rose et al. 2013 
+CK1 <- 0.40 # Rose et al. 2013
+CK4 <- 0.01 # Rose et al. 2013
+
+
+G1 <- (1 / (CTO - CQ)) * log((0.98 * (1 - CK1)) / (CK1 * 0.02))
+L1 <- exp(G1 * (22- CQ)) #see what happens if I put 22 in as temperature
+KA <- (CK1 * L1) / (1 + CK1 * (L1 - 1))
+G2 <- (1 / (CTL - CTM)) * log((0.98 * (1 - CK4)) / (CK4 * 0.02))
+L2 <- exp(G2 * (CTL - 22))
+KB <- (CK4 * L2) / (1 + CK4 * (L2 - 1))
+ft.con <- KA * KB 
+
+Consumption <- (CA * W0^CB) * P * ft.con #Units --> Specific (g/g/d).
+
+Temps = c(18:27)
+Ls = exp(G1 * (Temps-CQ))
+foo = data.frame(Temps = Temps, Ls = Ls)
+ggplot(foo, aes(x = Temps, y = Ls)) + geom_point()
+
+#OK, let's try doing this. 
+
+SRHx = mutate(SRHx, Tempwieghted = exp(G1*(MeanTemp)))
+
+ggplot(SRHx, aes(x = Date, y = Tempwieghted)) + geom_point()+ geom_smooth(method = "lm")
+
+#just summer
+ggplot(filter(SRHx, month(Date) %in% c(6:9)), aes(x = Date, y = Tempwieghted)) + geom_point()+ geom_smooth()
+
+
+#quick demo for Michelle
+
+testdata = data.frame(SampleID = 1:20, organism.count = rnorm(20, 16, 10))
+
+dataframe = dataframe %>%
+  mutate(NewCount = case_when(organism.count < 16 ~ organism.count,
+                              organism.count >= 16 ~ organism.count/16))
