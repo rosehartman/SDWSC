@@ -64,9 +64,37 @@ zoopssfx = st_as_sf(shipchannelall, coords = c("Longitude", "Latitude"), crs = 4
 #   geom_sf_label(aes(label = Station))+
 #   coord_sf(ylim = c(38.15, 38.55), xlim = c(-121.8, -121.55), crs = 4326)
 
+
 zoopssf = zoopssfx%>%
   st_drop_geometry() %>%
   filter(!is.na(SubRegion))
+
+zoopssfstas = zoopssf%>%
+  select(Source, Station, Latitude, Longitude, SampleID) %>%
+  distinct() %>%
+  group_by(Source, Station, Latitude, Longitude) %>%
+  summarize(N = n()) %>%
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
+
+save(zoopssfstas, file = "data/zoopstas.RData")
+
+###########################################
+#what's the DOP and sadro lab effort like?
+
+zoossamps = zoopssf%>%
+  mutate(Month = month(Date), Monthyear = Year + (Month-1)/12) %>%
+  select(Source, Date, Month, Monthyear, Year, Station, Latitude, Longitude, SampleID) %>%
+  distinct() 
+
+ggplot(zoossamps, aes(x = Monthyear)) + geom_bar() +
+  facet_wrap(~Source)
+
+zooseff= zoossamps%>%
+  group_by(Source,  Month, Monthyear, Year) %>%
+  summarize(N = n()) 
+
+
+
 
 #attach IBMR groups and calculate BPUE
 zoops = left_join(zoopssf, crosswalk, relationship = "many-to-one") %>%
@@ -132,9 +160,23 @@ zoopI2wzeros2.1 = zoopI2 %>%
 
 zoopI2zerosall = left_join(zoopI2wzeros2, zoopI2wzeros2.1)
 
+save(zoopI2zerosall, file = "zoopI2zerosall.RData")
+
 
 #quick plot to make sure i've got 2023
 ggplot(zoopI2wzeros2.1, aes(x = Date, y = CPUE, color = IBMR)) + geom_point()
+
+zoops2023 = filter(zoopI2zerosall, year(Date) == 2023) %>%
+  select(SampleID, Latitude, Longitude, Date) %>%
+  distinct() %>%
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326)
+
+ggplot()+
+  geom_sf(data = WW_Delta)+
+  geom_sf(data = zoops2023, aes(color = Source, shape = Source), size = 4)+
+  scale_color_manual(values = c("firebrick", "black"))+
+  scale_shape_manual(values = c(20,4))+
+  coord_sf(xlim = c(-121.7, -121.55), ylim = c(38.2, 38.6))
 
 
 zoopIave2 = left_join(zoopI2wzeros2, zoopI2wzeros2.1) %>%

@@ -162,6 +162,10 @@ ggplot(DWSCturbmean, aes(x = Date, y = Turb, color = StationID))+
 
 save(DWSCallWQ, file = "Data/DWSCallWQ.RData")
 
+wqsummary = group_by(DWSCallWQ, StationID) %>%
+  filter(!is.na(Temperature)) %>%
+  summarize(start = min(Date), end = max(Date))
+
 #################################################\
 #what's the oldest water temperature data we have? ####
 #https://portal.edirepository.org/nis/mapbrowse?packageid=edi.591.2
@@ -454,3 +458,11 @@ testdata = data.frame(SampleID = 1:20, organism.count = rnorm(20, 16, 10))
 dataframe = dataframe %>%
   mutate(NewCount = case_when(organism.count < 16 ~ organism.count,
                               organism.count >= 16 ~ organism.count/16))
+
+
+#save the tempareature data from for Brock
+
+SRHtemp = select(SRHx,Station, Year, DOY, Month, Date, MeanTemp, Min, Max) %>%
+rename(MinTemp = Min, MaxTemp = Max)
+
+save(SRHtemp, file = "data/SRHtemp.RData")
