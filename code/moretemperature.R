@@ -161,15 +161,21 @@ ggplot(DWSCturbmean, aes(x = Date, y = Turb, color = StationID))+
 
 
 save(DWSCallWQ, file = "Data/DWSCallWQ.RData")
-
+load("Data/DWSCallWQ.RData")
 wqsummary = group_by(DWSCallWQ, StationID) %>%
   filter(!is.na(Temperature)) %>%
   summarize(start = min(Date), end = max(Date))
 
+wqsummary2 = group_by(DWSCallWQ, StationID) %>%
+  filter(!is.na(Turbidity)) %>%
+  summarize(start = min(Date), end = max(Date))
+
+ggplot(DWSCallWQ, aes(x = Date, y = Turbidity, color = StationID))+ geom_line()
+
 #################################################\
 #what's the oldest water temperature data we have? ####
 #https://portal.edirepository.org/nis/mapbrowse?packageid=edi.591.2
-watertemp = read_csv("https://portal.edirepository.org/nis/dataviewer?packageid=edi.591.2&entityid=fb147771773b8354667a0b43e3f8e0e4")
+watertemp = read_csv("https://pasta.lternet.edu/package/data/eml/edi/591/2/fb147771773b8354667a0b43e3f8e0e4")
 
 watertempdaily = watertemp %>%
   group_by(Date, Station, StationName) %>%
@@ -190,11 +196,24 @@ SRH2b = mutate(SRH2, Date =date(ObsDate), Temp = (Value-32)*5/9) %>%
   group_by(Date, Station) %>%
   summarise(Min = min(Temp, na.rm =T), Max = max(Temp, na.rm =T), MeanTemp = mean(Temp, na.rm =T))
 
-SRHx = bind_rows(SRH, SRH2b)
+SRHx = bind_rows(SRH, SRH2b) %>%
+  mutate(Year = year(Date))
 
-ggplot(SRHx, aes(x = Date, y = MeanTemp)) + geom_point()
+ggplot(SRHx, aes(x = Date, y = MeanTemp)) + geom_point(aes(color = as.factor(Year)))
 
 ggplot(SRHx, aes(x = Date, y = Max)) + geom_point()
+
+##########################################################
+
+#hyow does this compare to other sensors in teh Delta?
+#let's check Lisbon
+
+
+LIS = filter(watertempdaily, Station == "LIS")
+ggplot(LIS, aes(x = Date, y = MeanTemp)) + geom_point()
+#Not super hot. 
+
+########################################################
 
 #just summer and fall
 

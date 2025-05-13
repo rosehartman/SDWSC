@@ -1,0 +1,1751 @@
+---
+title: "Smelt Bioenergetics SDWSC Clean"
+author: "Brock Huntsman"
+date: "2025-03-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Source https://github.com/rosehartman/SDWSC
+
+# Basic DSM Life Cycle for Context of Simulations
+**General Life-Cycle** of the DSM results in sub-adult and adults moving upstream into freshwater during the fall and winter spawning months. Larval and juvenile DSM move downstream into brackish water (Suisun Bay and Marsh) during the spring and summer months. Most DSM rear in low salinity habitat in summer and fall (All from Moyle 2016).
+
+**Migratory Portfolio** from Hobbs et al. (2019) indicates that there are 3 life-history types, a freshwater resident, a brackish water resident, and a semi-anadromous 
+
+# Set Workding Directory and Load Packages
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+#setwd("C:/Users/bhuntsman/Documents/SDWSC Bioenergetics")
+library(lubridate)
+library(tidyverse)
+library(ggplot2)
+library(mgcv)
+library(deltamapr)
+library(sf)
+library(smwrBase) # wateryear function
+library(dataRetrieval)
+library(ggpubr) # for ggarrange function
+library(ggbreak)
+library(chillR) # photoperiod length function
+
+```
+
+# Functions
+**bio_fxn** = Smith and Nobriga Bioenergetics Model function. Includes temp, day length, turbidity, and prey density
+Wim's IBM appendix versions also IBMR (From Rosie Code)
+naup.VK <- c(1, 75) # not used in TAFS paper
+limno.VK <- c(1, 1.5)
+juv.cal.VK <- c(1, 7.5)
+juv.Pf.VK <- c(1, 1.5) #This taxon isn't in the zp file
+o.cyc.VK <- c(1, 1.5)
+eury.VK <- c(1, 0.375)
+pseud.VK <- c(1, 0.375)
+calan.VK <- c(1, 0.75)
+acart.VK <- c(1, 0.75)
+o.clad.VK <- c(1, 4.5)
+daph.VK <- c(1, 4.5)
+other.VK <- c(1, 7.5) # not used in TAFS paper
+
+**lw_fxn** = length-weight function for smelt
+
+**vb_fxn** = Von Bertalanffy growth function for smelt
+
+**faben_fxn** = Von Bertalanffy growth function using the fabens formula for smelt
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+bio_daily_fxn <- function(DataFile, Weight.Initial, # DataFile includes temp and turbidity 
+                         food, prey.ed, nprey, k.df, v.df, # prey density parameters on consumption
+                         a.turb, b.turb, min1, # turbidity parameters on consumption
+                      #   daylength, # day length vector, gets converted to proportion
+                         Spawning.Day = 0, Gonad.Loss = 0)
+{
+  #Read in the user defined data:
+  TheData <- DataFile
+  
+  #===============================================================================================================
+  #-----INPUT PHYSIOLOGICAL PARAMETERS-----#
+  #===============================================================================================================
+  #Consumption related parameters (user defined):
+  CA <- 0.096 #Estimate from Smith and Nobriga 2023 (0.090, 0.110)
+  CB <- -0.354 #Estimate from Smith and Nobriga 2023 (-0.53, -0.251) 
+  CQ <- 10 # Rose et al. 2013 
+  CTO <- 20 # Rose et al. 2013 
+  CTM <- 21.6 #Estimate from Smith and Nobriga 2023 (20.5, 23.6), Rose = 23
+  CTL <- 27  # Rose et al. 2013 
+  CK1 <- 0.40 # Rose et al. 2013
+  CK4 <- 0.01 # Rose et al. 2013
+  
+  #Respiration related parameters (user defined):
+  RA <- 0.0027 # 0.0027 # Rose et al. 2013 used 0.0027 that was adjusted by intercept. 0.3646 was lantry and steward original before adjustment
+  RB <- -0.216 # Rose et al. 2013
+  RQ <- 0.064 #Estimate from Smith and Nobriga 2023 (0.036, 0.080)
+  RTO <- 0.0196 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  RTM <- 0 
+  RTL <- 25 
+  RK1 <- 1 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  RK4 <- 0 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  ACT <- 1.0198 # Rice 1983 
+  BACT <- 0 # Hewett and Johnson 1992 via Whitledge and Hayward 1997 
+  SDA <- 0.175 # Rose et al. 2013 
+  #OxyConv <- 13562 #J/gram of O2 in respiration conversions (Elliot and Davidson 1975).   
+  
+  #Egestion and excretion parameters (user defined):
+  FA <- 0.16 # Rose et al. 2013
+#  FB <- -0.222
+#  FG <- 0.631
+  UA <- 0.1 # Rose et al. 2013
+#  UB <- 0.58
+#  UG <- -0.299
+  
+  #Predator energy densities for EQUATION 1 (user defined):
+  Predator.Energy <- 4814 # Rose et al. 2013 J/g. reported energy density of 4.42kJ/g  # 1020.59 cal/g (4270.149 J/g) from Irwin et al. 2003. 4814 J/g from Smith and Nobriga 2023 code 
+  
+  #Consumer inputs (grams):
+  Weight0 <- W0 <- Weight.Initial #Intial consumer weight.
+  Gonad.Loss <- Gonad.Loss  #As a proportion of fish body mass.  
+  
+  Gonad.Loss.Day <- Spawning.Day   #Day of simulation that corresponds to spawning and gamete 
+
+  #===============================================================================================================
+  #FUNCTION NUMBER 1: {Bioenergetics}          
+  
+  #Runs bioenergetics model for a single day in a given simulation and spits out
+  #vector of bioenergetics quantities --> Used for fitting the p-value and for
+  #generating consumption once p-value has been fit --> For looping below.
+  #===============================================================================================================
+  #"i" is a row in the input data file, "WO" is the consumer weight, and 
+  # food is a matrix of available food densities.
+  
+  Bioenergetics <- function(i, W0, food){  
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----CONSUMPTION: Cool and Cold-water Species Function for CONSUMPTION-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    # Cmax Relationship with Mass #
+    Cmax <- (CA * W0^CB)
+    
+    # Temperature Effects #
+    G1 <- (1 / (CTO - CQ)) * log((0.98 * (1 - CK1)) / (CK1 * 0.02))
+    L1 <- exp(G1 * (TheData$Temp[i] - CQ))
+    KA <- (CK1 * L1) / (1 + CK1 * (L1 - 1))
+    G2 <- (1 / (CTL - CTM)) * log((0.98 * (1 - CK4)) / (CK4 * 0.02))
+    L2 <- exp(G2 * (CTL - TheData$Temp[i]))
+    KB <- (CK4 * L2) / (1 + CK4 * (L2 - 1))
+    ft.con <- KA * KB 
+    
+    # Prey Availability/Density Effect #
+    ## Multispecies functional response based on Holling (1965) type II model used in Rose et al. (2013) and smith and Nobriga (2023) ## 
+    # v_df <- rep(1, nprey) # vulnerability of prey to DS (assume all = 1 for simplicity)
+    food_sat <- food[i, ] # * (v_df / k.df)  
+    food_num <- food_sat * (v.df / k.df)
+    food_den <- (1 + sum(food_sat * (v.df / k.df)))
+#    food_prop <- food_num / food_den #
+#    food.fxn <- sum(food_prop)
+    
+    # Turbidity Effect #
+    turb.fxn <- min1 + (1 - min1) / 
+      (1 + (exp(-(b.turb * (TheData$Turb[i] - a.turb)))))
+    
+    # Day Length Effect #
+    lt.fx <- TheData$Daylength[i]/max(TheData$Daylength)
+
+    # Bring all components into a full consumption model: Realized Consumption #
+    ## Everything but prey density effect on consumption ##
+    Consumption1 <- Cmax * turb.fxn * ft.con * lt.fx #Units --> Specific (g/g/d).
+    
+    ## Incorporate the Prey Density Function
+    Consumption2 <- (Consumption1 * food_num) / food_den 
+    
+    ## Build in Energy Density into the Consumption value here instead of for growth below ##
+    consume_energy <- prey.ed * Consumption2
+    lim <- prey.ed[5] / sum(prey.ed) 
+    energy_adjust <- (prey.ed[5] * lim) + (prey.ed[1] * (1 - lim))   # this is weighted by the proportion of prey that is Limno. This could be made more inclusive if other ED's are used besides 2
+    Consumption <- sum(Consumption2)
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----EGESTION (solid) and EXCRETION (nitrogenous): Equation 1 Not accounting for Indigestible Prey -----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #Both types of waste loss are simply a constant fraction of consumption: 
+    Egestion <- FA * Consumption 
+    Excretion <- UA * (Consumption - Egestion)
+    #Units --> Specific (g/g/d).
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----RESPIRATION and SDA: Equation 1-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #Exponential with swimming speed--dependent on mass and water temperature below a cuttoff (RTL):
+    ifelse(TheData$Temp[i] > RTL, 
+           VEL <- RK1 * W0^RK4, 
+           VEL <- ACT * (W0^RK4) * exp(BACT * TheData$Temp[i]))
+    ft.metabolism <- exp(RQ * TheData$Temp[i])
+    ACTIVITY <- exp(RTO*VEL)                           
+
+    Respiration <- RA * (W0^RB) * ft.metabolism * ACTIVITY #Units --> Specific (g O2/g/d). 
+    SDAction <- SDA * (Consumption - Egestion) #Units --> Specific (g/g/d) 
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----PREDATOR ENERGY (J/g): Equation 1-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><> 
+    Pred.Energy <- Predator.Energy
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----Convert grams to joules and calculate GROWTH for simulation day i-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    Growth <- (Consumption - (Respiration + Egestion + Excretion + SDAction)) * 
+      W0 * (energy_adjust / Pred.Energy)    #In terms of daily weight gain (g/day).
+    #Divide this value by W0 to get back to a specific rate (g/g/d). oxy removed from resp and Pred.Energy removed because it is incorporated into the ratio
+    
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    #-----Update GROWTH if spawning occurred and return vector of bioenergetics quantities-----# 
+    #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    Consumption.Specific <- Consumption #Units --> g/g/d
+    Consumption.total <- Consumption.Specific * W0 #Units --> g/d
+    
+    #If spawning occurred: need to update total growth on spawning day:
+    if (i == Gonad.Loss.Day & Gonad.Loss > 0) {
+      Growth <- Growth - (Gonad.Loss * (Growth + W0))
+      } 
+    else { 
+      Growth <- Growth
+      } #Units --> g       
+    
+    Growth.Specific <- Growth / W0 #Units --> g/g/d
+    
+    #Weight of fish at end of simulation day:
+    Weight.End <- Growth + W0 #Units --> g   
+    
+    #Egestion, Excretion, Respiration, and SDA are in specific terms.
+    
+    #Return a vector of all bionergetics quantities from the days simulation: 
+    return(c(Growth, Growth.Specific, Weight.End, Consumption.total,
+             Consumption.Specific, Egestion, Excretion, Respiration, SDAction))
+  }
+  
+  loop_fxn <- function(food){
+   # Empty Matrix to store results #
+    results <- matrix(0, ncol = 9, nrow = length(TheData$SimDay))
+    food1 <- food[1, ]
+    
+    results[1, ] <- Bioenergetics(1, Weight0, food)
+    
+    for (i in 2:nrow(results)){
+      results[i, ] <- Bioenergetics(i, results[i - 1, 3], food)
+    } #i
+    
+    results_df <- data.frame(SimDay = 1:nrow(results),
+                             Growth = results[, 1],
+                             Size = results[, 3])
+  return(results_df)
+  }
+
+  results_df <- loop_fxn(food)
+  return(results_df)
+}
+
+lw_fxn <- function(x){
+  # wgt <- (1.8 * 10^-6 * (x^3.38)) # smith and nobriga code has 1.83e-6. Paper has 1.8e-6
+  wgt <- (0.0018 * x^3.38) / 1000
+  return(wgt)
+}
+
+vb_fxn <- function(linf, k, t0, age){
+  linf * (1 - exp(-k * ((age / 365) - t0)))
+}
+
+faben_fxn <- function(linf, k, time, mark){ # time is # of days
+  mark + (linf - mark) * (1 - exp(-k * time / 365))
+}
+
+cv_fxn <- function(x){
+  abs(sd(x, na.rm = T)) / mean(x, na.rm = T)
+}
+
+expand_fxn <- function(x){
+  dat <- data.frame()
+  
+  for (i in 1:nrow(x)){
+    ref <- x[i, ] %>%
+      uncount(Freq)
+    dat <- rbind(dat, ref)
+  }
+  return(dat = dat)
+}
+
+```
+
+# Data References
+## Smelt Initial Sizes from DeltaFish
+```{r, echo = F, warning = F, message = FALSE, eval = F}
+
+library(tidyverse)
+library(lubridate)
+library(deltafish)
+
+con <- open_database()
+
+# open our two data tables
+surv <- open_survey(con)
+fish <- open_fish(con)
+
+# 
+fish_smelt <- fish %>% 
+  filter(Taxa == "Hypomesus transpacificus")
+
+df <- left_join(surv, fish_smelt) %>% 
+  collect() %>%
+  filter(year(Date)>1994, !is.na(Latitude))
+
+#### Summary ####
+unique(df$Source)
+
+df2 <- df%>%
+  filter(Source%in%c("EDSM","20mm"))%>%
+  filter(Length<50)%>%
+  mutate(julday=yday(Date))%>%
+  filter(julday>135&julday<166)%>%
+  mutate(Weight=1.8e-6*Length^3.38)%>%
+  group_by(Year=year(Date))%>%
+  summarise(meanFL=mean(Length),
+            meanWt=mean(Weight),
+            sdWt=sd(Weight),
+            n=n())%>%
+    mutate(seWt=sdWt/sqrt(n))%>%
+  select(Year,meanFL,meanWt,n,seWt)
+
+df_missing <- df%>%
+  filter(Source%in%c("EDSM","20mm"))%>%
+  filter(Length<50)%>%
+  mutate(julday=yday(Date))%>%
+  filter(julday>135&julday<166)%>%
+  mutate(Weight=1.8e-6*Length^3.38)%>%
+  mutate(Year=year(Date))%>%
+  filter(Year>2016)%>%
+  #group_by(Year=year(Date))%>%
+  summarise(meanFL=mean(Length),
+            meanWt=mean(Weight),
+            sdWt=sd(Weight),
+            n=n())%>%
+  mutate(seWt=sdWt/sqrt(n))%>%
+  select(meanFL,meanWt,n,seWt)
+
+df_all <- bind_rows(df2,
+                    df_missing%>%
+                      mutate(Year=2021),
+                    df_missing%>%
+                      mutate(Year=2023),
+                    df_missing%>%
+                      mutate(Year=2024))
+
+#write.csv(df_all,"C:/Users/mjyoung/Desktop/Manuscripts/SDWSC_Bioenergetics/DS_sizeinit.csv")
+
+```
+
+## Smelt Initial Sizes Saved from DeltaFish
+Starting length based on size on June 1 on 5 separate years. Taken directly from Smith and Nobriga 2023 Code.
+VB Model: **Linf** = 78.39, **k** = 2.72, **t0** = -0.026
+
+I believe Smith and Nobriga 2023 used the Fabens 1965 formulation of the VB curve because a starting size was known. L[recap] = L[mark] + (L[inf] - L[mark]) * (1 - exp(k * delta(t)))
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+vb <- data.frame(Parameter = c("Linf", "k", "t0"),
+                 Estimate = c(78.39, 2.72, -0.026))
+
+#init_size <- read.csv("DS_sizeinit.csv")
+init_size = df_all 
+
+vb_size <- init_size %>%
+select(Year, FL = meanFL) %>%
+spread(., Year, FL)
+
+
+for (i in 2:153){
+  for (z in 1:ncol(vb_size)){
+    vb_size[i, z] <- (faben_fxn(filter(vb, Parameter == "Linf")$Estimate, 
+                                    filter(vb, Parameter == "k")$Estimate, 
+                                    1, 
+                                    vb_size[i - 1, z]))
+  } #z
+} #i
+
+vb_size <- lw_fxn(vb_size) %>%
+  mutate(Time = 1:nrow(.),
+         Month = c(rep(6, 30), rep(7, 31), rep(8, 31), 
+                   rep(9, 30), rep(10, 31))) %>%
+  gather(., Year, Weight, `1995`:`2024`)
+
+
+```
+
+## Spatial Reference to all stations
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+# Loads R. Hartmans Map Data: Object = SCregs2 #
+load(file = "SCregs.RData")
+
+# All Stations with Lats and Longs #
+spatial_ref <- data.frame(Station = c("M51", "M54", "M56", 
+                                      "M62", "M66", "M70", 
+                                      "M72", "M74", "M84"),
+                          Latitude = c(38.2373916, 38.25611, 38.25611,
+                                       38.3416667, 38.40444, 38.4768694,
+                                       38.4768694, 38.5064, 38.5593),
+                          Longitude = c(-121.67396, -121.66667, -121.66667,
+                                        -121.64389, -121.61455, -121.58364,
+                                        -121.58364, -121.585, -121.568)) %>%
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = F) %>%
+  mutate(Xalb = st_coordinates(.)[, 1],
+         Yalb = st_coordinates(.)[, 2]) %>%
+  st_join(SCregs2)
+
+```
+
+
+# Objectives
+## Objective 1: Vertical and Longitudinal Habitat Modeling
+### Temperature
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+temp <- read.csv("https://raw.githubusercontent.com/rosehartman/SDWSC/main/data/Temperature_Data_2023_Imputed.csv") %>%
+  transform(Date = as.Date(Date)) %>%
+  mutate(Month = month(Date),
+         Day = yday(Date),
+         Site = Station) %>%
+  transform(Station = dplyr::recode(Station, "CM51" = "M51", "CM66" = "M66",
+                                    "CM74" = "M74", "CM84" = "M84"))
+
+fig1 <- ggplot(data = filter(temp, Depth == "1.5")) +
+#  facet_wrap(Site ~ ., ncol = 2) +
+  geom_hline(yintercept = 20, size = 1, lty = 2) + # T0
+  geom_hline(yintercept = 23, colour = "gold3", size = 1, lty = 2) + # TM
+  geom_hline(yintercept = 27, colour = "red4", size = 1, lty = 2) + # CTM
+  geom_line(aes(x = Date, y = Temp, colour = Site),
+            size = 0.8, alpha = 0.6) +
+#  scale_colour_gradient(low = "blue2", high = "red3") +
+  scale_colour_manual(values = c("blue2", "purple2", "orange2", "red2")) +
+  labs(x = "", 
+       y = expression(paste("Daily temperature (",degree,"C)")),
+       colour = "") +
+  theme_bw() +
+  theme(legend.position = c(0.8, 0.2), 
+        legend.title = element_blank(),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+ #       legend.key.size = unit(2),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+# Depth Differences #
+temp_spread <- select(temp, Date, Month, Day, Site, Depth, Temp) %>%
+  spread(., Depth, Temp) %>%
+  mutate(Dif_1to5 = `1.5` - `5`)
+
+fig2 <- ggplot(data = temp_spread) +
+#  facet_wrap(Site ~ ., ncol = 2) +
+  geom_hline(aes(yintercept = 0), size = 1, linetype = 2) +
+  geom_boxplot(aes(x = as.factor(Month), y = Dif_1to5, fill = Site),
+            colour = "black") +
+#  scale_colour_gradient(low = "blue2", high = "red3") +
+  scale_fill_manual(values = c("purple2", "orange2", "red2")) +
+  labs(x = "Month", 
+       y = expression(paste("Temperature differences by depth (5.0m - 1.5m, ",degree,"C)")),
+       colour = "Site") +
+  theme_bw() +
+  theme(legend.position = "none", #c(0.8, 0.8), 
+        legend.title = element_blank(),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+ #       legend.key.size = unit(2),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 14),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+```
+
+### Turbidity
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+turb <- read.csv("https://raw.githubusercontent.com/rosehartman/SDWSC/main/data/Turbidity_Data_2023_Imputed.csv") %>%
+  transform(Date = as.Date(Date)) %>%
+  mutate(Month = month(Date),
+         Day = yday(Date),
+         Site = Station) %>%
+  transform(Station = dplyr::recode(Station, "CM51" = "M51", "CM66" = "M66",
+                                    "CM74" = "M74", "CM84" = "M84"))
+
+fig3 <- ggplot(data = filter(turb, Date >= "2023-04-01" & 
+                               Date <= "2023-09-30")) +
+  geom_line(aes(x = Date, y = Turbidity, colour = Site), size = 0.8) +
+  scale_colour_manual(values = c("blue2", "purple2", "orange2", "red2")) +
+  labs(x = "", 
+       y = "Turbidity (NTU)") +
+  theme_bw() +
+  theme(legend.position = "none", #c(0.15, 0.85), 
+        legend.title = element_blank(),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+ #       legend.key.size = unit(2),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 14),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+```
+
+#### Multipanel WQ Plot for Hyp 1
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+ggarrange(fig1, fig2, fig3, ncol = 3)
+
+a <- ggarrange(fig1, fig2, ncol = 2)
+ggarrange(a, fig3, nrow = 2)
+
+```
+
+
+### Zooplankton
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+load("zoopI2wzeros2.RData") # zoopI2wzeros2
+
+zoop_lt <- zoopI2wzeros2 %>%
+  transform(BPUE = BPUE / 1000) %>% # makes BPUE mg instead of ug
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4326, remove = F) %>%
+  st_join(., 
+          spatial_ref, 
+          st_nearest_feature) %>%
+  select(Region = Region.y, Station = Station.y, 
+           Latitude = Latitude.x, Longitude = Longitude.x,
+           Month, Year, TowType, IBMR, BPUE) %>%
+  group_by(Region, Station, Latitude, Longitude,
+           Month, Year, TowType, IBMR) %>%
+  summarize(BPUE = mean(BPUE)) %>%
+  ungroup() %>%
+  st_drop_geometry() 
+
+
+table(zoop_lt[, c("Region", "Year", "TowType")])
+
+### Summarize LT Zoop Data For Analysis in Objective 1 ###
+zoop <- group_by(zoop_lt, Region, Station, Month, TowType, IBMR) %>%
+  summarize(BPUE = mean(BPUE, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(Site = paste("C", Station, sep = ""))
+
+
+ggplot(filter(zoop, TowType %in% c("Bottom", "Surface")), 
+       aes(x = as.factor(round(Month, 1)), y = BPUE, fill= IBMR)) + 
+  geom_col(position = "fill") +
+  facet_grid(Site ~ TowType) +
+  labs(x = "Month", 
+       y = expression(paste("Relative BPUE (mg Carbon/", m^{3}, ")")), 
+       fill = "Taxa") +
+  scale_fill_manual(values = c(grey.colors(10), 
+                               "blue1", "red2", #pseudodiaptomus
+                               "orange3")) +
+  theme_bw()
+
+ggplot(filter(zoop, TowType %in% c("Bottom", "Surface")), 
+       aes(x = as.factor(round(Month, 1)), y = BPUE, fill= IBMR)) + 
+  geom_col(position = "stack") +
+  facet_grid(Site ~ TowType, scale = "free") +
+  labs(x = "Month", 
+       y = expression(paste("BPUE (mg Carbon/", m^{3}, ")")), 
+       fill = "Taxa") +
+  scale_fill_manual(values = c(grey.colors(10), 
+                               "blue1", "red2", #pseudodiaptomus
+                               "orange3")) +
+#  scale_y_break(100) +
+  theme_bw() 
+
+# Total Zooplankton #
+zoop_total <- zoop %>%
+  group_by(Month, Site, TowType) %>%
+  summarize(BPUE = sum(BPUE)) %>%
+  ungroup() %>%
+  filter(TowType %in% c("Bottom", "Surface")) %>%
+  arrange(TowType, Month, Site) %>%
+  data.frame(.) %>%
+  spread(., TowType, BPUE)
+
+
+ggplot(filter(zoop, IBMR %in% c("pdiapfor", "pdiapjuv", "sino"),
+              TowType %in% c("Bottom", "Surface")), 
+       aes(x = as.factor(round(Month, 1)), y = BPUE, fill= IBMR)) + 
+  geom_col(position = "stack") +
+  facet_grid(Station ~ TowType) +
+  labs(x = "Month", 
+       y = expression(paste("BPUE (mg Carbon/", m^{3}, ")")), 
+       fill = "Taxa") +
+  scale_fill_manual(values = c("blue1", "red2", "orange3")) +
+  theme_bw() 
+
+```
+
+
+### Fit Bioenergetics Model for Objective 1
+**Months**: 4-8
+**Year**: 2023
+**Stations**: M51, M66, M74, M84
+**Depth**: Bottom, Surface
+
+Taxa: Eurytemora carolleeae (eurytem), Pseudodiaptomus spp adult (pdiapfor), Pseudodiaptomus spp juv (pdiapjuv), Acartiella sinensis (acartela), Sinocalanus doerii (sino), Other calanoid adult (othcalad), Other calanoid juveniles (othcaladjuv), Limnoitheona spp (limno), Other cyclopoid adult (othcyc), Copepod nauplii (allcopnaup), Daphnia spp (daphnia), Other cladocera (othclad), Other (other).   
+```{r, echo = F, warning = F, message = FALSE, eval = T}
+doy_length <- data.frame(
+    Date = seq.Date(from = as.Date("2023-01-01"), to = as.Date("2023-12-31"), 
+                    length = 365))
+
+for (z in 1:nrow(spatial_ref)){
+  doy_length[, z + 1] <- (daylength(as.numeric(st_drop_geometry(spatial_ref[z, 2])), 
+                        1:365)$Daylength) * 60
+}
+
+colnames(doy_length) <- c("Date", spatial_ref$Station)
+doy_length <- gather(doy_length, Station, DOY, M51:M84) %>%
+	  mutate(Month = month(Date), 
+		 Day = yday(Date))
+
+# Set up reference vectors for the loop #
+station_ref <- unique(temp$Station)
+month_ref <- unique(temp$Month)[3:5] # remove sept because not enough data
+depth_ref <- unique(zoop$TowType)[2:3]
+
+# Add 1.5 and 5m depth temps for all Station used for analysis #
+temp1 <- filter(temp, Station %in% c("M51", "M66")) %>%
+  group_by(Date, Station, Month, Day, Site) %>%
+  summarize(Temp2 = mean(Temp)) %>%
+  ungroup() %>%
+  select(Date, Month:Day, Station, Temp2)
+
+temp <- select(temp, colnames(temp1)[-ncol(temp1)], Depth, Temp) %>%
+  spread(., Depth, Temp) %>%
+  merge(temp1, ., all = T) %>%
+  transform(`5` = ifelse(is.na(`5`), Temp2, `5`)) %>% # missing values filled in with station depth 1
+  select(Date:Day, Station, `1.5`, `5`) %>%
+  gather(., Depth, Temp, `1.5`, `5`)
+
+depth_temp_ref <- c(5, 1.5) # to match subsetting of depth_ref above
+
+# Objects needed for the bioenergetics functions #
+consume_df <- data.frame(Prey = unique(zoop$IBMR),
+                         ED = c(rep(2590, 4), 1823, rep(2590, 8)), # Smith and Nobriga ad 2590 instead of 3180. 2226 was the value for limno
+                         k = c(0.75, 75, 4.5, 0.375, 1.5, 0.75, 7.5, 4.5,
+                               1.5, 7.5, 0.375, 0.375, 0.375), #Sat Constant
+                         vuln = c(1, 0, rep(1, 11))) # nauplii not consumed in summer-fall
+
+# Set of dummy variable as an array to store results from for loop #
+result_obj1 <- data.frame()
+
+  
+# Pass simulations through all scenarios to test growth and consumption from all versions of the bioenergetics model #
+for (state in 1:length(station_ref)){
+  for (dep in 1:length(depth_ref)){
+      temp_test <- filter(temp, 
+                        Month %in% 6:8, 
+                        Station == station_ref[state], 
+                        Depth == depth_temp_ref[dep]) 
+      turb_test <- filter(turb, 
+                        Month %in% 6:8,
+                        Station == station_ref[state],
+                        Date > "2022-09-30")
+
+      bio_df <- data.frame(SimDay = 1:nrow(temp_test),
+                     Temp = temp_test$Temp,
+                     Turb = turb_test$Turbidity,
+                     Daylength = filter(doy_length, 
+		                        Month %in% 6:8,
+		                        Station == station_ref[state])$DOY)
+    
+    ### Prey Densities/BPUE Broken Down by Depth ###
+      food_df <- zoop %>%
+        filter(Month %in% 6:8,
+               Station == station_ref[state],
+               TowType == depth_ref[dep]) %>%
+        spread(., IBMR, BPUE) %>%
+        mutate(Freq = as.numeric(table(temp_test$Month))) 
+
+	food_df <- expand_fxn(food_df) %>% 
+        select(acartela:sino)
+   
+    ### Size Reference ###
+  size_ref <- filter(vb_size, Month %in% 6:8,
+                       Year == 2023)    
+    ### Results ###
+  result <- cbind.data.frame(Site = station_ref[state],
+                   Depth = depth_ref[dep],
+                   size_ref,
+                   bio_daily_fxn(bio_df, 
+                           size_ref$Weight[1],  
+                           food_df, 
+                           consume_df$ED, 
+                           nrow(consume_df), 
+                           consume_df$k, 
+                           consume_df$vuln,
+                           a.turb = 20, b.turb = 0.12, min1 = 0.68,
+                           Spawning.Day = 0, 
+                           Gonad.Loss = 0)[, -1])
+    
+    
+    result_obj1 <- bind_rows(result_obj1, result)
+  } # state
+} # dep
+
+```
+
+#### Process Objective 1 Output
+```{r, echo = T, message = F, warning = F}
+result_obj1 <- result_obj1 %>%
+  transform(Month = ifelse(Month == 6, "Jun",
+                 ifelse(Month == 7, "Jul", "Aug"))) %>% 
+  transform(Month = factor(Month, 
+                           levels = c("Jun", "Jul", "Aug"))) %>%
+  mutate(Station = Site,
+         Site = paste("C", Station, sep = "")) %>%
+  mutate(Ratio = Size / Weight)
+
+# Observed vs Predicted size each month using model with prey density and turbidity model #
+ggplot(data = result_obj1) +
+  geom_hline(yintercept = 1, linetype = 2, size = 1.5) +
+  geom_line(aes(x = Time, y = Ratio, linetype = Depth, colour = Month), # , colour = Model),
+             size = 2, alpha = 0.7) +
+  facet_wrap(Site ~ ., ncol = 2) +
+  labs(x = "Days since June 1", y = "DSM weight:VB Weight", colour = "") +
+  scale_colour_manual(values = c("purple3", "red2", "orange2")) +
+  theme_bw() +
+  theme(legend.position = "top",
+        legend.direction = "horizontal",
+        legend.box.background = element_rect(colour = "black", size = 1),
+        axis.text = element_text(size = 12),
+        axis.title.y = element_text(vjust = 3),
+        axis.title.x = element_text(vjust = 1),
+ #       axis.text.x = element_text(angle = 25, vjust = 0.7),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        legend.text = element_text(size = 8),
+        legend.background = element_blank(),
+        legend.title = element_blank(), #element_text(size = 14),
+    #    legend.direction = "horizontal",
+        legend.key = element_blank(),
+        legend.key.width = unit(0.6, "cm"),
+        text = element_text(size = 12), #, family = "serif"),
+        plot.title = element_text(vjust = -10, hjust = 0.15))
+  
+
+# Size by Month with start and end weight from VB model, density model, and density and turb model #
+ggplot(data = result_obj1) +
+  geom_line(aes(x = Time, y = Size, colour = Site, linetype = Depth), 
+            size = 2) +
+  geom_line(aes(x = Time, y = Weight), colour = "black", 
+            size = 2) +
+  scale_colour_manual(values = c("blue2", "purple2", "orange2", "red2")) +
+  labs(x = "Days since June 1", y = "Weight (g)", colour = "") +
+  theme_bw() +
+  theme(legend.position = c(0.1, 0.8),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.spacing.y = unit(-0.15, "cm"),
+        axis.text = element_text(size = 12),
+        axis.title.y = element_text(vjust = 3),
+        axis.title.x = element_text(vjust = 1),
+ #       axis.text.x = element_text(angle = 25, vjust = 0.7),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        legend.text = element_text(size = 8),
+        legend.background = element_blank(),
+        legend.title = element_blank(), #element_text(size = 14),
+    #    legend.direction = "horizontal",
+        legend.key = element_blank(),
+        legend.key.width = unit(0.6, "cm"),
+        text = element_text(size = 12), #, family = "serif"),
+        plot.title = element_text(vjust = -10, hjust = 0.15))  
+
+```
+
+
+## Objective 2 and 3: Longterm Analysis
+### Temperature LT
+Instead of using longterm data that requires filling data gaps, we will just using Matt's GAM for all stations with data across the FishBIO data needs
+```{r, echo = T, message = F, warning = F}
+temp_gam <- readRDS("data/tempmodelpredictions_allsites19952024_v2.rds") %>%
+  mutate(Year = year(Date),
+         Month = month(Date)) %>%
+  transform(Station = substring(Site, 2)) %>%
+  merge(., 
+        st_drop_geometry(select(spatial_ref, Station:Longitude, 
+                                Region:SubRegion)), 
+        all.x = T)
+
+table(temp_gam[, c("Region", "Year")])
+
+temp_dat <- temp_gam %>%
+  mutate(Site = paste("C", Station, sep = ""))
+
+fig4 <- ggplot(data = temp_dat) +
+  geom_hline(yintercept = 20, size = 1, lty = 2) + # T0
+  geom_hline(yintercept = 23, colour = "gold3", size = 1, lty = 2) + # TM
+  geom_hline(yintercept = 27, colour = "red4", size = 1, lty = 2) + # CTM
+  geom_line(aes(x = julday, y = predict, colour = Site, 
+                group = interaction(Year, Site)),
+            alpha = 0.6) +
+  labs(y = expression(paste("Mean daily temperatures (",degree,"C)")),
+       x = "Day of the year",
+       colour = "") +
+  theme_bw() +
+  theme(legend.position = "none", #c(0.1, 0.8), 
+        legend.title = element_blank(),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+ #       legend.key.width = unit(1, "cm"),
+ #       legend.key.size = unit(2),
+ #       legend.key.size = unit(4, "cm"),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+fig4
+  
+test200 = filter(temp_dat, julday %in% c(180:225) & Year ==2002)
+
+ggplot(test200, aes(x = julday, y = predict, colour = Site, 
+                group = interaction(Year, Site)),
+            alpha = 0.6)+ geom_line()
+
+#let's look across time
+
+ggplot(filter(temp_dat, Year != 1995), aes(x = Year, y = predict, color = Site)) + geom_smooth()+
+  facet_wrap(~Month, scales = "free_y")
+```
+
+
+```{r, echo = T, message = F, warning = F}
+#mean mnonthly summer temperatures at each channel marker
+
+temp_dat2 = temp_dat %>%
+  group_by(Year, Month, Site) %>%
+  summarize(Temp = mean(predict, na.rm =T))
+
+ggplot(filter(temp_dat2, Month %in% c(6,7,8)), aes(x = Year, y = Temp, color = as.factor(Month))) +
+  geom_point()+
+  geom_smooth()+
+  facet_wrap(~Site, scales = "free_y")+
+  ylab("Temperature")
+
+```
+
+#### Temperature Clustering
+```{r, echo = T, message = F, warning = F}
+temp_regime <- group_by(temp_gam, Station, Year, Month, Region) %>%
+  summarize(Avg = mean(predict),
+            Max = max(predict),
+            Min = min(predict),
+            CV = cv_fxn(predict)) %>%
+  ungroup() %>%
+  mutate(avg_sc = scale(Avg),
+         max_sc = scale(Max),
+         min_sc = scale(Min),
+         cv_sc = scale(CV)) 
+
+dist_temp <- dist(select(temp_regime, avg_sc:cv_sc))
+temp_clust <- hclust(dist_temp)
+
+plot(temp_clust)
+
+
+### K-means Cluster ###
+clust_df <- data.frame(Clusters = 1:10,
+                          TotalSS = NA)
+
+for (i in 1:nrow(clust_df)){
+  a <- kmeans(select(temp_regime, avg_sc:cv_sc), 
+              centers = i, 
+              nstart = nrow(temp_regime))
+  
+  clust_df[i, 2] <- a$tot.withinss
+} #i
+
+ggplot(data = clust_df,
+       aes(x = Clusters, y = TotalSS)) +
+#  geom_vline(xintercept = 3, linetype = 2, size = 2, alpha = 0.5) +
+  geom_line(size = 1) + 
+  geom_point(size = 4, colour = "blue3") +
+  labs(x = "Number of clusters", y = "Total within cluster sum of squares") +
+  theme_bw()
+
+
+clust_last <- kmeans(select(temp_regime, avg_sc:cv_sc), 
+              centers = 6, 
+              nstart = nrow(temp_regime))
+
+
+temp_regime <- temp_regime %>%
+  mutate(Cluster = clust_last$cluster)
+
+
+aggregate(Cluster ~ Year + Station, temp_regime, mean) %>%
+  spread(., Station, Cluster)
+
+
+```
+
+### Turbidity Longterm
+Taken from NWIS and doens not have gaps in the data
+
+There is also data from cdec that could fill in missing information from NWIS (51 and 70 especially)
+#### Pulling Data from NWIS
+```{r, echo = T, message = F, warning = F, eval = F}
+# CDEC Data #
+a <- "https://raw.githubusercontent.com/rosehartman/SDWSC/main/data/DWSCallWQ.RData"
+load(url(a))
+
+cdec_turb <- DWSCallWQ %>%
+  group_by(StationID2, Date) %>%
+#  group_by(StationID, Date) %>%
+  summarize(Turbidity = mean(Turbidity, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(Year = year(Date),
+         WRYR = waterYear(Date),
+         Month = month(Date),
+         Day = yday(Date)) %>%
+  separate(StationID2, c("Station", "rm"), sep = "-")
+
+
+#retrieve data
+turbnwis <-  readNWISdata(sites =
+                            c("11455142", "11455335", "11455136",
+                              "11455095", "11455338"), 
+                          parameterCd = "63680", 
+                          startDate = "2010-04-01T00:00Z", 
+                          endDate = "2024-12-31T00:00Z",
+                          service = "iv") 
+
+#julday means for each NWIS paramcode
+turbnwis_a <- turbnwis%>%
+  filter(!is.na(X_63680_00000))%>%
+  mutate(julday=yday(dateTime))%>%
+  mutate(Date=as.Date(dateTime))%>%
+  group_by(Date,julday,site_no)%>%
+  summarise(mean=mean(X_63680_00000,na.rm=TRUE))
+
+
+turbnwis_b <- turbnwis%>%
+  filter(!is.na(X_BGC.PROJECT...BGC.PROJECT.TS213.YSI.EXO._63680_00000))%>%
+  mutate(julday=yday(dateTime))%>%
+  mutate(Date=as.Date(dateTime))%>%
+  group_by(Date,julday,site_no)%>%
+  summarise(mean=mean(X_BGC.PROJECT...BGC.PROJECT.TS213.YSI.EXO._63680_00000,na.rm=TRUE))
+
+turbnwis_b1 <- turbnwis%>%
+  filter(!is.na(X_DWS.BOR...HYDRO.PROJECT.TS213..YSI.EXO._63680_00000))%>%
+  mutate(julday=yday(dateTime))%>%
+  mutate(Date=as.Date(dateTime))%>%
+  group_by(Date,julday,site_no)%>%
+  summarise(mean=mean(X_DWS.BOR...HYDRO.PROJECT.TS213..YSI.EXO._63680_00000,na.rm=TRUE))
+
+turbnwis_b2 <- turbnwis%>%
+  filter(!is.na(X_.MEDIAN.TS087..YSI.model.6136....MEDIAN.TS087..YSI.6136._63680_00000))%>%
+  mutate(julday=yday(dateTime))%>%
+  mutate(Date=as.Date(dateTime))%>%
+  group_by(Date,julday,site_no)%>%
+  summarise(mean=mean(X_.MEDIAN.TS087..YSI.model.6136....MEDIAN.TS087..YSI.6136._63680_00000,na.rm=TRUE))
+
+#combine all paramcodes as julday means
+turbidity_df <- bind_rows(turbnwis_a,turbnwis_b,turbnwis_b1,turbnwis_b2)%>%
+  mutate(Station = ifelse(site_no == "11455095", "M72",
+              ifelse(site_no == "11455136", "M66",
+              ifelse(site_no == "11455142", "M62",
+              ifelse(site_no == "11455335", "M54",
+              ifelse(site_no == "11455338", "M51", "UNK")))))) %>%
+  mutate(Source = "NWIS",
+         Year = year(Date),
+         Month = month(Date),
+         Day = yday(Date)) %>%
+  ungroup() %>%
+  select(Source, Station, Date, Year, Month, Day, Turbidity = mean) %>%
+  rbind.data.frame(.,
+                   cbind.data.frame(Source = "CDEC",
+                    select(cdec_turb, Station, Date, Year, Month, Day, Turbidity))) %>%
+  merge(., 
+        st_drop_geometry(select(spatial_ref, Station:Longitude, 
+                                Region:SubRegion)), 
+        all.x = T)
+
+ggplot(data = turbidity_df) +
+  geom_line(aes(x = Date, y = Turbidity, colour = Source),
+            size = 1, alpha = 0.6) +
+  facet_wrap(Station ~ ., ncol = 2) +
+  theme_bw()
+
+
+turbidity_df <- turbidity_df %>%
+  group_by(Region, SubRegion, Station, Date, Year, Month, Day) %>%
+  summarize(Turbidity = mean(Turbidity, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(Site = paste("C", Station, sep = ""))
+
+table(turbidity_df[, c("Station", "Year")])
+
+
+```
+
+#### Saved data instead of pulling from NWIS
+```{r, echo = T, message = F, warning = F}
+turbidity_df <- readRDS("turb_dailymeans.rds") %>%
+  mutate(Source = "NWIS",
+           Year = year(Date),
+           Month = month(Date),
+           Day = yday(Date)) %>%
+  mutate(Station = substring(site, 2)) %>%
+  merge(., 
+        st_drop_geometry(select(spatial_ref, Station:Longitude, 
+                                Region:SubRegion)), 
+        all.x = T) %>%
+  select(Station, Region, Latitude:Longitude, Date, Year:Day, Turbidity = mean) %>%
+  mutate(Site = paste("C", Station, sep = ""))
+
+turb_dat <- group_by(turbidity_df, Site, Month, Day) %>%
+  summarize(Turbidity = mean(Turbidity)) %>%
+  ungroup()
+
+fig5 <- ggplot(data = turb_dat) +
+  geom_line(aes(x = Day, y = Turbidity, colour = Site),
+            size = 0.8) +
+  labs(y = "Turbidity (NTU)",
+       x = "Day of the year",
+       colour = "") +
+  theme_bw() +
+  theme(legend.position = c(0.8, 0.75), 
+        legend.title = element_blank(),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+ #       legend.key.width = unit(1, "cm"),
+ #       legend.key.size = unit(2),
+ #       legend.key.size = unit(4, "cm"),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+  
+```
+
+#### LT WQ Plot
+```{r, echo = T, message = F, warning = F}
+ggarrange(fig4, fig5, ncol = 1)
+
+```
+
+
+### Zooplankton Longterm
+Change M70 to M72, so all data aligns with temp and turbidity. These also put both stations in the same region, Middle2.
+```{r, echo = T, message = F, warning = F}
+zoop_lt <- zoop_lt %>%
+  mutate(Station = ifelse(Station == "M74", "M72", Station)) # made station M74 = M72 for turb and temp data
+
+table(zoop_lt[, c("Region", "Year", "TowType")])
+
+```
+
+## Objective 2 and 3: Food Supplementation Scenario for Historic Analysis
+### Fit Bioenergetics Model for Objective 3
+The first supplementation scenario is the same thing as Objective 2
+```{r, echo = T, message = F, warning = F, eval = F}
+# check to make sure all stations are represented #
+station_ref <- Reduce(intersect, list(unique(zoop_lt$Station),
+                       unique(temp_gam$Station),
+                       unique(turbidity_df$Station)))
+prey_ref <- unique(zoop_lt$IBMR)
+month_ref <- 6:10 
+depth_ref <- unique(zoop_lt$TowType)[-c(3, 4)]
+year_ref <- unique(temp_gam$Year)[-1]
+supp_ref <- seq(from = 0, to = 100, by = 5) # percent supplementation
+
+### Results Empty Data Frame ###
+result_obj3 <- data.frame()
+
+### FOR LOOPS ###
+start <- Sys.time()
+for (yr in 1:length(year_ref)){
+  for (site in 1:length(station_ref)){
+    for (dep in 1:length(depth_ref)){
+      for (sup in 1:length(supp_ref)){
+
+        # Temp DF #
+        temp_df <- filter(temp_gam, 
+                        Month %in% month_ref, 
+                        Station == station_ref[site], 
+                        Year == year_ref[yr]) %>%
+          arrange(Date)
+        
+        # Reference to remove leap year #
+        ref_length <- nrow(temp_df)
+    
+        # Turb DF #
+        turb_df <- group_by(turbidity_df, Station, Month, Day) %>%
+          summarize(Turbidity = mean(Turbidity, na.rm = T)) %>%
+          ungroup() %>%
+          filter(Month %in% month_ref,
+                 Station == station_ref[site]) %>%
+          arrange(Day)
+        turb_df <- turb_df[1:ref_length, ]
+      
+        # Create DF for WQ, needed for bio fxn #  
+        bio_df <- data.frame(SimDay = 1:nrow(temp_df),
+                         Temp = temp_df$predict,
+                         Turb = turb_df$Turbidity,
+                         Daylength = filter(doy_length, 
+		                        Month %in% month_ref,
+		                        Station == station_ref[site])$DOY)
+
+        # Prey Densities/BPUE Broken Down by Depth #
+        food_df <- group_by(zoop_lt, Region, Station, Month, TowType, IBMR) %>%
+          summarize(BPUE = mean(BPUE, na.rm = T)) %>%
+          ungroup() %>%
+          filter(Month %in% month_ref,
+                 Station == station_ref[site],
+                 TowType == depth_ref[dep]) %>%
+            spread(., IBMR, BPUE) %>%
+            mutate(Freq = nrow(temp_df)) 
+
+	      food_df <- expand_fxn(food_df) %>% 
+	        select(acartela:sino) * (1 + (supp_ref[sup] / 100))
+
+        food_df <- food_df[1:ref_length, ]
+    
+        # Size Reference based on VB Model #
+        size_ref <- filter(vb_size, Month %in% month_ref,
+                       Year == year_ref[yr])
+
+    
+        # Pass Through Bioenergetics Model #
+        result <- cbind.data.frame(
+          Site = station_ref[site],
+          Depth = depth_ref[dep],
+          Supplementation = supp_ref[sup],
+          size_ref,
+          bio_daily_fxn(bio_df, 
+                        size_ref$Weight[1],  
+                        food_df, 
+                        consume_df$ED, 
+                        nrow(consume_df), 
+                        consume_df$k, 
+                        consume_df$vuln,
+                        a.turb = 20, b.turb = 0.12, min1 = 0.68,
+                        Spawning.Day = 0, 
+                        Gonad.Loss = 0)[, -1])
+
+            result_obj3 <- bind_rows(result_obj3, result)
+      } #sup
+    } #dep
+  } #site
+} #yr
+end <- Sys.time()
+end - start # estimated time
+
+save(result_obj3, file = "result_obj3.RData")
+
+```
+
+#### Process Objective 3 Output
+```{r, echo = T, message = F, warning = F}
+load(file = "result_obj3.RData")
+
+result_obj3 <- result_obj3 %>%
+  mutate(Station = Site,
+         Site = paste("C", Site, sep = ""),
+         Ratio = Size / Weight) 
+
+# Calculate specific growth rate #
+obj3_sgr <- result_obj3 %>%
+  group_by(Site, Station, Depth, Supplementation, Year) %>%
+  filter(Time == max(Time) | Time == 1) %>%
+  ungroup() %>%
+  select(Station, Site:Supplementation, Year, Weight, Size) %>%
+  group_by(Site, Station, Depth, Supplementation, Year) %>%
+  mutate(Weight = min(Weight),
+         Size = max(Size)) %>%
+  distinct() %>%
+  mutate(SGR = ((Size - Weight) / Weight) / 153)
+  
+```
+
+#### Figures
+**Line Graph: Ratio ~ Day**. Done for Baseline Historic Conditions
+```{r, echo = T, message = F, warning = F}
+ggplot(data = filter(result_obj3, 
+                     Supplementation == "0",
+                     Depth == "Bottom")) +
+  geom_hline(yintercept = 1, size = 2, colour = "black") +
+  geom_line(aes(x = Time, y = Ratio, 
+                colour = Site, group = interaction(Station, Year)), 
+            size = 1, alpha = 0.6) +
+  labs(x = "Days since June 1", y = "DSM weight:VB Weight", colour = "") +
+  theme_bw() +
+  theme(legend.position = c(0.12, 0.2), 
+        legend.title = element_blank(),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+  
+```
+
+**Boxplot: Size ~ Month and Site**. Supplement Figure with Baseline as well
+```{r, echo = T, message = F, warning = F}
+
+
+df0 <- filter(result_obj3, 
+                     Supplementation %in% c("0", "50", "100"),
+                     Depth == "Bottom") %>%
+  filter(Time == 1) %>%
+  select(Site:Depth, Year, StartSize = Weight) %>%
+  distinct()
+
+
+df1 <- filter(result_obj3, 
+                     Supplementation %in% c("0", "50", "100"),
+                     Depth == "Bottom") %>%
+  group_by(Site, Station, Supplementation, Month, Year) %>%
+  filter(Time == max(Time)) %>%
+  ungroup() %>%
+  merge(., select(temp_regime, Station:CV), all.x = T) %>%
+  group_by(Site, Station, Supplementation, Month) %>%
+  mutate(Avg_scale = scale(Avg)) %>%
+  ungroup() %>%
+  merge(., df0, all.x = T) %>%
+  mutate(Month_abb = month.abb[Month]) %>%
+  transform(Month_abb = 
+              factor(Month_abb, levels = c("Jun", "Jul", "Aug",
+                                           "Sep", "Oct")))
+
+ggplot(data = filter(df1, 
+                     Supplementation == "0")) +
+#  geom_hline(aes(yintercept = Weight), size = 2, colour = "red3") +
+  geom_boxplot(aes(x = Site, y = Size), 
+               fill = "gray75", colour = "black", outlier.shape = NA) +
+  geom_point(aes(x = Site, y = Size, colour = StartSize),
+             size = 2, position = position_jitter()) + #alpha = 0.4, 
+  facet_wrap(Month_abb ~ ., ncol = 3, scale = "free") +
+  labs(x = "Site", 
+       colour = "Starting size (g)", 
+       y = "Weight (g)") +
+  scale_colour_gradient(low = "blue2", high = "red2") +
+  theme_bw() +
+  theme(legend.position = "top", # c(0.8, 0.8), 
+        #legend.title = element_blank(),
+        legend.direction = "horizontal",
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+```
+
+**Heatplot: Ratio ~ Region and Day**. Baseline
+```{r, echo = T, message = F, warning = F}
+heat_dat <- result_obj3 %>%
+  mutate(Cat = ifelse(Ratio < 0.98, "Ratio < 1",
+               ifelse(Ratio > 1.02, "Ratio > 1", "Ratio = 1")))
+
+ggplot(filter(heat_dat, 
+              Year %in% c(2016:2020),
+              Supplementation == "0",
+              Depth == "Bottom"), 
+       aes(x = Time, y = Site, fill= Ratio)) +
+  geom_tile() + # linewidth = 0.1, colour = "black"
+  scale_fill_gradientn(
+    limits = range(heat_dat$Ratio),
+    colours = c("gold2", "blue2")
+  ) +
+  labs(x = "Days since June 1", y = "", fill = "DSM Weight:VB Weight") +
+  facet_grid(Year ~ .) +
+  theme(legend.position = "top", 
+        #legend.title = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.title.y = element_text(vjust = 3),
+        axis.title.x = element_text(vjust = -0.5),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        legend.text = element_text(size = 10),
+        legend.box.background = element_blank(), #element_rect(colour = "black", size = 1),
+        text = element_text(size = 12),
+        plot.title = element_text(vjust = 2, hjust = 0.49)) +
+  theme(plot.margin = unit(c(0.25, 0.25, 0.25, 0.25), "cm"))
+
+```
+**change over time**
+
+```{r}
+ggplot(data = filter(df1, 
+                     Supplementation == "0")) +
+#  geom_hline(aes(yintercept = Weight), size = 2, colour = "red3") +
+  geom_boxplot(aes(x = Year, y = Size), 
+               fill = "gray75", colour = "black", outlier.shape = NA) +
+  geom_point(aes(x = Year, y = Size, colour = StartSize),
+             size = 2, position = position_jitter()) + #alpha = 0.4, 
+  facet_wrap(Month_abb ~ ., ncol = 3, scale = "free") +
+  labs(x = "Site", 
+       colour = "Starting size (g)", 
+       y = "Weight (g)") +
+  scale_colour_gradient(low = "blue2", high = "red2") +
+  theme_bw() +
+  theme(legend.position = "top", # c(0.8, 0.8), 
+        #legend.title = element_blank(),
+        legend.direction = "horizontal",
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+
+```
+
+Bleh, gross
+
+Try again
+
+```{r}
+df1 = mutate(df1, Yearn = as.numeric(Year))
+ggplot(data = filter(df1, 
+                     Supplementation == "0", Month %in% c(6,7,8))) +
+#  geom_hline(aes(yintercept = Weight), size = 2, colour = "red3") +
+  geom_smooth(aes(x = Yearn, y = Size, colour = Month_abb)) +
+  geom_point(aes(x = Yearn, y = Size, colour = Month_abb),
+             size = 2, position = position_jitter()) + #alpha = 0.4, 
+  facet_wrap(Site ~ ., ncol = 3, scale = "free") +
+  theme_bw() + ylab("Weight (g)")+ xlab("Year")+
+  scale_color_manual(values = c("darkred", "orange", "dodgerblue"), name = "Month")+
+  theme(legend.position = "top", # c(0.8, 0.8), 
+        #legend.title = element_blank(),
+        legend.direction = "horizontal",
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+
+```
+
+
+
+
+**Boxplot Growth Increment and Subsidy**
+```{r, echo = T, message = F, warning = F}
+df2 <- result_obj3 %>%
+  mutate(Month_abb = month.abb[Month]) %>%
+  transform(Month_abb = 
+              factor(Month_abb, levels = c("Jun", "Jul", "Aug",
+                                           "Sep", "Oct")))
+ 
+ggplot(data = filter(df2,
+                     Supplementation %in% c(0, 50, 100),
+                     Depth == "Bottom")) +
+  geom_hline(yintercept = 0, size = 1, linetype = 2) +
+  geom_boxplot(aes(x = Month_abb, y = Growth, 
+                    fill = as.factor(Supplementation))) +
+  facet_wrap(Site ~ ., ncol = 2) +
+  labs(x = "", y = "Growth increment (g/day)",
+       fill = "Subsidy (%)") +
+  scale_fill_manual(values = c("blue3", "orange3", "red3")) +
+  theme_bw() + 
+  theme(#legend.position = "top", 
+        #legend.title = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.title.y = element_text(vjust = 3),
+        axis.title.x = element_text(vjust = -0.5),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        legend.text = element_text(size = 10),
+        legend.box.background = element_blank(), #element_rect(colour = "black", size = 1),
+        text = element_text(size = 12),
+        plot.title = element_text(vjust = 2, hjust = 0.49)) +
+  theme(plot.margin = unit(c(0.25, 0.25, 0.25, 0.25), "cm"))
+
+```
+
+Let's try doing the long-term analysis again, starting with the same size eachyear.
+
+
+```{r}
+
+station_ref <- Reduce(intersect, list(unique(zoop_lt$Station),
+                       unique(temp_gam$Station),
+                       unique(turbidity_df$Station)))
+prey_ref <- unique(zoop_lt$IBMR)
+month_ref <- 6:10 
+year_ref <- unique(temp_gam$Year)[-1]
+
+### Results Empty Data Frame ###
+result_obj3_evenlength <- data.frame()
+
+### FOR LOOPS ###
+start <- Sys.time()
+for (yr in 1:length(year_ref)){
+  for (site in 1:length(station_ref)){
+
+        # Temp DF #
+        temp_df <- filter(temp_gam, 
+                        Month %in% month_ref, 
+                        Station == station_ref[site], 
+                        Year == year_ref[yr]) %>%
+          arrange(Date)
+        
+        # Reference to remove leap year #
+        ref_length <- nrow(temp_df)
+    
+        # Turb DF #
+        turb_df <- group_by(turbidity_df, Station, Month, Day) %>%
+          summarize(Turbidity = mean(Turbidity, na.rm = T)) %>%
+          ungroup() %>%
+          filter(Month %in% month_ref,
+                 Station == station_ref[site]) %>%
+          arrange(Day)
+        turb_df <- turb_df[1:ref_length, ]
+      
+        # Create DF for WQ, needed for bio fxn #  
+        bio_df <- data.frame(SimDay = 1:nrow(temp_df),
+                         Temp = temp_df$predict,
+                         Turb = turb_df$Turbidity,
+                         Daylength = filter(doy_length, 
+		                        Month %in% month_ref,
+		                        Station == station_ref[site])$DOY)
+
+        # Prey Densities/BPUE Broken Down by Depth #
+        food_df <- group_by(zoop_lt, Region, Station, Month,  IBMR) %>% #just average all the tows
+          summarize(BPUE = mean(BPUE, na.rm = T)) %>%
+          ungroup() %>%
+          filter(Month %in% month_ref,
+                 Station == station_ref[site]) %>%
+            spread(., IBMR, BPUE) %>%
+            mutate(Freq = nrow(temp_df)) %>%
+expand_fxn() %>% 
+        select(acartela:sino)
+
+        food_df <- food_df[1:ref_length, ]
+    
+        # Size Reference based on VB Model #
+        size_ref <- filter(vb_size, Month %in% month_ref,
+                       Year == 2010) #randomly choose a year
+
+    
+        # Pass Through Bioenergetics Model #
+        result <- cbind.data.frame(
+          Site = station_ref[site],
+          Year = year_ref[yr],
+          #Supplementation = supp_ref[sup],
+          select(size_ref,!Year),
+          bio_daily_fxn(bio_df, 
+                        size_ref$Weight[1],  
+                        food_df, 
+                        consume_df$ED, 
+                        nrow(consume_df), 
+                        consume_df$k, 
+                        consume_df$vuln,
+                        a.turb = 20, b.turb = 0.12, min1 = 0.68,
+                        Spawning.Day = 0, 
+                        Gonad.Loss = 0)[, -1])
+
+            result_obj3_evenlength <- bind_rows(result_obj3_evenlength, result)
+  } #site
+} #yr
+end <- Sys.time()
+end - start # estimated time
+
+save(result_obj3_evenlength, file = "result_obj3_evenlength.RData")
+
+```
+
+#### Process Objective 3 Output - with even length
+```{r, echo = T, message = F, warning = F}
+load(file = "result_obj3_evenlength.RData")
+
+result_obj3_evenlength <- result_obj3_evenlength %>%
+  mutate(Station = Site,
+         Site = paste("C", Site, sep = ""),
+         Ratio = Size / Weight) 
+
+# Calculate specific growth rate #
+obj3_sgr_evenlength <- result_obj3_evenlength %>%
+  group_by(Site, Station,   Year) %>%
+  filter(Time == max(Time) | Time == 1) %>%
+  ungroup() %>%
+  select(Station, Site:Year, Weight, Size) %>%
+  group_by(Site, Station, Year) %>%
+  mutate(Weight = min(Weight),
+         Size = max(Size)) %>%
+  distinct() %>%
+  mutate(SGR = ((Size - Weight) / Weight) / 153)
+  
+
+# Calculate specific growth rate #
+obj3_sgr_evenlengthMonthly <- result_obj3_evenlength %>%
+  group_by(Site, Station,   Year, Month) %>%
+  filter(Time == max(Time) | Time == 1) %>%
+  ungroup() %>%
+  select(Station, Site:Year, Weight, Size, Month) %>%
+  group_by(Site, Station, Year, Month) %>%
+  mutate(Weight = min(Weight),
+         Size = max(Size)) %>%
+  distinct() %>%
+  mutate(SGR = ((Size - Weight) / Weight) / n())
+
+obj3_sgr_evenlength <- result_obj3_evenlength %>%
+  group_by(Site, Station,   Year) %>%
+  filter(Time == max(Time) | Time == 1) %>%
+  ungroup() %>%
+  select(Station, Site:Year, Weight, Size) %>%
+  group_by(Site, Station, Year) %>%
+  mutate(Weight = min(Weight),
+         Size = max(Size)) %>%
+  distinct() %>%
+  mutate(SGR = ((Size - Weight) / Weight) / 153)
+  
+
+ggplot(filter(obj3_sgr_evenlengthMonthly, Site == "CM66"), aes(x = Year, y = SGR, color = as.factor(Month)))+ geom_line()
+ggplot(filter(obj3_sgr_evenlength, Site == "CM66"), aes(x = Year, y = SGR))+ geom_line()
+
+
+```
+
+#### Figures
+**Line Graph: Ratio ~ Day**. Done for Baseline Historic Conditions
+```{r, echo = T, message = F, warning = F}
+
+result_obj3_evenlength = mutate(result_obj3_evenlength, siteyear = paste(Site, Year))
+
+ggplot(data = filter(result_obj3_evenlength)) +
+  geom_hline(yintercept = 1, size = 2, colour = "black") +
+  geom_line(aes(x = Time, y = Ratio, 
+                colour = Site, group = Year), 
+            size = .5, alpha = 0.6) +
+  labs(x = "Days since June 1", y = "DSM weight:VB Weight", colour = "") +
+  theme_bw() +
+  facet_wrap(~Site)+
+  theme(legend.position = c(0.12, 0.2), 
+        legend.title = element_blank(),
+        legend.box.background = element_rect(colour = "black", size = 1),
+        legend.text = element_text(size = 10),
+        legend.key = element_blank(),
+        axis.text = element_text(size = 12),
+        axis.text.x = element_text(angle = 0, vjust = 0.7),
+        axis.title.y = element_text(vjust = 1),
+        axis.title.x = element_text(vjust = 1),
+        panel.background = element_blank(),
+        panel.border = element_rect(colour = "black", fill = NA, size = 2),
+        text = element_text(size = 16),
+        plot.title = element_text(vjust = -18, hjust = 0.5))
+  
+```
+
+try a gam
+
+
+```{r}
+ggplot(obj3_sgr_evenlength, aes(x = Year, y = SGR, color = Site)) + geom_point()+ 
+  geom_smooth(method = "gam", formula = y ~ s(x, k=3))+
+  ylab("Specific Growth Rate (g/g/day")+
+  theme_bw()
+
+ggplot(obj3_sgr_evenlength, aes(x = Year, y = SGR, color = Site)) + geom_point()+ geom_smooth(method = "lm")
+  
+lm1 = lm(SGR ~ Site*Year, data = obj3_sgr_evenlength)
+
+summary(lm1)
+#nope
+```
+
+try a gam instead
+
+```{r}
+library(mgcv)
+obj3_sgr_evenlength = mutate(obj3_sgr_evenlength, Site = as.factor(Site))
+
+gam1 = gam(SGR ~Site + s(Year, by = Site, k=3), data = filter(obj3_sgr_evenlength, Year != 2009))
+
+plot(gam1, pages =1, residuals = TRUE)
+
+summary(gam1)
+
+evenlength_predictions = obj3_sgr_evenlength %>%
+  filter(Year != 2009) 
+evenlength_predictions$prediction = predict(gam1)
+
+evenlength_predictions = mutate(evenlength_predictions, resid = prediction-SGR)
+
+
+#make a prettier plot
+p_obj <- plot(gam1, residuals = TRUE)
+p_obj1 <- p_obj[[1]] # just one smooth so select the first component
+sm_df <- bind_rows(as.data.frame(p_obj[[1]][c("x", "se", "fit")]) %>%
+  mutate(CM = "CM51"),
+  as.data.frame(p_obj[[2]][c("x", "se", "fit")]) %>%
+  mutate(CM = "CM54"),
+  as.data.frame(p_obj[[3]][c("x", "se", "fit")]) %>%
+  mutate(CM = "CM62"),
+  as.data.frame(p_obj[[4]][c("x", "se", "fit")]) %>%
+  mutate(CM = "CM66"),
+  as.data.frame(p_obj[[5]][c("x", "se", "fit")]) %>%
+  mutate(CM ="CM72"),
+  as.data.frame(p_obj[[6]][c("x", "se", "fit")]) %>%
+  mutate(CM = "CM84"))
+
+data_df2 <- bind_rows(as.data.frame(p_obj[[1]][c("raw", "p.resid")]) %>%
+  mutate(CM = "CM51"),
+  as.data.frame(p_obj[[2]][c("raw", "p.resid")]) %>%
+  mutate(CM = "CM54"),
+  as.data.frame(p_obj[[3]][c("raw", "p.resid")]) %>%
+  mutate(CM = "CM62"),
+  as.data.frame(p_obj[[4]][c("raw", "p.resid")]) %>%
+  mutate(CM = "CM66"),
+  as.data.frame(p_obj[[5]][c("raw", "p.resid")]) %>%
+  mutate(CM ="CM72"),
+  as.data.frame(p_obj[[6]][c("raw", "p.resid")]) %>%
+  mutate(CM = "CM84"))
+
+
+
+```
+
+
+```{r}
+## plot
+
+ggplot(sm_df, aes(x = x, y = fit, fill = CM)) +
+  geom_point(data = data_df2, mapping = aes(x = raw, y = p.resid, color = CM), inherit.aes = F) +
+  geom_ribbon(aes(ymin = fit - se, ymax = fit + se, y = NULL),
+              alpha = 0.1) +
+  geom_line(aes(color = CM), size =1) +
+  ylab("Mean Specific Growth Rate")+ xlab("year")+
+  facet_wrap(~CM)
+
+
+```
+
+```{r}
+library(gratia)
+
+draw(gam1, residuals = T)
+#OK, tha'ts better
+```
+
+
+```{r}
+gamsmooths = smooth_estimates(gam1) 
+gamresids = add_partial_residuals(filter(obj3_sgr_evenlength, Year != 2009), gam1) %>%
+  pivot_longer(cols = c(`s(Year):SiteCM51`:`s(Year):SiteCM84`), names_to = "Smooth", values_to = "p.resid") %>%
+  mutate(Site2 = str_sub(Smooth, -4, -1)) %>%
+  filter(Site == Site2)
+
+
+ggplot(gamsmooths, aes(x = Year, y = .estimate)) + 
+  geom_ribbon(aes(ymin = .estimate-.se, ymax = .estimate+.se), alpha = 0.3)+
+  geom_line()+
+  facet_wrap(~Site)+
+  geom_point(data = gamresids, aes(x = Year, y = p.resid))+
+  theme_bw()+
+  ylab("Partial Residuals")
+
+```
+
+
+
+```{r}
+temp_dat3 = temp_gam %>%
+  mutate(Yearmonth = Year + (Month-1)/12) %>%
+  group_by(Site, Year, Month, Yearmonth)  %>%
+  summarize(Temp = mean(predict))
+  
+
+ggplot(temp_dat3, aes(x = Yearmonth, y = Temp, color = Site)) + geom_line()
+
+ggplot(filter(temp_gam, Site == "CM66"), aes(x = Date, y = predict))+ geom_line()
+```
+
+
+```{r}
+ggplot(filter(temp_dat3,Month %in% c(6:9)), aes(x = Month, y = Temp, color = as.factor(Year))) + geom_line()+
+  facet_wrap(~Site)
+
+ggplot(filter(temp_dat3,Month %in% c(6:9)), aes(x = Month, y = Temp, color = as.factor(Year))) + geom_point()+
+  facet_wrap(~Site)
+
+ggplot(filter(temp_dat3,Month %in% c(6:9)), aes(x = Year, y = Temp, color = as.factor(Month))) + geom_line()+
+  facet_wrap(~Site)
+
+ggplot(filter(temp_dat3,Month %in% c(6:9)), aes(x = Year, y = Temp, color = Site)) + geom_line()+
+  facet_wrap(~Month)
+
+
+ggplot(filter(temp_dat3,Month %in% c(6:9), Year %in% c(2009, 2010, 2011, 2022, 2024)), 
+       aes(x = Month, y = Temp, color = as.factor(Year))) + geom_point()+
+  facet_wrap(~Site)
+
+
+#huh, looks like 2009 is warmer than other years... did I do this rigth?
+
+```
+now the turbidity
+
+```{r}
+ggplot(turb_dat, aes(x = Day, y = Turbidity, color = Site)) + geom_line()
+
+ggplot(filter(temp_dat2,Month %in% c(6:9)), aes(x = Month, y = Temp, color = as.factor(Year))) + geom_line()+
+  facet_wrap(~Site)
+
+ggplot(filter(temp_dat2,Month %in% c(6:9)), aes(x = Month, y = Temp, color = as.factor(Year))) + geom_point()+
+  facet_wrap(~Site)
+
+ggplot(filter(temp_dat2,Month %in% c(6:9), Year %in% c(2009, 2010, 2011, 2022, 2024)), aes(x = Month, y = Temp, color = as.factor(Year))) + geom_point()+
+  facet_wrap(~Site)
+
+
+```
+
