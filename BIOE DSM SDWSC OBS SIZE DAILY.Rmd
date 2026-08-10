@@ -29,6 +29,7 @@ library(smwrBase) # wateryear function
 library(dataRetrieval)
 library(ggpubr) # for ggarrange function
 library(ggbreak)
+
 library(chillR) # photoperiod length function
 
 ```
@@ -1592,7 +1593,7 @@ try a gam
 ggplot(obj3_sgr_evenlength, aes(x = Year, y = SGR, color = Site)) + geom_point()+ 
   geom_smooth(method = "gam", formula = y ~ s(x, k=3))+
   ylab("Specific Growth Rate (g/g/day")+
-  theme_bw()
+  theme_bw()+scale_color_manual(values = c("blue2","skyblue","navy", "purple2", "orange2", "red2"))
 
 ggplot(obj3_sgr_evenlength, aes(x = Year, y = SGR, color = Site)) + geom_point()+ geom_smooth(method = "lm")
   
@@ -1600,6 +1601,8 @@ lm1 = lm(SGR ~ Site*Year, data = obj3_sgr_evenlength)
 
 summary(lm1)
 #nope
+
+write.csv(obj3_sgr_evenlength, "outputs/AveGrowthByYear.csv", row.names = F)
 ```
 
 try a gam instead
@@ -1613,6 +1616,8 @@ gam1 = gam(SGR ~Site + s(Year, by = Site, k=3), data = filter(obj3_sgr_evenlengt
 plot(gam1, pages =1, residuals = TRUE)
 
 summary(gam1)
+library(broom)
+gamresults = tidy(gam1)
 
 evenlength_predictions = obj3_sgr_evenlength %>%
   filter(Year != 2009) 

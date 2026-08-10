@@ -25,7 +25,22 @@ t1 = readNWISdata(sites = c("11455095", "11455338", "11455142"), parameterCd = "
                   startDate = "2000-01-01T00:00Z", endDate = "2024-10-01T00:00Z",
                   service = "iv")
 
+#look for DO data
+DO = filter(parameterCdFile, str_detect(parameter_nm, "oxygen"))
 
+t1do = readNWISdata(sites = c("11455095", "11455338", "11455142"), parameterCd = "00300", 
+                  startDate = "2000-01-01T00:00Z", endDate = "2024-10-01T00:00Z",
+                  service = "iv")
+t1dob = filter(t1do, !is.na(X_00300_00000))
+
+ggplot(t1dob, aes(x = dateTime, y = X_00300_00000, color = site_no)) + geom_line()
+
+t1do2 = readNWISdata(sites = c("11455095", "11455338", "11455142"), parameterCd = "00301", 
+                    startDate = "2000-01-01T00:00Z", endDate = "2024-10-01T00:00Z",
+                    service = "iv")
+t1dob2 = filter(t1do2, !is.na(X_00301_00000))
+
+ggplot(t1dob2, aes(x = dateTime, y = X_00301_00000, color = site_no)) + geom_line()
 
 #USGS are in UTC and C, CDEC are in PST and F. Gerrr.
 
@@ -145,6 +160,7 @@ ggplot(DWSCturb, aes(x = DateTimeUTC, y = Turbidity, color = StationID))+
   facet_wrap(StationID~.)
   # geom_line(data = turb1, aes(x = dateTime, y = X_DWS.BOR...HYDRO.PROJECT.TS213..YSI.EXO._63680_00000),
   #           inherit.aes = FALSE, color = "red")
+min(DWSCturb$Date)
 
 
 ggplot(turb1, aes(x = dateTime, y = X_BGC.PROJECT...BGC.PROJECT.TS213.YSI.EXO._63680_00000,
@@ -485,3 +501,33 @@ SRHtemp = select(SRHx,Station, Year, DOY, Month, Date, MeanTemp, Min, Max) %>%
 rename(MinTemp = Min, MaxTemp = Max)
 
 save(SRHtemp, file = "data/SRHtemp.RData")
+
+###########################################################################
+#Compare SC data at Freport to DWRSC turbidity data
+
+freport = read_rds("data/sac_fpt_ssc_turb.rds")
+
+summerfallturb = freport %>%
+  mutate(Year = year(Date), Month = month(Date)) %>%
+  filter(Month %in% c(6:10)) %>%
+  rename(FreportTurb = Turbidity)
+
+ggplot(summerfallturb, aes(x = Year, y = SSC)) + geom_point()+ geom_smooth()
+
+
+#check this versus DWSC turbiity
+turb_daily= turbc %>%
+mutate(Date =date(ObsDate)) %>%
+  group_by(Date, StationID) %>%
+  summarize(Turbidity = mean(Value, na.rm =T)) %>%
+  left_join(summerfallturb)
+
+ggplot(filter(turb_daily, Turbidity <100), aes(x = log(SSC), y = log(Turbidity))) +
+  geom_point(alpha = 0.5)+
+  geom_smooth(method = "lm")+
+  facet_wrap(~StationID)
+
+ggplot(turb_daily,  aes(x = log(Turbidity), y = log(SSC))) +
+  geom_point(alpha = 0.5)+
+  geom_smooth(method = "lm")+
+  facet_wrap(~StationID)

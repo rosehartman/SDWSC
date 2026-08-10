@@ -7,6 +7,7 @@ library(readxl)
 library(sf)
 library(deltamapr)
 library(RColorBrewer)
+library(terra)
 
 #this is all the mezozooplaknton data
 load("data/shipchannelzoops.RData")
@@ -27,6 +28,10 @@ load("C:/Users/rhartman/OneDrive - California Department of Water Resources/Zoop
 names(shipchannelall)
 unique(shipchannelall$Source)
 unique(shipchannelall$SizeClass)
+
+summary = shipchannelall %>%
+  group_by(Source, Year) %>%
+  summarize(n = n())
 
 #Why are the 2023 data going away when I add the regions?
 #The stations should be 795, 796, 797, 719, 721, 722m 723m 713m 711
@@ -653,3 +658,115 @@ ggplot(filter(foo, Count !=0, IBMR %in% c("amphipod", "mysids")), aes(x = Count,
   scale_color_manual(values = mypal)+ coord_cartesian(ylim = c(0,100), xlim = c(0,20))
 
 foom = filter(foo, IBMR == "mysids")
+
+#what is the variance on zooplankton abundance/biomss? #################################
+
+#total zoops by sample
+zoopI = zoopI2wzeros2 %>%
+  group_by(SampleID, TowType, Date, Source, Station, Month, Year, Region) %>%
+  summarize(BPUE = sum(BPUE, an.rm =T))
+
+ggplot(zoopI, aes(x = as.factor(Year), y = BPUE)) + geom_boxplot()+
+  facet_wrap(~Region)
+
+#monthly averages
+
+zoopIave = group_by(zoopI, Month, Year, Region) %>%
+  summarize(BPUE = mean(BPUE))
+
+ggplot(zoopIave, aes(x = as.factor(Month), y = BPUE)) + geom_boxplot()+
+  facet_wrap(~Region)
+
+#what range are we looking at?
+
+ranges = zoopIave %>%
+  group_by(Month, Region) %>%
+  summarize(min = min(BPUE), max = max(BPUE), median = median(BPUE),
+            quant1 = quantile(BPUE, 0.25), quant2 = quantile(BPUE, 0.75)) %>%
+  mutate(Range = max/min, IQR = quant2/quant1) %>%
+  filter(Month %in% c(6:10))
+
+#OK, so how much zooplankton biomass would that require?
+#what is the average biomass
+
+
+View(WW_Delta)
+scb = filter(WW_Delta, HNAME == "SACTO. R DEEP WATER SH CHAN")
+st_area(scb)
+ggplot()+
+  geom_sf(data=scb)
+#7913046 m2
+
+#now for bathymetry
+
+
+bathy = rast("C:/Users/rhartman/OneDrive - California Department of Water Resources/salinity control gates/FHEP/data/dem_bay_delta_10m_20250312.tif")
+cellSize(bathy)
+
+bbox = st_bbox(scb) %>%
+  st_transform(crs = st_crs(bathy))
+#10m x 10m
+
+bathy2 = bathy%>%
+  crop(bbox)
+
+scbathy2 = bathy%>%
+  crop(scb)
+
+ggplot()+
+  geom_spatraster(data=bathy2)+
+  geom_sf(data = scb)
+
+scBathy = extract(bathy2, scb)
+
+#oh, wait, what's the elevation of mean sea level?
+#Datum of gage: 10 feet above   NGVD29 - let's say 3 m?
+scBathyX = filter(scBathy, dem_bay_delta_10m_20250312 <3) %>%
+  mutate(depth = dem_bay_delta_10m_20250312-3)
+
+#So if i add up all the depths that should be the volume on cubic meters
+sum(scBathyX$depth)*100
+#65351689
+
+#median biomass times total volume
+#leave ou t top
+
+medians = zoopIave %>%
+  filter(Region != "Top") %>%
+  group_by(Month) %>%
+  summarize(median = median(BPUE), min = min(BPUE), max = max(BPUE), median = median(BPUE),
+            quant1 = quantile(BPUE, 0.25), quant2 = quantile(BPUE, 0.75))
+
+write.csv(medians, file = "outputs/zoopsummaries.csv", row.names = F)
+
+#so, about 12,000 ug/m3
+
+ggplot(filter(zoopIave, Region != "Top", Month %in% c(6:10)), aes(x = as.factor(Month), y = BPUE))+
+  geom_boxplot(fill = "wheat")+ ylab("Biomass of zooplankton per cubic meter (ug)")+ xlab("Month")+
+  theme_bw()
+
+
+zoopIave2 = filter(zoopI, Region != "Top") %>%
+  group_by(Month, Year) %>%
+  summarize(BPUE = mean(BPUE))
+
+
+ggplot(filter(zoopIave2, Month %in% c(6:10)), aes(x = as.factor(Month), y = BPUE))+
+  geom_col(aes(fill = as.factor(Year)), color = "grey20", position = "dodge")+ ylab("Biomass of zooplankton per cubic meter (ug)")+ xlab("Month")+
+  theme_bw()+
+  scale_fill_viridis_d(option = "turbo", name = "Year")
+
+ggplot(filter(zoopIave2, Month %in% c(6:10)), aes(x = as.factor(Month), y = BPUE))+
+  geom_boxplot(fill = "wheat")+ ylab("Biomass of zooplankton per cubic meter (ug)")+ xlab("Month")+
+  theme_bw()
+
+
+#calculate total biomass
+
+65351689*12000/1000000000
+#784 kg 
+
+ggplot()+
+  geom_sf(data = WW_Delta)+
+  coord_sf(xlim = c(-122.12, -121.75), ylim = c(38.01, 38.2))+
+  theme_bw()

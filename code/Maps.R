@@ -54,7 +54,7 @@ ggplot()+
 
 ggplot()+
   geom_sf(data = WW_Delta, color = "grey", fill = "skyblue")+
-  geom_sf(data = scregions, aes(fill = SubRegion))+
+  #geom_sf(data = scregions, aes(fill = SubRegion))+
   geom_sf(data = filter(lights2, Lightnum >50))+
   #geom_text_repel(data = filter(lights2, Lightnum >50), aes(label = Lightnum, x = LongitudeDD, y = LatitudeDD))+
   geom_text_repel(data = filter(lights2, Lightnum >50), aes(label = Lightnum, x = LongitudeDD, y = LatitudeDD),
@@ -123,7 +123,11 @@ latlongssf = st_as_sf(latlongs, coords = c("Longitude", "Latitude"), crs = 4326)
 
 ggplot(latlongssf) +
   geom_sf(data = WW_Delta, color = "grey", fill = "skyblue")+
-  geom_sf()+
+  geom_sf(data = filter(lights2, Lightnum >50))+
+  geom_text_repel(data = filter(lights2, Lightnum >50), aes(label = Lightnum, x = LongitudeDD, y = LatitudeDD),
+                  label.padding = 0.1, box.padding = 0.1, max.overlaps = 20, size =3)+
+  
+  geom_sf(shape =23, size =2, fill = "blue")+
   geom_sf_text( aes(label = StationID), hjust =0, nudge_x = 0.005)+
   coord_sf(ylim = c(38.2, 38.6), xlim = c(-121.7, -121.5))+
   ylab(NULL)+ xlab(NULL)+
